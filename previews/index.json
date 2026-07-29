@@ -1,21 +1,36 @@
 {
   "kind": "kgg_patient_gpt_preview_index",
   "latest": {
-    "baseSha": "a7d98d3cef7437c0bf46fcbf492c813e824a0dae",
-    "createdAt": "2026-07-29T14:02:50.147414+00:00",
+    "baseSha": "7e8202cfbcf93ae230995b1c1da91d151f267b3f",
+    "createdAt": "2026-07-29T15:29:52.797873+00:00",
     "kind": "kgg_patient_gpt_preview",
-    "patchHash": "7a7d1c9ba5cd79a4c144c04f58a0f007867f9a9d644c7b923ac26747b65cd375",
-    "patientVersion": 70,
-    "previewCacheName": "kgg-patient-preview-patient-agent-canary-20260729-b-v70",
+    "patchHash": "8557c266475bf09af003f7756b344ef437da4dd9579d296b9b189741dcbb35fa",
+    "patientVersion": 71,
+    "previewCacheName": "kgg-patient-preview-patient-storage-v7-hotfix-20260729-r3-v71",
     "previewScopePatched": true,
-    "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-agent-canary-20260729-b/update-recovery.html?auto=1&v=70",
-    "requestId": "patient-agent-canary-20260729-b",
-    "riskClass": "standard",
-    "summary": "Fuegt ausschliesslich einen inerten Preview-Canary-Kommentar direkt nach dem Dateikopf von patient-card-progress.js ein; Verhalten und Layout bleiben unveraendert.",
-    "title": "Synthetischer Patient Preview Canary",
-    "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-agent-canary-20260729-b/?plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDIsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMiwiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19"
+    "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-storage-v7-hotfix-20260729-r3/update-recovery.html?auto=1&v=71",
+    "requestId": "patient-storage-v7-hotfix-20260729-r3",
+    "riskClass": "interface",
+    "summary": "Expose storage schema metadata and validate the complete hotfix as an isolated patient preview.",
+    "title": "Patient storage survives plan updates",
+    "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-storage-v7-hotfix-20260729-r3/?plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDIsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMiwiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19"
   },
   "previews": [
+    {
+      "baseSha": "7e8202cfbcf93ae230995b1c1da91d151f267b3f",
+      "createdAt": "2026-07-29T15:29:52.797873+00:00",
+      "kind": "kgg_patient_gpt_preview",
+      "patchHash": "8557c266475bf09af003f7756b344ef437da4dd9579d296b9b189741dcbb35fa",
+      "patientVersion": 71,
+      "previewCacheName": "kgg-patient-preview-patient-storage-v7-hotfix-20260729-r3-v71",
+      "previewScopePatched": true,
+      "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-storage-v7-hotfix-20260729-r3/update-recovery.html?auto=1&v=71",
+      "requestId": "patient-storage-v7-hotfix-20260729-r3",
+      "riskClass": "interface",
+      "summary": "Expose storage schema metadata and validate the complete hotfix as an isolated patient preview.",
+      "title": "Patient storage survives plan updates",
+      "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-storage-v7-hotfix-20260729-r3/?plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDIsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMiwiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19"
+    },
     {
       "baseSha": "a7d98d3cef7437c0bf46fcbf492c813e824a0dae",
       "createdAt": "2026-07-29T14:02:50.147414+00:00",
