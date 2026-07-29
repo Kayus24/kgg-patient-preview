@@ -1,0 +1,15 @@
+{
+  "baseSha": "a7d98d3cef7437c0bf46fcbf492c813e824a0dae",
+  "createdAt": "2026-07-29T14:02:50.147414+00:00",
+  "kind": "kgg_patient_gpt_preview",
+  "patchHash": "7a7d1c9ba5cd79a4c144c04f58a0f007867f9a9d644c7b923ac26747b65cd375",
+  "patientVersion": 70,
+  "previewCacheName": "kgg-patient-preview-patient-agent-canary-20260729-b-v70",
+  "previewScopePatched": true,
+  "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-agent-canary-20260729-b/update-recovery.html?auto=1&v=70",
+  "requestId": "patient-agent-canary-20260729-b",
+  "riskClass": "standard",
+  "summary": "Fuegt ausschliesslich einen inerten Preview-Canary-Kommentar direkt nach dem Dateikopf von patient-card-progress.js ein; Verhalten und Layout bleiben unveraendert.",
+  "title": "Synthetischer Patient Preview Canary",
+  "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-agent-canary-20260729-b/?plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDIsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMiwiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19"
+}
