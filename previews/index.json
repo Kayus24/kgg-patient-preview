@@ -1,21 +1,36 @@
 {
   "kind": "kgg_patient_gpt_preview_index",
   "latest": {
-    "baseSha": "7e8202cfbcf93ae230995b1c1da91d151f267b3f",
-    "createdAt": "2026-07-29T15:29:52.797873+00:00",
+    "baseSha": "a367c001c1c3db4a87652e36811a08a0b74ea870",
+    "createdAt": "2026-07-29T16:34:13.742507+00:00",
     "kind": "kgg_patient_gpt_preview",
-    "patchHash": "8557c266475bf09af003f7756b344ef437da4dd9579d296b9b189741dcbb35fa",
-    "patientVersion": 71,
-    "previewCacheName": "kgg-patient-preview-patient-storage-v7-hotfix-20260729-r3-v71",
+    "patchHash": "ac75a50e15b8131f05be862103c4caebb4f85f721cbc4726d8349fc3315463d0",
+    "patientVersion": 70,
+    "previewCacheName": "kgg-patient-preview-patient-numpad-commit-20260729-a-v70",
     "previewScopePatched": true,
-    "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-storage-v7-hotfix-20260729-r3/update-recovery.html?auto=1&v=71",
-    "requestId": "patient-storage-v7-hotfix-20260729-r3",
-    "riskClass": "interface",
-    "summary": "Expose storage schema metadata and validate the complete hotfix as an isolated patient preview.",
-    "title": "Patient storage survives plan updates",
-    "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-storage-v7-hotfix-20260729-r3/?plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDIsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMiwiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19"
+    "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-numpad-commit-20260729-a/update-recovery.html?auto=1&v=70",
+    "requestId": "patient-numpad-commit-20260729-a",
+    "riskClass": "standard",
+    "summary": "Ein sichtbarer Nummernfeldwert wird beim Wechsel in das nächste Eingabefeld zuverlässig in den Trainings-State übernommen; ein direkt neu geöffnetes Nummernfeld wird nicht durch verzögertes Cleanup zurückgesetzt.",
+    "title": "Nummernfeld-Werte bei Feldwechsel sichern",
+    "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-numpad-commit-20260729-a/?plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDIsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMiwiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19"
   },
   "previews": [
+    {
+      "baseSha": "a367c001c1c3db4a87652e36811a08a0b74ea870",
+      "createdAt": "2026-07-29T16:34:13.742507+00:00",
+      "kind": "kgg_patient_gpt_preview",
+      "patchHash": "ac75a50e15b8131f05be862103c4caebb4f85f721cbc4726d8349fc3315463d0",
+      "patientVersion": 70,
+      "previewCacheName": "kgg-patient-preview-patient-numpad-commit-20260729-a-v70",
+      "previewScopePatched": true,
+      "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-numpad-commit-20260729-a/update-recovery.html?auto=1&v=70",
+      "requestId": "patient-numpad-commit-20260729-a",
+      "riskClass": "standard",
+      "summary": "Ein sichtbarer Nummernfeldwert wird beim Wechsel in das nächste Eingabefeld zuverlässig in den Trainings-State übernommen; ein direkt neu geöffnetes Nummernfeld wird nicht durch verzögertes Cleanup zurückgesetzt.",
+      "title": "Nummernfeld-Werte bei Feldwechsel sichern",
+      "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-numpad-commit-20260729-a/?plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDIsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMiwiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19"
+    },
     {
       "baseSha": "7e8202cfbcf93ae230995b1c1da91d151f267b3f",
       "createdAt": "2026-07-29T15:29:52.797873+00:00",
