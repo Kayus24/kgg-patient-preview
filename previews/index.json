@@ -2,20 +2,35 @@
   "kind": "kgg_patient_gpt_preview_index",
   "latest": {
     "baseSha": "a367c001c1c3db4a87652e36811a08a0b74ea870",
-    "createdAt": "2026-07-29T16:34:13.742507+00:00",
+    "createdAt": "2026-07-29T17:57:55.143240+00:00",
     "kind": "kgg_patient_gpt_preview",
-    "patchHash": "ac75a50e15b8131f05be862103c4caebb4f85f721cbc4726d8349fc3315463d0",
+    "patchHash": "e5a4df225e8f7e4a18a646fbcb96e9843f8025f8b42e59268577491dcce731a5",
     "patientVersion": 70,
-    "previewCacheName": "kgg-patient-preview-patient-numpad-commit-20260729-a-v70",
+    "previewCacheName": "kgg-patient-preview-patient-numpad-preview-parity-20260729-b-v70",
     "previewScopePatched": true,
-    "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-numpad-commit-20260729-a/update-recovery.html?auto=1&v=70",
-    "requestId": "patient-numpad-commit-20260729-a",
+    "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-numpad-preview-parity-20260729-b/update-recovery.html?auto=1&v=70",
+    "requestId": "patient-numpad-preview-parity-20260729-b",
     "riskClass": "standard",
-    "summary": "Ein sichtbarer Nummernfeldwert wird beim Wechsel in das nächste Eingabefeld zuverlässig in den Trainings-State übernommen; ein direkt neu geöffnetes Nummernfeld wird nicht durch verzögertes Cleanup zurückgesetzt.",
-    "title": "Nummernfeld-Werte bei Feldwechsel sichern",
-    "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-numpad-commit-20260729-a/?plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDIsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMiwiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19"
+    "summary": "Die isolierte Preview lädt dieselben Patient:innen-Module wie die Live-PWA. Sichtbare Nummernfeldwerte werden beim Wechsel in das nächste Feld oder beim Außentipp zuverlässig gespeichert.",
+    "title": "Aktuelle Patient:innen-UI im Preview und sichere Feldwechsel",
+    "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-numpad-preview-parity-20260729-b/?plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDIsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMiwiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19"
   },
   "previews": [
+    {
+      "baseSha": "a367c001c1c3db4a87652e36811a08a0b74ea870",
+      "createdAt": "2026-07-29T17:57:55.143240+00:00",
+      "kind": "kgg_patient_gpt_preview",
+      "patchHash": "e5a4df225e8f7e4a18a646fbcb96e9843f8025f8b42e59268577491dcce731a5",
+      "patientVersion": 70,
+      "previewCacheName": "kgg-patient-preview-patient-numpad-preview-parity-20260729-b-v70",
+      "previewScopePatched": true,
+      "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-numpad-preview-parity-20260729-b/update-recovery.html?auto=1&v=70",
+      "requestId": "patient-numpad-preview-parity-20260729-b",
+      "riskClass": "standard",
+      "summary": "Die isolierte Preview lädt dieselben Patient:innen-Module wie die Live-PWA. Sichtbare Nummernfeldwerte werden beim Wechsel in das nächste Feld oder beim Außentipp zuverlässig gespeichert.",
+      "title": "Aktuelle Patient:innen-UI im Preview und sichere Feldwechsel",
+      "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-numpad-preview-parity-20260729-b/?plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDIsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMiwiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19"
+    },
     {
       "baseSha": "a367c001c1c3db4a87652e36811a08a0b74ea870",
       "createdAt": "2026-07-29T16:34:13.742507+00:00",
