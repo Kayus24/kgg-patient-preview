@@ -1,0 +1,16 @@
+{
+  "baseSha": "2a51bd3b0aeadbd6c90ce526ab36444b85ae5f10",
+  "createdAt": "2026-08-05T14:23:04.186476+00:00",
+  "firstLoadModules": true,
+  "kind": "kgg_patient_gpt_preview",
+  "patchHash": "5e382f8d8e8a7c1d32cdd0f897d9f1941ef3c786e0743781fdfb6d69c4d42d39",
+  "patientVersion": 75,
+  "previewCacheName": "kgg-patient-preview-patient-vertical-pain-v75-preview-b-v75",
+  "previewScopePatched": true,
+  "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-vertical-pain-v75-preview-b/update-recovery.html?auto=1&v=75",
+  "requestId": "patient-vertical-pain-v75-preview-b",
+  "riskClass": "standard",
+  "summary": "Kennzeichnet den vollständig geprüften vertikalen Übungsschmerz-Regler als reproduzierbaren mobilen Preview-Kandidaten.",
+  "title": "Vertikale Schmerzskala für Übungsschmerzen",
+  "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-vertical-pain-v75-preview-b/?plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDIsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMiwiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19"
+}

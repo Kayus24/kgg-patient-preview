@@ -1,22 +1,38 @@
 {
   "kind": "kgg_patient_gpt_preview_index",
   "latest": {
-    "baseSha": "5566209c5fc57d1bf0db9cdbb591729879b5398d",
-    "createdAt": "2026-08-02T09:40:27.978323+00:00",
+    "baseSha": "2a51bd3b0aeadbd6c90ce526ab36444b85ae5f10",
+    "createdAt": "2026-08-05T14:23:04.186476+00:00",
     "firstLoadModules": true,
     "kind": "kgg_patient_gpt_preview",
-    "patchHash": "e4a7c76313102845d19cb47fd943495431b728cfb6e4248e1eb5c3f140a86a91",
-    "patientVersion": 73,
-    "previewCacheName": "kgg-patient-preview-patient-camera-contain-20260802-a-v73",
+    "patchHash": "5e382f8d8e8a7c1d32cdd0f897d9f1941ef3c786e0743781fdfb6d69c4d42d39",
+    "patientVersion": 75,
+    "previewCacheName": "kgg-patient-preview-patient-vertical-pain-v75-preview-b-v75",
     "previewScopePatched": true,
-    "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-camera-contain-20260802-a/update-recovery.html?auto=1&v=73",
-    "requestId": "patient-camera-contain-20260802-a",
+    "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-vertical-pain-v75-preview-b/update-recovery.html?auto=1&v=75",
+    "requestId": "patient-vertical-pain-v75-preview-b",
     "riskClass": "standard",
-    "summary": "Der mobile Patienten-Scanner stellt breite und hohe Kamerastreams vollständig dar, statt sie durch einen visuellen Cover-Zuschnitt vergrößert wirken zu lassen.",
-    "title": "Patienten-Scanner zeigt vollständiges Kamerabild",
-    "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-camera-contain-20260802-a/?plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDIsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMiwiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19"
+    "summary": "Kennzeichnet den vollständig geprüften vertikalen Übungsschmerz-Regler als reproduzierbaren mobilen Preview-Kandidaten.",
+    "title": "Vertikale Schmerzskala für Übungsschmerzen",
+    "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-vertical-pain-v75-preview-b/?plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDIsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMiwiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19"
   },
   "previews": [
+    {
+      "baseSha": "2a51bd3b0aeadbd6c90ce526ab36444b85ae5f10",
+      "createdAt": "2026-08-05T14:23:04.186476+00:00",
+      "firstLoadModules": true,
+      "kind": "kgg_patient_gpt_preview",
+      "patchHash": "5e382f8d8e8a7c1d32cdd0f897d9f1941ef3c786e0743781fdfb6d69c4d42d39",
+      "patientVersion": 75,
+      "previewCacheName": "kgg-patient-preview-patient-vertical-pain-v75-preview-b-v75",
+      "previewScopePatched": true,
+      "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-vertical-pain-v75-preview-b/update-recovery.html?auto=1&v=75",
+      "requestId": "patient-vertical-pain-v75-preview-b",
+      "riskClass": "standard",
+      "summary": "Kennzeichnet den vollständig geprüften vertikalen Übungsschmerz-Regler als reproduzierbaren mobilen Preview-Kandidaten.",
+      "title": "Vertikale Schmerzskala für Übungsschmerzen",
+      "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-vertical-pain-v75-preview-b/?plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDIsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMiwiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19"
+    },
     {
       "baseSha": "5566209c5fc57d1bf0db9cdbb591729879b5398d",
       "createdAt": "2026-08-02T09:40:27.978323+00:00",
