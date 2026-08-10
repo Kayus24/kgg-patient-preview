@@ -1,0 +1,16 @@
+{
+  "baseSha": "0c9d568485c40f8d6cc14ea08f39bf18b6f431c1",
+  "createdAt": "2026-08-10T15:41:47.942713+00:00",
+  "firstLoadModules": true,
+  "kind": "kgg_patient_gpt_preview",
+  "patchHash": "04a77225b97d7524f61e7e79827582fb39316a540065754d7b4eb632bba0c284",
+  "patientVersion": 74,
+  "previewCacheName": "kgg-patient-preview-patient-floating-pain-compact-v74-preview-e-v74",
+  "previewScopePatched": true,
+  "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-floating-pain-compact-v74-preview-e/update-recovery.html?auto=1&v=74",
+  "requestId": "patient-floating-pain-compact-v74-preview-e",
+  "riskClass": "standard",
+  "summary": "Exact green PR candidate with compact centered pain modal and no unused white column.",
+  "title": "Compact floating exercise pain scale v74",
+  "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-floating-pain-compact-v74-preview-e/?plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDIsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMiwiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19"
+}
