@@ -1,0 +1,10 @@
+{
+  "canonicalPreviewBuilder": "kgg_patient_gpt_write_gate.write_preview",
+  "continuousDaysGate": "31685911506",
+  "firstLoadModules": true,
+  "patientVersion": "75",
+  "previewScopePatched": true,
+  "requestId": "patient-continuous-days-v75-preview-a",
+  "requiredGate": "31685911499",
+  "sourceCommit": "cb69bc6b6fbe9a544db26bede50a71365a9492ed"
+}
