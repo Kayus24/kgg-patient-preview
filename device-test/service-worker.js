@@ -1,4 +1,4 @@
-const CACHE_NAME = 'kgg-device-test-v404-04a5d3e59225';
+const CACHE_NAME = 'kgg-device-test-v404-d6f396e2c7a5';
 const APP_VERSION = '404-device-test';
 const CACHE_PREFIX = 'kgg-handyplan-';
 const RECOVERY_PATH = './update-recovery.html';
