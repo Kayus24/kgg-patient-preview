@@ -1,0 +1,30 @@
+{
+  "id": "/kgg-patient-preview/device-test/",
+  "name": "KGG Patienten-Test v404",
+  "short_name": "KGG QR-Test",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f7fb",
+  "theme_color": "#111827",
+  "icons": [
+    {
+      "src": "kgg-icon-192-v63.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "kgg-icon-512-v63.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "kgg-icon-maskable-512-v63.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
