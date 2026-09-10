@@ -1,0 +1,16 @@
+{
+  "baseSha": "56a293e6d4eefd76a45985eb4bb4f217a569db15",
+  "createdAt": "2026-09-10T02:13:11.808534+00:00",
+  "firstLoadModules": true,
+  "kind": "kgg_patient_gpt_preview",
+  "patchHash": "4e5e335a3f7300a38948eeb1284ae375648fd554c85fed542c822664a45b8fbc",
+  "patientVersion": 82,
+  "previewCacheName": "kgg-patient-preview-ticket-034-warning-20260909-v82",
+  "previewScopePatched": true,
+  "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/ticket-034-warning-20260909/update-recovery.html?auto=1&v=82",
+  "requestId": "ticket-034-warning-20260909",
+  "riskClass": "interface",
+  "summary": "Warnt beim Trainingsende vor unbearbeiteten Übungen und führt pro Übung einen begrenzten Hinweiszähler; numerischer Nullwert zählt, Schmerz-only nicht, bestehende QR- und Plan-State-Verträge bleiben erhalten.",
+  "title": "Ticket 034: Warnung für unbearbeitete Übungen",
+  "url": "https://kayus24.github.io/kgg-patient-preview/previews/ticket-034-warning-20260909/?plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDIsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMiwiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19"
+}
