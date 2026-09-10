@@ -1,0 +1,16 @@
+{
+  "baseSha": "66e212fc2dba849a56bc7709c098c9400930937a",
+  "createdAt": "2026-09-10T14:53:49.158825+00:00",
+  "firstLoadModules": true,
+  "kind": "kgg_patient_gpt_preview",
+  "patchHash": "492fd5fa0d3eb627150869bc8fa7ab06f80753d5710cb02e7a5d92c1038ea95b",
+  "patientVersion": 82,
+  "previewCacheName": "kgg-patient-preview-patient-ticket-034-modal-counter-20260910-1635-r1-v82",
+  "previewScopePatched": true,
+  "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-ticket-034-modal-counter-20260910-1635-r1/update-recovery.html?auto=1&v=82",
+  "requestId": "patient-ticket-034-modal-counter-20260910-1635-r1",
+  "riskClass": "interface",
+  "summary": "Führt die fehlende Ticket-034-Warncounter-Logik minimal in der Patient:innen-PWA ein und verwendet dafür ein zugängliches KGG-App-Modal; bestehende Finalize-, QR-, Done- und Planverträge bleiben erhalten.",
+  "title": "Ticket 034: Warnung vor offenem Trainingsabschluss",
+  "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-ticket-034-modal-counter-20260910-1635-r1/?plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDIsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMiwiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19"
+}
