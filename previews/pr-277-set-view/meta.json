@@ -1,0 +1,17 @@
+{
+  "baseSha": "15e80a3b42e8d6a66ef4f147802720133051006c",
+  "createdAt": "2026-10-01T17:39:23.030381+00:00",
+  "firstLoadModules": true,
+  "kind": "kgg_patient_gpt_preview",
+  "patchHash": "a14c938a0356f23a9b35f34d9d90c4372eb5f4907166f19f26d0ff25aa9de8c2",
+  "patientVersion": 86,
+  "previewCacheName": "kgg-patient-preview-pr-277-set-view-v86",
+  "previewScopePatched": true,
+  "previewStorageNamespace": "preview:pr-277-set-view:",
+  "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/pr-277-set-view/update-recovery.html?auto=1&v=86",
+  "requestId": "pr-277-set-view",
+  "riskClass": "standard",
+  "summary": "Isolated preview for manual user acceptance of compact patient set input view.",
+  "title": "PR 277 compact set input preview",
+  "url": "https://kayus24.github.io/kgg-patient-preview/previews/pr-277-set-view/?plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDIsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMiwiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19"
+}
