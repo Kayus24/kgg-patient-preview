@@ -1,0 +1,17 @@
+{
+  "baseSha": "b5f6176fcb89776f54f38f83ae6bf4278dad2ecb",
+  "createdAt": "2026-10-02T14:40:13.366313+00:00",
+  "firstLoadModules": true,
+  "kind": "kgg_patient_gpt_preview",
+  "patchHash": "856ceaa34a7a42e5392192d4b1a6451b4c6a7a620d0940b9696d02942023f012",
+  "patientVersion": 87,
+  "previewCacheName": "kgg-patient-preview-patient-v11-icon-3set-20261002-v87",
+  "previewScopePatched": true,
+  "previewStorageNamespace": "preview:patient-v11-icon-3set-20261002:",
+  "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-v11-icon-3set-20261002/update-recovery.html?auto=1&v=87",
+  "requestId": "patient-v11-icon-3set-20261002",
+  "riskClass": "standard",
+  "summary": "Isolated acceptance preview with 3-set fixture and icon-only compact pain control.",
+  "title": "KGG Patient V1.1 icon and 3-set preview",
+  "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-v11-icon-3set-20261002/?plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDMsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMywiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19"
+}
