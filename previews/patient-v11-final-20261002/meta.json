@@ -1,0 +1,17 @@
+{
+  "baseSha": "635b3bcb9da04a244b36f9af2b002b761a06fd97",
+  "createdAt": "2026-10-02T14:12:32.201884+00:00",
+  "firstLoadModules": true,
+  "kind": "kgg_patient_gpt_preview",
+  "patchHash": "ff527a8f83f8c9161b100e61b666f0f666e767b241b67e077d96ffaf01d1ad75",
+  "patientVersion": 87,
+  "previewCacheName": "kgg-patient-preview-patient-v11-final-20261002-v87",
+  "previewScopePatched": true,
+  "previewStorageNamespace": "preview:patient-v11-final-20261002:",
+  "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-v11-final-20261002/update-recovery.html?auto=1&v=87",
+  "requestId": "patient-v11-final-20261002",
+  "riskClass": "interface",
+  "summary": "Final isolated local preview for PR 277 current head.",
+  "title": "KGG Patient V1.1 final isolated preview",
+  "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-v11-final-20261002/?plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDIsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMiwiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19"
+}
