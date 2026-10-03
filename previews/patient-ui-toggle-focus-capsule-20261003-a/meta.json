@@ -1,0 +1,17 @@
+{
+  "baseSha": "b5f6176fcb89776f54f38f83ae6bf4278dad2ecb",
+  "createdAt": "2026-10-03T16:42:07.959724+00:00",
+  "firstLoadModules": true,
+  "kind": "kgg_patient_gpt_preview",
+  "patchHash": "eb90af8c7f4c6fc7efc3504e160074a68b5363c1357496dd4223464b4cdb9994",
+  "patientVersion": 87,
+  "previewCacheName": "kgg-patient-preview-patient-ui-toggle-focus-capsule-20261003-a-v87",
+  "previewScopePatched": true,
+  "previewStorageNamespace": "preview:patient-ui-toggle-focus-capsule-20261003-a:",
+  "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-ui-toggle-focus-capsule-20261003-a/update-recovery.html?auto=1&v=87",
+  "requestId": "patient-ui-toggle-focus-capsule-20261003-a",
+  "riskClass": "standard",
+  "summary": "Shows the supplied horizontal pain capsule at the lower right and matches the active source-field border to the active kg/reps field.",
+  "title": "Patient UI set focus and pain capsule preview",
+  "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-ui-toggle-focus-capsule-20261003-a/?plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDMsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMywiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19"
+}
