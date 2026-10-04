@@ -1,5 +1,5 @@
 (()=> {
-  const CDN='https://cdn.jsdelivr.net/npm/@bryllim/workout-guide@1.0.0/assets/';
+  const CDN='https://bryllim.github.io/workout-guide/frames/';
   const items={
     'Beinpresse':'leg-press',
     'Rudern sitzend':'seated-row',
