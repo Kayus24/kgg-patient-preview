@@ -1,5 +1,5 @@
 (()=>{
-  const VERSION='v10_source_license_links';
+  const VERSION='v11_adaptive_thumb_grid';
   const STYLE='kggPatientMediaStyle';
   const DB='kgg_patient_media_v1';
   const STORE='images';
@@ -30,18 +30,19 @@
       .kggMediaBox.ready{background:#fff}.kggMediaBox.error{background:#fffbeb;border-color:#fde68a;color:#92400e}
       body.kggAlwaysCollapsed .ex:not(.kggOpen) .kggMediaList{display:none!important}
       #list .ex.kggHasThumb{position:relative}
-      #list .ex.kggHasThumb:not(.kggOpen){min-height:122px;padding-right:136px!important}
-      body.kggAlwaysCollapsed #list .ex.kggHasThumb:not(.kggOpen),body.kggCardsCollapsed #list .ex.kggHasThumb:not(.kggOpen){min-height:122px;padding-right:136px!important}
+      #list .ex.kggHasThumb:not(.kggOpen){--kgg-thumb-w:clamp(72px,min(34%,calc(100% - 170px)),142px);display:grid;grid-template-columns:minmax(0,1fr) var(--kgg-thumb-w);grid-auto-rows:min-content;column-gap:10px;align-items:start;min-height:0;padding-right:12px!important}
+      body.kggAlwaysCollapsed #list .ex.kggHasThumb:not(.kggOpen),body.kggCardsCollapsed #list .ex.kggHasThumb:not(.kggOpen){display:grid;grid-template-columns:minmax(0,1fr) var(--kgg-thumb-w);column-gap:10px;min-height:0;padding-right:12px!important}
       body.kggAlwaysCollapsed #list .ex.kggHasThumb.kggOpen,body.kggCardsCollapsed #list .ex.kggHasThumb.kggOpen,#list .ex.kggHasThumb.kggOpen{padding-right:12px!important}
+      #list .ex.kggHasThumb:not(.kggOpen)>:not(.kggCardThumb){grid-column:1;min-width:0}
       #list .ex.kggHasThumb:not(.kggOpen) h3,#list .ex.kggHasThumb:not(.kggOpen) .muted{overflow-wrap:anywhere}
-      #list .ex .kggCardThumb{position:absolute;right:12px;top:50%;width:104px;height:86px;transform:translateY(-50%);border:1px solid #dbe3ef;border-radius:16px;background:#f8fafc;box-shadow:0 7px 18px rgba(15,23,42,.08);overflow:hidden;display:none;pointer-events:none}
-      #list .ex .kggCardThumb img{display:block;width:100%;height:100%;object-fit:cover;background:#fff;cursor:default}\n      #list .ex .kggCardThumb[data-kgg-media-source=\"Workout Guide\"] img,#list .ex .kggCardThumb[data-kgg-media-source=\"Everkinetic\"] img{background:#334155}
+      #list .ex .kggCardThumb{position:static;grid-column:2;grid-row:1/span 8;align-self:center;justify-self:stretch;width:100%;height:auto;aspect-ratio:1.18/1;transform:none;border:1px solid #dbe3ef;border-radius:14px;background:#f8fafc;box-shadow:0 7px 18px rgba(15,23,42,.08);overflow:hidden;padding:3px;display:none;pointer-events:none}
+      #list .ex .kggCardThumb img{display:block;width:100%;height:100%;object-fit:contain;border-radius:11px;background:#fff;cursor:default}\n      #list .ex .kggCardThumb[data-kgg-media-source=\"Workout Guide\"] img,#list .ex .kggCardThumb[data-kgg-media-source=\"Everkinetic\"] img{background:#334155}
       #list .ex:not(.kggOpen).kggThumbReady .kggCardThumb{display:block}
       #list .ex.kggOpen .kggCardThumb{display:none!important}
       .kggImageLightbox{position:fixed;inset:0;z-index:25000;background:rgba(15,23,42,.88);display:flex;align-items:center;justify-content:center;padding:18px;backdrop-filter:blur(2px)}
       .kggImageLightbox img{max-width:96vw;max-height:88vh;object-fit:contain;border-radius:16px;background:#fff;box-shadow:0 20px 60px rgba(0,0,0,.35)}
       .kggImageLightbox button{position:fixed;top:calc(12px + env(safe-area-inset-top));right:14px;width:48px;height:48px;border:0;border-radius:999px;background:#fff;color:#111827;font-size:26px;font-weight:950;box-shadow:0 12px 32px rgba(0,0,0,.25)}
-      @media(max-width:430px){#list .ex.kggHasThumb:not(.kggOpen){padding-right:106px!important;min-height:112px}body.kggAlwaysCollapsed #list .ex.kggHasThumb:not(.kggOpen),body.kggCardsCollapsed #list .ex.kggHasThumb:not(.kggOpen){padding-right:106px!important;min-height:112px}#list .ex .kggCardThumb{width:78px;height:68px;right:10px;border-radius:13px}.kggImageLightbox{padding:10px}.kggImageLightbox img{max-width:98vw;max-height:84vh;border-radius:14px}}
+      @media(max-width:430px){#list .ex .kggCardThumb{border-radius:13px}.kggImageLightbox{padding:10px}.kggImageLightbox img{max-width:98vw;max-height:84vh;border-radius:14px}}
     `;
     document.head.appendChild(style);
   }

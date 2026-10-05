@@ -19,7 +19,7 @@ const CARD_SETTINGS_SCRIPT = './patient-card-settings.js?v=card-settings-3-unit-
 const START_VALUES_SCRIPT = './patient-start-values-day1.js?v=start-values-day1-2-active-units';
 const DAY_HISTORY_SCRIPT = './patient-day-history.js?v=day-history-2-active-units';
 const EXERCISE_MEDIA_SOURCES_SCRIPT = './patient-exercise-media-sources.js?v=exercise-media-sources-2-license-checked';
-const MEDIA_SCRIPT = './patient-media-retry-cache_v2.js?v=thumb-layout-4-source-license';
+const MEDIA_SCRIPT = './patient-media-retry-cache_v2.js?v=thumb-layout-5-adaptive-grid';
 const UI_MICRO_POLISH_SCRIPT = './patient-ui-micro-polish.js?v=unit-labels-pain-fit-1';
 const PAIN_VERTICAL_SCRIPT = './patient-pain-vertical-scale.js?v=exercise-pain-vertical-8-compact-text';
 const INSTALL_GUIDE_SCRIPT = './patient-install-guide.js?v=install-guide-v81-ios-kgg-h3';
