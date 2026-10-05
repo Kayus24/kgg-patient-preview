@@ -1,5 +1,5 @@
 (()=>{
-  const VERSION='v11_adaptive_thumb_grid';
+  const VERSION='v12_larger_frameless_thumb';
   const STYLE='kggPatientMediaStyle';
   const DB='kgg_patient_media_v1';
   const STORE='images';
@@ -30,13 +30,13 @@
       .kggMediaBox.ready{background:#fff}.kggMediaBox.error{background:#fffbeb;border-color:#fde68a;color:#92400e}
       body.kggAlwaysCollapsed .ex:not(.kggOpen) .kggMediaList{display:none!important}
       #list .ex.kggHasThumb{position:relative}
-      #list .ex.kggHasThumb:not(.kggOpen){--kgg-thumb-w:clamp(72px,min(34%,calc(100% - 170px)),142px);display:grid;grid-template-columns:minmax(0,1fr) var(--kgg-thumb-w);grid-auto-rows:min-content;column-gap:10px;align-items:start;min-height:0;padding-right:12px!important}
-      body.kggAlwaysCollapsed #list .ex.kggHasThumb:not(.kggOpen),body.kggCardsCollapsed #list .ex.kggHasThumb:not(.kggOpen){display:grid;grid-template-columns:minmax(0,1fr) var(--kgg-thumb-w);column-gap:10px;min-height:0;padding-right:12px!important}
+      #list .ex.kggHasThumb:not(.kggOpen){--kgg-thumb-w:clamp(96px,min(42%,calc(100% - 145px)),166px);display:grid;grid-template-columns:minmax(0,1fr) var(--kgg-thumb-w);grid-auto-rows:min-content;column-gap:8px;align-items:start;min-height:0;padding-right:12px!important}
+      body.kggAlwaysCollapsed #list .ex.kggHasThumb:not(.kggOpen),body.kggCardsCollapsed #list .ex.kggHasThumb:not(.kggOpen){display:grid;grid-template-columns:minmax(0,1fr) var(--kgg-thumb-w);column-gap:8px;min-height:0;padding-right:12px!important}
       body.kggAlwaysCollapsed #list .ex.kggHasThumb.kggOpen,body.kggCardsCollapsed #list .ex.kggHasThumb.kggOpen,#list .ex.kggHasThumb.kggOpen{padding-right:12px!important}
       #list .ex.kggHasThumb:not(.kggOpen)>:not(.kggCardThumb){grid-column:1;min-width:0}
       #list .ex.kggHasThumb:not(.kggOpen) h3,#list .ex.kggHasThumb:not(.kggOpen) .muted{overflow-wrap:anywhere}
-      #list .ex .kggCardThumb{position:static;grid-column:2;grid-row:1/span 8;align-self:center;justify-self:stretch;width:100%;height:auto;aspect-ratio:1.18/1;transform:none;border:1px solid #dbe3ef;border-radius:14px;background:#f8fafc;box-shadow:0 7px 18px rgba(15,23,42,.08);overflow:hidden;padding:3px;display:none;pointer-events:none}
-      #list .ex .kggCardThumb img{display:block;width:100%;height:100%;object-fit:contain;border-radius:11px;background:#fff;cursor:default}\n      #list .ex .kggCardThumb[data-kgg-media-source=\"Workout Guide\"] img,#list .ex .kggCardThumb[data-kgg-media-source=\"Everkinetic\"] img{background:#334155}
+      #list .ex .kggCardThumb{position:static;grid-column:2;grid-row:1/span 8;align-self:center;justify-self:stretch;width:100%;height:auto;aspect-ratio:1.18/1;transform:none;border:0;border-radius:12px;background:transparent;box-shadow:none;overflow:hidden;padding:0;display:none;pointer-events:none}
+      #list .ex .kggCardThumb img{display:block;width:100%;height:100%;object-fit:contain;border-radius:12px;background:#fff;cursor:default}\n      #list .ex .kggCardThumb[data-kgg-media-source=\"Workout Guide\"] img,#list .ex .kggCardThumb[data-kgg-media-source=\"Everkinetic\"] img{background:#334155}
       #list .ex:not(.kggOpen).kggThumbReady .kggCardThumb{display:block}
       #list .ex.kggOpen .kggCardThumb{display:none!important}
       .kggImageLightbox{position:fixed;inset:0;z-index:25000;background:rgba(15,23,42,.88);display:flex;align-items:center;justify-content:center;padding:18px;backdrop-filter:blur(2px)}
