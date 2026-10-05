@@ -41,6 +41,10 @@
     }
   }
 
+  function scrollAnchor(input){
+    return input&&input.closest ? (input.closest('.lr,.bi')||input) : input;
+  }
+
   function scrollInputAbovePad(input){
     cancelPendingScroll();
     scrollTimer=setTimeout(()=>{
@@ -52,13 +56,14 @@
       if(!padBox) return;
       const padRect=padBox.getBoundingClientRect();
       if(padRect.height<=0 || padRect.bottom<=0 || padRect.top>=window.innerHeight) return;
-      const r=input.getBoundingClientRect();
+      const target=scrollAnchor(input);
+      const r=target.getBoundingClientRect();
       const safeTop=84;
       const safeBottom=padRect.top-28;
       let delta=0;
       if(r.bottom>safeBottom) delta=r.bottom-safeBottom;
       if(r.top<safeTop) delta=r.top-safeTop;
-      if(delta!==0) window.scrollBy({top:delta,behavior:'smooth'});
+      if(Math.abs(delta)>=3) window.scrollBy({top:delta,behavior:'smooth'});
     },90);
   }
 
@@ -72,6 +77,8 @@
 
     window.openPad=function(input,meta){
       injectStyle();
+      const previousInput=activeInput;
+      const sameAnchor=!!(previousInput&&input&&scrollAnchor(previousInput)===scrollAnchor(input));
       if(activeInput) activeInput.classList.remove('kggEditing');
       activeInput=input;
       oldValue=input ? input.value : '';
@@ -79,7 +86,8 @@
       document.body.classList.add('kggPadOpen');
       const result=oldOpen.apply(this,arguments);
       setCurrentValue(input && input.value ? input.value : '0',false);
-      scrollInputAbovePad(input);
+      if(sameAnchor) cancelPendingScroll();
+      else scrollInputAbovePad(input);
       return result;
     };
 
