@@ -29,7 +29,7 @@ const LAST_VALUE_HINTS_SCRIPT = './patient-last-value-hints.js?v=last-value-butt
 const SET_SUMMARY_GROUPS_SCRIPT = './patient-set-summary-groups.js?v=set-summary-groups-4-ticket-015-progressions';
 const QR_FULLSCREEN_SCRIPT = './patient-qr-fullscreen.js?v=qr-fullscreen-1';
 const NUMPAD_CARD_GUARD_SCRIPT = './patient-numpad-card-guard.js?v=numpad-input-switch-1';
-const SET_COMPACT_VIEW_SCRIPT = './patient-set-compact-view.js?v=set-compact-view-4-transfer';
+const SET_COMPACT_VIEW_SCRIPT = './patient-set-compact-view.js?v=set-compact-view-5-transfer-dash';
 const CORE_ASSETS = ['./index.html','./manifest.json','./manifest-v64.webmanifest','./kgg-icon-192-v63.png','./kgg-icon-512-v63.png'];
 const STORAGE_SCOPE_SCRIPT = './patient-storage-scope.js?v=preview-storage-scope-1';
 const APP_ASSETS = [STORAGE_SCOPE_SCRIPT,'./','./kgg-icon-maskable-512-v63.png',NUMPAD_UI_FIX_SCRIPT,VERSION_LABEL_SCRIPT,PLAN_LINK_CHOICE_SCRIPT,COLLAPSE_SCRIPT,CARD_PROGRESS_SCRIPT,INSTALL_PROMPT_SCRIPT,PLAN_REPLACE_SLOT_SCRIPT,START_SCAN_SCRIPT,JSQR_SCRIPT,FFLATE_SCRIPT,PLAN_FORMAT_SCRIPT,MULTIPLAN_DB_SCRIPT,PLAN_DELETE_SCRIPT,CARD_SETTINGS_SCRIPT,START_VALUES_SCRIPT,DAY_HISTORY_SCRIPT,EXERCISE_MEDIA_SOURCES_SCRIPT,MEDIA_SCRIPT,UI_MICRO_POLISH_SCRIPT,PAIN_VERTICAL_SCRIPT,INSTALL_GUIDE_SCRIPT,NUMPAD_VISIBILITY_SCRIPT,EXTRA_INFO_SCRIPT,LAST_VALUE_HINTS_SCRIPT,SET_SUMMARY_GROUPS_SCRIPT,QR_FULLSCREEN_SCRIPT,NUMPAD_CARD_GUARD_SCRIPT,SET_COMPACT_VIEW_SCRIPT,'https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js'];
