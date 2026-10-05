@@ -1,0 +1,17 @@
+{
+  "kind": "kgg_patient_gpt_preview",
+  "requestId": "patient-ui-v12-20261005-a",
+  "patchHash": "ca4832c6b434b8ae6d5717ea4cff702b82c9b72aadea039a1f53a285e5010580",
+  "baseSha": "b5f6176fcb89776f54f38f83ae6bf4278dad2ecb",
+  "patientVersion": 87,
+  "riskClass": "interface",
+  "title": "Patient UI V1.2 preview",
+  "summary": "Compact set capsules, paired transfer, pain capsule states and mixed exercise images.",
+  "createdAt": "2026-10-05T11:50:00+00:00",
+  "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-ui-v12-20261005-a/",
+  "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-ui-v12-20261005-a/update-recovery.html?auto=1&v=87",
+  "previewScopePatched": true,
+  "previewStorageNamespace": "preview:patient-ui-v12-20261005-a:",
+  "previewCacheName": "kgg-patient-preview-patient-ui-v12-20261005-a-v87",
+  "firstLoadModules": true
+}
