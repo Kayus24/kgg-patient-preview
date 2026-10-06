@@ -1,4 +1,4 @@
-const CACHE_NAME = 'kgg-patient-preview-patient-ui-v12-20261005-a-v87-flicker-qf3';
+const CACHE_NAME = 'kgg-patient-preview-patient-ui-v12-20261005-a-v87-phantom0-qf1';
 const APP_VERSION = '87';
 const CACHE_PREFIX = 'kgg-handyplan-';
 const RECOVERY_PATH = './update-recovery.html';
@@ -23,7 +23,7 @@ const MEDIA_SCRIPT = './patient-media-retry-cache_v2.js?v=thumb-layout-6-framele
 const UI_MICRO_POLISH_SCRIPT = './patient-ui-micro-polish.js?v=unit-labels-pain-fit-1';
 const PAIN_VERTICAL_SCRIPT = './patient-pain-vertical-scale.js?v=exercise-pain-vertical-8-compact-text';
 const INSTALL_GUIDE_SCRIPT = './patient-install-guide.js?v=install-guide-v82-prompt-only';
-const NUMPAD_VISIBILITY_SCRIPT = './patient-numpad-visibility-fix.js?v=stay-open-switch-5-prevent-focus-scroll';
+const NUMPAD_VISIBILITY_SCRIPT = './patient-numpad-visibility-fix.js?v=stay-open-switch-6-dirty-commit-gate';
 const EXTRA_INFO_SCRIPT = './patient-extra-info-display.js?v=extra-info-filter-1';
 const LAST_VALUE_HINTS_SCRIPT = './patient-last-value-hints.js?v=last-value-button-shimmer-2-transfer-api';
 const SET_SUMMARY_GROUPS_SCRIPT = './patient-set-summary-groups.js?v=set-summary-groups-4-ticket-015-progressions';
