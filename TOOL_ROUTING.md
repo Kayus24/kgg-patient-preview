@@ -20,3 +20,8 @@ Inherit: `Kayus24/vibe-shared-knowledge/tool-routing/BASELINE.md`.
 - No real patient links, secrets or chat content.
 - No production release from this repo.
 - A production fix must return to `Kayus24/kgg` through its branch/test/PR process.
+## Directory routing
+- `previews/<request_id>/**`: isolated synthetic preview for one request; primary runtime artifact area.
+- `device-test/**`: preview-side device/test helpers only.
+- `index.html`: preview channel entry point, not production patient-app authority.
+- Root docs/config: preview contract and routing only.
