@@ -1,5 +1,5 @@
 (()=>{
-  const VERSION='numpad-visibility-v12-row-scroll-stable';
+  const VERSION='numpad-visibility-v13-prevent-focus-scroll';
   if(window.__kggNumpadVisibility===VERSION)return;
   window.__kggNumpadVisibility=VERSION;
   const $=id=>document.getElementById(id);
@@ -28,10 +28,26 @@
   function closeAfterLast(){if(!open()||typeof window.closePad!=='function')return;setTimeout(()=>{try{window.closePad(true)}catch(e){}},0)}
   function isInputTarget(t){return !!(t&&t.matches&&t.matches('input.num'))}
   function isPadTarget(t){return !!(t&&t.closest&&t.closest('#pad .padBox'))}
-  function patch(){if(window.__kggNumpadVisibilityPatchedV12)return;window.__kggNumpadVisibilityPatchedV12=1;if(typeof window.openPad==='function'){const oldOpen=window.openPad;window.openPad=function(input,meta){const previousInput=editingInput;const switching=!!(open()&&editingInput&&input&&input!==editingInput);const sameRow=switching&&sameScrollAnchor(previousInput,input);if(switching&&!commitEditingInPlace()&&typeof window.closePad==='function'){try{window.closePad(true)}catch(e){}}editingInput=input||document.activeElement;editingMeta=meta||editingMeta;activeInput=editingInput;activeMeta=editingMeta;padSession+=1;const r=oldOpen.apply(this,arguments);editingDirty=false;space();if(largeUi())placeZoom(activeInput,!switching);if(!sameRow)ensure();return r}}if(typeof window.closePad==='function'){const oldClose=window.closePad;window.closePad=function(){const closedSession=padSession;const r=oldClose.apply(this,arguments);clearSoon(closedSession);return r}}if(typeof window.padPress==='function'){const oldPress=window.padPress;window.padPress=function(){const r=oldPress.apply(this,arguments);editingDirty=true;return r}}if(typeof window.padBack==='function'){const oldBack=window.padBack;window.padBack=function(){const r=oldBack.apply(this,arguments);editingDirty=true;return r}}if(typeof window.padUseLast==='function'){const oldLast=window.padUseLast;window.padUseLast=function(){const r=oldLast.apply(this,arguments);editingDirty=true;closeAfterLast();return r}}}
+  function focusWithoutScroll(input){
+    if(!input||typeof input.focus!=='function')return;
+    const x=window.scrollX,y=window.scrollY;
+    try{input.focus({preventScroll:true})}catch(e){try{input.focus()}catch(_){}}
+    if(window.scrollX!==x||window.scrollY!==y)window.scrollTo(x,y);
+  }
+  function patch(){if(window.__kggNumpadVisibilityPatchedV13)return;window.__kggNumpadVisibilityPatchedV13=1;if(typeof window.openPad==='function'){const oldOpen=window.openPad;window.openPad=function(input,meta){const previousInput=editingInput;const switching=!!(open()&&editingInput&&input&&input!==editingInput);const sameRow=switching&&sameScrollAnchor(previousInput,input);if(switching&&!commitEditingInPlace()&&typeof window.closePad==='function'){try{window.closePad(true)}catch(e){}}editingInput=input||document.activeElement;editingMeta=meta||editingMeta;activeInput=editingInput;activeMeta=editingMeta;padSession+=1;const r=oldOpen.apply(this,arguments);editingDirty=false;space();if(largeUi())placeZoom(activeInput,!switching);if(!sameRow)ensure();return r}}if(typeof window.closePad==='function'){const oldClose=window.closePad;window.closePad=function(){const closedSession=padSession;const r=oldClose.apply(this,arguments);clearSoon(closedSession);return r}}if(typeof window.padPress==='function'){const oldPress=window.padPress;window.padPress=function(){const r=oldPress.apply(this,arguments);editingDirty=true;return r}}if(typeof window.padBack==='function'){const oldBack=window.padBack;window.padBack=function(){const r=oldBack.apply(this,arguments);editingDirty=true;return r}}if(typeof window.padUseLast==='function'){const oldLast=window.padUseLast;window.padUseLast=function(){const r=oldLast.apply(this,arguments);editingDirty=true;closeAfterLast();return r}}}
   document.addEventListener('focusin',e=>{if(!isInputTarget(e.target))return;if(!open())activeInput=e.target;else if(e.target===editingInput)ensure()},true);
   document.addEventListener('click',e=>{if(!isInputTarget(e.target))return;if(!open())activeInput=e.target;else if(e.target===editingInput)ensure()},true);
-  document.addEventListener('pointerdown',e=>{if(!open())return;const t=e.target;if(isInputTarget(t))return;if(isPadTarget(t))return;closeByOutsideTap()},true);
+  document.addEventListener('pointerdown',e=>{
+    const t=e.target;
+    if(isInputTarget(t)){
+      if(typeof e.preventDefault==='function')e.preventDefault();
+      focusWithoutScroll(t);
+      return;
+    }
+    if(!open())return;
+    if(isPadTarget(t))return;
+    closeByOutsideTap();
+  },true);
   if(window.visualViewport){visualViewport.addEventListener('resize',()=>{arrange();ensure()});visualViewport.addEventListener('scroll',()=>{arrange();ensure()})}
   addEventListener('orientationchange',()=>setTimeout(()=>{arrange();ensure()},250));
   window.__kggNumpadEditingApi={open,commitEditingInPlace,getEditingInput:()=>editingInput,getEditingMeta:()=>editingMeta,getPadValue:padValue,isDirty:()=>editingDirty,markDirty:()=>{editingDirty=true}};if(window.__KGG_TEST__)window.__kggNumpadCommitTest={open,commitEditingInPlace,getEditingInput:()=>editingInput,getSession:()=>padSession,isDirty:()=>editingDirty};
