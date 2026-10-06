@@ -45,26 +45,8 @@
     return input&&input.closest ? (input.closest('.lr,.bi')||input) : input;
   }
 
-  function scrollInputAbovePad(input){
-    cancelPendingScroll();
-    scrollTimer=setTimeout(()=>{
-      scrollTimer=null;
-      if(!input || input!==activeInput || !input.isConnected) return;
-      const pad=$('pad');
-      if(!pad || pad.classList.contains('hide') || !document.body.classList.contains('kggPadOpen')) return;
-      const padBox=pad.querySelector('.padBox');
-      if(!padBox) return;
-      const padRect=padBox.getBoundingClientRect();
-      if(padRect.height<=0 || padRect.bottom<=0 || padRect.top>=window.innerHeight) return;
-      const target=scrollAnchor(input);
-      const r=target.getBoundingClientRect();
-      const safeTop=84;
-      const safeBottom=padRect.top-28;
-      let delta=0;
-      if(r.bottom>safeBottom) delta=r.bottom-safeBottom;
-      if(r.top<safeTop) delta=r.top-safeTop;
-      if(Math.abs(delta)>=3) window.scrollBy({top:delta,behavior:'smooth'});
-    },90);
+  function scrollInputAbovePad(){
+    // Viewport scrolling is owned exclusively by patient-numpad-visibility-fix.js.
   }
 
   function patch(){
