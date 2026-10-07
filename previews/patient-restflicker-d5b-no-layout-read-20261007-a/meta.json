@@ -1,0 +1,17 @@
+{
+  "baseSha": "8191168d4f4c7be123fcca795426c37cb5313f7a",
+  "createdAt": "2026-10-07T10:47:17.180Z",
+  "firstLoadModules": true,
+  "kind": "kgg_patient_gpt_preview",
+  "patchHash": "962e0bac16ebe9ab4f8e8a5f3f39505d1b597f0c7252b90108faf15540301098",
+  "patientVersion": 90,
+  "previewCacheName": "kgg-patient-preview-patient-restflicker-d5b-no-layout-read-20261007-a-v90",
+  "previewScopePatched": true,
+  "previewStorageNamespace": "preview:patient-restflicker-d5b-no-layout-read-20261007-a:",
+  "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-restflicker-d5b-no-layout-read-20261007-a/update-recovery.html?auto=1&v=90",
+  "requestId": "patient-restflicker-d5b-no-layout-read-20261007-a",
+  "riskClass": "ui-regression",
+  "summary": "D5A plus removal of getBoundingClientRect geometry reads from kg/Wdh transfer-pointer synchronization during field switching.",
+  "title": "Patient rest flicker D5B isolated scroll + no pair geometry read",
+  "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-restflicker-d5b-no-layout-read-20261007-a/?plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDMsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMywiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19"
+}
