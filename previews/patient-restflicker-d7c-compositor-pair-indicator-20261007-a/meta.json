@@ -1,0 +1,17 @@
+{
+  "baseSha": "8191168d4f4c7be123fcca795426c37cb5313f7a",
+  "createdAt": "2026-10-07T15:17:32.365Z",
+  "firstLoadModules": true,
+  "kind": "kgg_patient_gpt_preview",
+  "patchHash": "4f81d91606ebd77fd067140c560fd5fcb44fd1bcbf8cffb8f2b9212dabb2b719",
+  "patientVersion": 90,
+  "previewCacheName": "kgg-patient-preview-patient-restflicker-d7c-compositor-pair-indicator-20261007-a-v90",
+  "previewScopePatched": true,
+  "previewStorageNamespace": "preview:patient-restflicker-d7c-compositor-pair-indicator-20261007-a:",
+  "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-restflicker-d7c-compositor-pair-indicator-20261007-a/update-recovery.html?auto=1&v=90",
+  "requestId": "patient-restflicker-d7c-compositor-pair-indicator-20261007-a",
+  "riskClass": "ui-regression",
+  "summary": "D7 functional candidate with neutralized active pair field paint styles and a dedicated blue indicator layer that moves via transform only.",
+  "title": "D7C functional compositor pair indicator",
+  "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-restflicker-d7c-compositor-pair-indicator-20261007-a/?plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDMsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMywiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19"
+}
