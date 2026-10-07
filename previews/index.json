@@ -13,8 +13,8 @@
     "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-restflicker-c3-20261007-a/update-recovery.html?auto=1&v=90",
     "requestId": "patient-restflicker-c3-20261007-a",
     "riskClass": "ui-regression",
-    "summary": "v90 plus short scroll guard, VirtualKeyboard overlaysContent and VisualViewport ensure suppression while guard is active.",
-    "title": "Patient residual flicker C3",
+    "summary": "v90 plus field-switch scroll guard, VirtualKeyboard overlay when available, and VisualViewport ensure suppression during guard.",
+    "title": "Patient rest flicker C3 test",
     "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-restflicker-c3-20261007-a/?plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDMsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMywiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19"
   },
   "previews": [
@@ -31,8 +31,8 @@
       "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-restflicker-c3-20261007-a/update-recovery.html?auto=1&v=90",
       "requestId": "patient-restflicker-c3-20261007-a",
       "riskClass": "ui-regression",
-      "summary": "v90 plus short scroll guard, VirtualKeyboard overlaysContent and VisualViewport ensure suppression while guard is active.",
-      "title": "Patient residual flicker C3",
+      "summary": "v90 plus field-switch scroll guard, VirtualKeyboard overlay when available, and VisualViewport ensure suppression during guard.",
+      "title": "Patient rest flicker C3 test",
       "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-restflicker-c3-20261007-a/?plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDMsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMywiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19"
     },
     {
