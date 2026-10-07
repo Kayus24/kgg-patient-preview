@@ -1,0 +1,17 @@
+{
+  "baseSha": "8191168d4f4c7be123fcca795426c37cb5313f7a",
+  "createdAt": "2026-10-07T13:05:31.286Z",
+  "firstLoadModules": true,
+  "kind": "kgg_patient_gpt_preview",
+  "patchHash": "ae1e2602e903c7a27ab51524b5de33a3d731b5d783207e1b34722cbd884dbdbf",
+  "patientVersion": 90,
+  "previewCacheName": "kgg-patient-preview-patient-restflicker-d6c-idempotent-card-class-20261007-a-v90",
+  "previewScopePatched": true,
+  "previewStorageNamespace": "preview:patient-restflicker-d6c-idempotent-card-class-20261007-a:",
+  "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-restflicker-d6c-idempotent-card-class-20261007-a/update-recovery.html?auto=1&v=90",
+  "requestId": "patient-restflicker-d6c-idempotent-card-class-20261007-a",
+  "riskClass": "ui-regression",
+  "summary": "D5B plus only idempotent compact-card/set-count class writes to avoid redundant class mutations during observer refreshes.",
+  "title": "Patient rest flicker D6C idempotent card classes",
+  "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-restflicker-d6c-idempotent-card-class-20261007-a/?plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDMsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMywiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19"
+}
