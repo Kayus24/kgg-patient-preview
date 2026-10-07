@@ -2,22 +2,39 @@
   "kind": "kgg_patient_gpt_preview_index",
   "latest": {
     "baseSha": "8191168d4f4c7be123fcca795426c37cb5313f7a",
-    "createdAt": "2026-10-07T05:27:06.241996+00:00",
+    "createdAt": "2026-10-07T06:07:20.025446+00:00",
     "firstLoadModules": true,
     "kind": "kgg_patient_gpt_preview",
     "patchHash": "b74a835d3e1dcfec899ce6ca7b66410cdcec4e0e86a12a8c5432c65f5b5e26e9",
     "patientVersion": 90,
-    "previewCacheName": "kgg-patient-preview-patient-flicker-c3-20261007-a-v90",
+    "previewCacheName": "kgg-patient-preview-patient-restflicker-c3-20261007-a-v90",
     "previewScopePatched": true,
-    "previewStorageNamespace": "preview:patient-flicker-c3-20261007-a:",
-    "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-flicker-c3-20261007-a/update-recovery.html?auto=1&v=90",
-    "requestId": "patient-flicker-c3-20261007-a",
+    "previewStorageNamespace": "preview:patient-restflicker-c3-20261007-a:",
+    "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-restflicker-c3-20261007-a/update-recovery.html?auto=1&v=90",
+    "requestId": "patient-restflicker-c3-20261007-a",
     "riskClass": "ui-regression",
-    "summary": "v90 plus short scroll guard, progressive VirtualKeyboard overlay, and suppression of visualViewport ensure jobs while guard is active.",
-    "title": "Patient flicker C3 test",
-    "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-flicker-c3-20261007-a/?plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDMsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMywiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19"
+    "summary": "v90 plus short scroll guard, VirtualKeyboard overlaysContent and VisualViewport ensure suppression while guard is active.",
+    "title": "Patient residual flicker C3",
+    "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-restflicker-c3-20261007-a/?plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDMsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMywiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19"
   },
   "previews": [
+    {
+      "baseSha": "8191168d4f4c7be123fcca795426c37cb5313f7a",
+      "createdAt": "2026-10-07T06:07:20.025446+00:00",
+      "firstLoadModules": true,
+      "kind": "kgg_patient_gpt_preview",
+      "patchHash": "b74a835d3e1dcfec899ce6ca7b66410cdcec4e0e86a12a8c5432c65f5b5e26e9",
+      "patientVersion": 90,
+      "previewCacheName": "kgg-patient-preview-patient-restflicker-c3-20261007-a-v90",
+      "previewScopePatched": true,
+      "previewStorageNamespace": "preview:patient-restflicker-c3-20261007-a:",
+      "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-restflicker-c3-20261007-a/update-recovery.html?auto=1&v=90",
+      "requestId": "patient-restflicker-c3-20261007-a",
+      "riskClass": "ui-regression",
+      "summary": "v90 plus short scroll guard, VirtualKeyboard overlaysContent and VisualViewport ensure suppression while guard is active.",
+      "title": "Patient residual flicker C3",
+      "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-restflicker-c3-20261007-a/?plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDMsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMywiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19"
+    },
     {
       "baseSha": "8191168d4f4c7be123fcca795426c37cb5313f7a",
       "createdAt": "2026-10-07T05:27:06.241996+00:00",
@@ -324,21 +341,6 @@
       "summary": "Expose storage schema metadata and validate the complete hotfix as an isolated patient preview.",
       "title": "Patient storage survives plan updates",
       "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-storage-v7-hotfix-20260729-r3/?plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDIsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMiwiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19"
-    },
-    {
-      "baseSha": "a7d98d3cef7437c0bf46fcbf492c813e824a0dae",
-      "createdAt": "2026-07-29T14:02:50.147414+00:00",
-      "kind": "kgg_patient_gpt_preview",
-      "patchHash": "7a7d1c9ba5cd79a4c144c04f58a0f007867f9a9d644c7b923ac26747b65cd375",
-      "patientVersion": 70,
-      "previewCacheName": "kgg-patient-preview-patient-agent-canary-20260729-b-v70",
-      "previewScopePatched": true,
-      "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-agent-canary-20260729-b/update-recovery.html?auto=1&v=70",
-      "requestId": "patient-agent-canary-20260729-b",
-      "riskClass": "standard",
-      "summary": "Fuegt ausschliesslich einen inerten Preview-Canary-Kommentar direkt nach dem Dateikopf von patient-card-progress.js ein; Verhalten und Layout bleiben unveraendert.",
-      "title": "Synthetischer Patient Preview Canary",
-      "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-agent-canary-20260729-b/?plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDIsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMiwiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19"
     }
   ],
   "version": 1
