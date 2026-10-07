@@ -1,0 +1,17 @@
+{
+  "baseSha": "8191168d4f4c7be123fcca795426c37cb5313f7a",
+  "createdAt": "2026-10-07T03:49:50.319802+00:00",
+  "firstLoadModules": true,
+  "kind": "kgg_patient_gpt_preview",
+  "patchHash": "1f3d5f831f9fb6c9c7494b90d0befd764e8afaa8393a00dc55e084fc2a6bf327",
+  "patientVersion": 90,
+  "previewCacheName": "kgg-patient-preview-patient-flicker-a2-20261007-v90",
+  "previewScopePatched": true,
+  "previewStorageNamespace": "preview:patient-flicker-a2-20261007:",
+  "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-flicker-a2-20261007/update-recovery.html?auto=1&v=90",
+  "requestId": "patient-flicker-a2-20261007",
+  "riskClass": "ui-regression",
+  "summary": "Keep v90 behavior but remove redundant focusin/click ensure scroll jobs while the custom numpad is already open.",
+  "title": "Patient A2 no redundant numpad ensure",
+  "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-flicker-a2-20261007/?plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDMsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMywiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19"
+}
