@@ -1,0 +1,17 @@
+{
+  "baseSha": "8191168d4f4c7be123fcca795426c37cb5313f7a",
+  "createdAt": "2026-10-07T16:38:55.967Z",
+  "firstLoadModules": true,
+  "kind": "kgg_patient_gpt_preview",
+  "patchHash": "0723c019c32fa9199795690b04e177f2c39b0ff33b0d5599cad543cce39104a3",
+  "patientVersion": 90,
+  "previewCacheName": "kgg-patient-preview-patient-d10-field-highlight-set-tap-20261007-a-v90",
+  "previewScopePatched": true,
+  "previewStorageNamespace": "preview:patient-d10-field-highlight-set-tap-20261007-a:",
+  "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-d10-field-highlight-set-tap-20261007-a/update-recovery.html?auto=1&v=90",
+  "requestId": "patient-d10-field-highlight-set-tap-20261007-a",
+  "riskClass": "ui-regression",
+  "summary": "D9 plus persistent light-blue click affordance on all compact fields and a dedicated composited blue active ring. Direct field taps preselect the exact kg/Wdh field; generic set taps open the numpad without showing a false main-field selection.",
+  "title": "D10 field highlight + set tap",
+  "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-d10-field-highlight-set-tap-20261007-a/?plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDMsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMywiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19"
+}
