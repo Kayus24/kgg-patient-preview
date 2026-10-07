@@ -1,0 +1,17 @@
+{
+  "baseSha": "8191168d4f4c7be123fcca795426c37cb5313f7a",
+  "createdAt": "2026-10-07T14:04:48.665Z",
+  "firstLoadModules": true,
+  "kind": "kgg_patient_gpt_preview",
+  "patchHash": "6f70fd097a706c01aa5f276b4dc76c9e3e8864b80b23e3cc0f9c7a16a533b63d",
+  "patientVersion": 90,
+  "previewCacheName": "kgg-patient-preview-patient-restflicker-d6l-core-state-only-20261007-a-v90",
+  "previewScopePatched": true,
+  "previewStorageNamespace": "preview:patient-restflicker-d6l-core-state-only-20261007-a:",
+  "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-restflicker-d6l-core-state-only-20261007-a/update-recovery.html?auto=1&v=90",
+  "requestId": "patient-restflicker-d6l-core-state-only-20261007-a",
+  "riskClass": "ui-regression",
+  "summary": "D6K plus core openPad state-only behavior when the pad is already open: update activePad target/meta and return before all core pad DOM writes.",
+  "title": "Patient rest flicker D6L core state-only switch",
+  "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-restflicker-d6l-core-state-only-20261007-a/?plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDMsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMywiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19"
+}
