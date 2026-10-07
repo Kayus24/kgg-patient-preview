@@ -1,0 +1,17 @@
+{
+  "baseSha": "8191168d4f4c7be123fcca795426c37cb5313f7a",
+  "createdAt": "2026-10-07T12:59:21.283Z",
+  "firstLoadModules": true,
+  "kind": "kgg_patient_gpt_preview",
+  "patchHash": "c10f6ebe4ac6b7625133d069348dbd1bfe1608582a5a78c835cb8be14a7a6ec5",
+  "patientVersion": 90,
+  "previewCacheName": "kgg-patient-preview-patient-restflicker-d6b-freeze-transfer-pointer-20261007-a-v90",
+  "previewScopePatched": true,
+  "previewStorageNamespace": "preview:patient-restflicker-d6b-freeze-transfer-pointer-20261007-a:",
+  "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-restflicker-d6b-freeze-transfer-pointer-20261007-a/update-recovery.html?auto=1&v=90",
+  "requestId": "patient-restflicker-d6b-freeze-transfer-pointer-20261007-a",
+  "riskClass": "ui-regression",
+  "summary": "D5B plus removal only of CSS --kgg-pointer-x writes during kg/Wdh switching; transfer pointer remains visually frozen for diagnosis.",
+  "title": "Patient rest flicker D6B frozen transfer pointer",
+  "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-restflicker-d6b-freeze-transfer-pointer-20261007-a/?plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDMsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMywiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19"
+}
