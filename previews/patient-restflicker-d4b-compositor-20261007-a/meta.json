@@ -1,0 +1,17 @@
+{
+  "baseSha": "8191168d4f4c7be123fcca795426c37cb5313f7a",
+  "createdAt": "2026-10-07T10:22:41.245Z",
+  "firstLoadModules": true,
+  "kind": "kgg_patient_gpt_preview",
+  "patchHash": "acfa829b79be4b7c27961b132cd68a09d3a714d908655a3beb0dab5fdf8392fa",
+  "patientVersion": 90,
+  "previewCacheName": "kgg-patient-preview-patient-restflicker-d4b-compositor-20261007-a-v90",
+  "previewScopePatched": true,
+  "previewStorageNamespace": "preview:patient-restflicker-d4b-compositor-20261007-a:",
+  "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-restflicker-d4b-compositor-20261007-a/update-recovery.html?auto=1&v=90",
+  "requestId": "patient-restflicker-d4b-compositor-20261007-a",
+  "riskClass": "ui-regression",
+  "summary": "D4A plus dedicated compositor layer for the fixed numpad overlay (will-change/translateZ/backface-visibility) to test Chrome layer invalidation separately.",
+  "title": "Patient rest flicker D4B compositor test",
+  "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-restflicker-d4b-compositor-20261007-a/?plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDMsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMywiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19"
+}
