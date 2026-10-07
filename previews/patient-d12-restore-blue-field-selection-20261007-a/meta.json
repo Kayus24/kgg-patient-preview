@@ -1,0 +1,17 @@
+{
+  "baseSha": "8191168d4f4c7be123fcca795426c37cb5313f7a",
+  "createdAt": "2026-10-07T16:50:50.139946+00:00",
+  "firstLoadModules": true,
+  "kind": "kgg_patient_gpt_preview",
+  "patchHash": "9b3925b7e98e6f150bf9de3adbf465aaec9d62a11a342088197ffba887b32637",
+  "patientVersion": 90,
+  "previewCacheName": "kgg-patient-preview-patient-d12-restore-blue-field-selection-20261007-a-v90",
+  "previewScopePatched": true,
+  "previewStorageNamespace": "preview:patient-d12-restore-blue-field-selection-20261007-a:",
+  "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-d12-restore-blue-field-selection-20261007-a/update-recovery.html?auto=1&v=90",
+  "requestId": "patient-d12-restore-blue-field-selection-20261007-a",
+  "riskClass": "ui-regression",
+  "summary": "D9 plus restoration of the prior blue active-field UX. The visual blue border is rendered on a pre-created compositor layer instead of repainting the real input, preserving the old interaction without reintroducing the measured root-paint path.",
+  "title": "D12 restore existing blue field selection",
+  "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-d12-restore-blue-field-selection-20261007-a/?plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDMsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMywiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19"
+}
