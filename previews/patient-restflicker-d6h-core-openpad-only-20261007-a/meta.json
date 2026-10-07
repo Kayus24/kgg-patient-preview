@@ -1,0 +1,17 @@
+{
+  "baseSha": "8191168d4f4c7be123fcca795426c37cb5313f7a",
+  "createdAt": "2026-10-07T13:20:29.086Z",
+  "firstLoadModules": true,
+  "kind": "kgg_patient_gpt_preview",
+  "patchHash": "7051b66ca185a157f572bfc991323f5458e26b378e5ebd9e0f327c14b7cddd24",
+  "patientVersion": 90,
+  "previewCacheName": "kgg-patient-preview-patient-restflicker-d6h-core-openpad-only-20261007-a-v90",
+  "previewScopePatched": true,
+  "previewStorageNamespace": "preview:patient-restflicker-d6h-core-openpad-only-20261007-a:",
+  "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-restflicker-d6h-core-openpad-only-20261007-a/update-recovery.html?auto=1&v=90",
+  "requestId": "patient-restflicker-d6h-core-openpad-only-20261007-a",
+  "riskClass": "ui-regression",
+  "summary": "Diagnostic only: on an already-open compact pair switch, freeze Pair rendering and bypass switch-time post-processing in collapse-cards, numpad-ui and last-value-hints so the inner core openPad DOM update remains.",
+  "title": "Patient rest flicker D6H core openPad switch only",
+  "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-restflicker-d6h-core-openpad-only-20261007-a/?plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDMsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMywiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19"
+}
