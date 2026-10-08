@@ -1,23 +1,46 @@
 {
   "kind": "kgg_patient_gpt_preview_index",
   "latest": {
-    "baseSha": "8191168d4f4c7be123fcca795426c37cb5313f7a",
-    "createdAt": "2026-10-07T06:07:20.025446+00:00",
+    "baseSha": "9029c2a0d2c405fb47c1d37b73249fc335a55dd3",
+    "createdAt": "2026-10-08T11:04:05.494250+00:00",
     "firstLoadModules": true,
     "kind": "kgg_patient_gpt_preview",
-    "patchHash": "b74a835d3e1dcfec899ce6ca7b66410cdcec4e0e86a12a8c5432c65f5b5e26e9",
+    "patchHash": "b6821d918e89ad2649dc7fc03d0ad2354402dfbe53bf42d439ec3ac82224beb7",
     "patientVersion": 90,
-    "previewCacheName": "kgg-patient-preview-patient-restflicker-c3-20261007-a-v90",
+    "previewCacheName": "kgg-patient-preview-patient-react-numpad-header-20261008-a-v90",
     "previewScopePatched": true,
-    "previewStorageNamespace": "preview:patient-restflicker-c3-20261007-a:",
-    "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-restflicker-c3-20261007-a/update-recovery.html?auto=1&v=90",
-    "requestId": "patient-restflicker-c3-20261007-a",
+    "previewStorageNamespace": "preview:patient-react-numpad-header-20261008-a:",
+    "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-react-numpad-header-20261008-a/update-recovery.html?auto=1&v=90",
+    "requestId": "patient-react-numpad-header-20261008-a",
     "riskClass": "ui-regression",
-    "summary": "v90 plus field-switch scroll guard, VirtualKeyboard overlay when available, and VisualViewport ensure suppression during guard.",
-    "title": "Patient rest flicker C3 test",
-    "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-restflicker-c3-20261007-a/?plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDMsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMywiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19"
+    "summary": "Opt-in Base UI/React header for kg/Wdh and previous-value transfer; legacy commit, scroll/focus, storage, QR and PWA contracts remain authoritative.",
+    "title": "React NumPad header island preview",
+    "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-react-numpad-header-20261008-a/?kggReactPad=1&plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDMsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMywiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19",
+    "sourcePr": "https://github.com/Kayus24/kgg/pull/295",
+    "featureFlag": "kggReactPad=1",
+    "rollbackFlag": "kggReactPad=0"
   },
   "previews": [
+    {
+      "baseSha": "9029c2a0d2c405fb47c1d37b73249fc335a55dd3",
+      "createdAt": "2026-10-08T11:04:05.494250+00:00",
+      "firstLoadModules": true,
+      "kind": "kgg_patient_gpt_preview",
+      "patchHash": "b6821d918e89ad2649dc7fc03d0ad2354402dfbe53bf42d439ec3ac82224beb7",
+      "patientVersion": 90,
+      "previewCacheName": "kgg-patient-preview-patient-react-numpad-header-20261008-a-v90",
+      "previewScopePatched": true,
+      "previewStorageNamespace": "preview:patient-react-numpad-header-20261008-a:",
+      "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-react-numpad-header-20261008-a/update-recovery.html?auto=1&v=90",
+      "requestId": "patient-react-numpad-header-20261008-a",
+      "riskClass": "ui-regression",
+      "summary": "Opt-in Base UI/React header for kg/Wdh and previous-value transfer; legacy commit, scroll/focus, storage, QR and PWA contracts remain authoritative.",
+      "title": "React NumPad header island preview",
+      "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-react-numpad-header-20261008-a/?kggReactPad=1&plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDMsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMywiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19",
+      "sourcePr": "https://github.com/Kayus24/kgg/pull/295",
+      "featureFlag": "kggReactPad=1",
+      "rollbackFlag": "kggReactPad=0"
+    },
     {
       "baseSha": "8191168d4f4c7be123fcca795426c37cb5313f7a",
       "createdAt": "2026-10-07T06:07:20.025446+00:00",
@@ -326,21 +349,6 @@
       "summary": "Die isolierte Preview lädt dieselben Patient:innen-Module wie die Live-PWA. Sichtbare Nummernfeldwerte werden beim Wechsel in das nächste Feld oder beim Außentipp zuverlässig gespeichert.",
       "title": "Aktuelle Patient:innen-UI im Preview und sichere Feldwechsel",
       "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-numpad-preview-parity-20260729-b/?plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDIsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMiwiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19"
-    },
-    {
-      "baseSha": "7e8202cfbcf93ae230995b1c1da91d151f267b3f",
-      "createdAt": "2026-07-29T15:29:52.797873+00:00",
-      "kind": "kgg_patient_gpt_preview",
-      "patchHash": "8557c266475bf09af003f7756b344ef437da4dd9579d296b9b189741dcbb35fa",
-      "patientVersion": 71,
-      "previewCacheName": "kgg-patient-preview-patient-storage-v7-hotfix-20260729-r3-v71",
-      "previewScopePatched": true,
-      "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-storage-v7-hotfix-20260729-r3/update-recovery.html?auto=1&v=71",
-      "requestId": "patient-storage-v7-hotfix-20260729-r3",
-      "riskClass": "interface",
-      "summary": "Expose storage schema metadata and validate the complete hotfix as an isolated patient preview.",
-      "title": "Patient storage survives plan updates",
-      "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-storage-v7-hotfix-20260729-r3/?plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDIsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMiwiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19"
     }
   ],
   "version": 1
