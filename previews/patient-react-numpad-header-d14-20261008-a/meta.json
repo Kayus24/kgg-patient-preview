@@ -1,0 +1,21 @@
+{
+  "baseSha": "f27b6383a66d5eed89c9916b2a84184e112d664b",
+  "createdAt": "2026-10-08T13:30:58.324082+00:00",
+  "firstLoadModules": true,
+  "kind": "kgg_patient_gpt_preview",
+  "patchHash": "80daf2fc7a31cef8ef311f7918cef5e224b7404907d6ca13ad119a930787c942",
+  "patientVersion": 90,
+  "previewCacheName": "kgg-patient-preview-patient-react-numpad-header-d14-20261008-a-v90",
+  "previewScopePatched": true,
+  "previewStorageNamespace": "preview:patient-react-numpad-header-d14-20261008-a:",
+  "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-react-numpad-header-d14-20261008-a/update-recovery.html?auto=1&v=90",
+  "requestId": "patient-react-numpad-header-d14-20261008-a",
+  "riskClass": "ui-regression",
+  "summary": "Opt-in Base UI/React header for kg/Wdh and previous-value transfer on the merged D14 patient runtime. Legacy commit, internal scroll/focus, storage, QR and PWA contracts remain authoritative.",
+  "title": "D14 React NumPad header island preview",
+  "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-react-numpad-header-d14-20261008-a/?kggReactPad=1&plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDMsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMywiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19",
+  "sourcePr": "https://github.com/Kayus24/kgg/pull/299",
+  "featureFlag": "kggReactPad=1",
+  "rollbackFlag": "kggReactPad=0",
+  "baseline": "D14"
+}

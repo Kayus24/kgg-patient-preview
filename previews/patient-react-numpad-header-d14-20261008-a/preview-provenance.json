@@ -1,0 +1,13 @@
+{
+  "kind": "kgg_manual_branch_preview_provenance",
+  "schema": 1,
+  "requestId": "patient-react-numpad-header-d14-20261008-a",
+  "sourceRepository": "Kayus24/kgg",
+  "sourceSha": "f27b6383a66d5eed89c9916b2a84184e112d664b",
+  "sourcePr": 299,
+  "baseline": "D14",
+  "syntheticOnly": true,
+  "productionAuthority": false,
+  "featureFlag": "kggReactPad=1",
+  "rollbackFlag": "kggReactPad=0"
+}
