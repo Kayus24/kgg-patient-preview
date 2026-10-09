@@ -1,0 +1,27 @@
+{
+  "baseSha": "f27b6383a66d5eed89c9916b2a84184e112d664b",
+  "createdAt": "2026-10-09",
+  "firstLoadModules": true,
+  "kind": "kgg_manual_patient_css_pilot",
+  "patientVersion": 90,
+  "previewCacheName": "kgg-patient-preview-patient-react-numpad-header-d14-caret-20261009-a-v90",
+  "previewScopePatched": true,
+  "previewStorageNamespace": "preview:patient-react-numpad-header-d14-caret-20261009-a:",
+  "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-react-numpad-header-d14-caret-20261009-a/update-recovery.html?auto=1&v=90",
+  "requestId": "patient-react-numpad-header-d14-caret-20261009-a",
+  "riskClass": "ui-regression",
+  "summary": "CSS-only view fix: restore legacy transfer pointer above kg/Wdh with one- and three-segment options; app/data behavior remains unchanged.",
+  "title": "D14 React NumPad – Transferpfeile korrigiert",
+  "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-react-numpad-header-d14-caret-20261009-a/?kggReactPad=1&plan=KGGH2:eyJpIjoia2dnLXBhdGllbnQtcHJldmlldyIsInQiOiJLR0cgc3ludGhldGlzY2hlciBUZXN0cGxhbiIsInYiOjEsImQiOjYsImUiOltbIkJlaW5wcmVzc2UiLDMsIkIiLCJrZyIsIldkaCIsIjQwIiwiMTAiXSxbIlJ1ZGVybiIsMywiTFIiLCJrZyIsIldkaCIsIjE1IiwiMTIiXV19",
+  "sourcePr": "https://github.com/Kayus24/kgg/pull/299",
+  "featureFlag": "kggReactPad=1",
+  "rollbackFlag": "kggReactPad=0",
+  "baseline": "D14",
+  "basePatchHash": "80daf2fc7a31cef8ef311f7918cef5e224b7404907d6ca13ad119a930787c942",
+  "overlaySourceSha": "5a80af2c0489f3bc57efe479d6b1a5fe0fc216f9",
+  "overlayPaths": [
+    "patient-react-dist/kgg-patient-ui.css"
+  ],
+  "derivedFromPreview": "patient-react-numpad-header-d14-20261008-a",
+  "hashStatus": "NOT_RECOMPUTED_FOR_CSS_ONLY_PILOT"
+}
