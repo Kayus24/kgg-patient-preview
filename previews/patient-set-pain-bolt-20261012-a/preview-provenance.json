@@ -1,0 +1,11 @@
+{
+  "kind": "kgg_patient_preview_provenance",
+  "schema": 1,
+  "requestId": "patient-set-pain-bolt-20261012-a",
+  "sourceRepository": "Kayus24/kgg",
+  "sourceSha": "04ba1842711dc5cf5d953dbf720d5fe4e99b9aa1",
+  "sourcePr": 306,
+  "syntheticOnly": true,
+  "productionAuthority": false,
+  "patchHash": "b093d89001b2b07c15a3bcfdca8e44c19c1299664994c98c59553ccfa25f7904"
+}
