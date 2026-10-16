@@ -14,6 +14,12 @@
   "recoveryUrl": "https://kayus24.github.io/kgg-patient-preview/previews/patient-react-pr329-device-20261016/update-recovery.html?auto=1&v=93",
   "requestId": "patient-react-pr329-device-20261016",
   "riskClass": "ui-regression",
+  "shortLinks": {
+    "guide": "https://kayus24.github.io/kgg-patient-preview/previews/patient-react-pr329-device-20261016/test-guide.html",
+    "legacyA": "https://kayus24.github.io/kgg-patient-preview/previews/patient-react-pr329-device-20261016/legacy-a.html",
+    "planA": "https://kayus24.github.io/kgg-patient-preview/previews/patient-react-pr329-device-20261016/plan-a.html",
+    "planB": "https://kayus24.github.io/kgg-patient-preview/previews/patient-react-pr329-device-20261016/plan-b.html"
+  },
   "sourcePr": 329,
   "sourceSha": "3038ac9bddb5303b4ba708029066dfc4c424cf89",
   "summary": "Isolierte Preview auf exakter Integrations-SHA mit synthetischen Trainingsplänen A/B.",
