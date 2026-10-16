@@ -1,0 +1,17 @@
+{
+  "featureFlag": "kggReactPad=1&kggReactGrid=1",
+  "kind": "kgg_manual_branch_preview_provenance",
+  "planIDs": [
+    "kgg-pr329-synthetic-plan-a-20261016",
+    "kgg-pr329-synthetic-plan-b-20261016"
+  ],
+  "previewOnly": true,
+  "productionAuthority": false,
+  "requestId": "patient-react-pr329-device-20261016",
+  "rollbackFlag": "kggReactPad=0",
+  "schema": 1,
+  "sourcePr": 329,
+  "sourceRepository": "Kayus24/kgg",
+  "sourceSha": "3038ac9bddb5303b4ba708029066dfc4c424cf89",
+  "syntheticOnly": true
+}
