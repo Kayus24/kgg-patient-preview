@@ -1,0 +1,24 @@
+{
+  "baseSha": "bd38deb42590c4c2c31fb6dad87b78c5e4cae7b6",
+  "createdAt": "2026-11-04T13:25:13.161293+00:00",
+  "firstLoadModules": true,
+  "kind": "kgg_patient_gpt_preview",
+  "patientVersion": 96,
+  "previewCacheName": "kgg-patient-preview-patient-install-popup-20261104-v96",
+  "previewScopePatched": true,
+  "previewStorageNamespace": "preview:patient-install-popup-20261104:",
+  "productionAuthority": false,
+  "requestId": "patient-install-popup-20261104",
+  "riskClass": "standard",
+  "sourceBranch": "claude/project-thread-3stuh4",
+  "sourceRepository": "Kayus24/kgg",
+  "sourceSha": "356ac4fffe379dd46826f1e8423e25885051978c",
+  "shortLinks": {
+    "android": "https://kayus24.github.io/kgg-patient-preview/previews/patient-install-popup-20261104/plan.html",
+    "iphone": "https://kayus24.github.io/kgg-patient-preview/previews/patient-install-popup-20261104/iphone.html"
+  },
+  "summary": "Installations-Pop-up nur mit echtem Installationsangebot; Plan- und Werteübernahme in die installierte App.",
+  "syntheticOnly": true,
+  "title": "KGG Installations-Pop-up mit Planübernahme",
+  "url": "https://kayus24.github.io/kgg-patient-preview/previews/patient-install-popup-20261104/?plan=KGGH2:eyJpIjoia2dnLWluc3RhbGwtcG9wdXAtc3ludGhldGljLTIwMjYxMTA0IiwidCI6IktHRyBJbnN0YWxsdGVzdCAoc3ludGhldGlzY2gpIiwidiI6MSwiZCI6NiwiZSI6W1siQmVpbnByZXNzZSIsMywiQiIsImtnIiwiV2RoIiwiNDAiLCIxMCJdLFsiUnVkZXJuIiwzLCJMUiIsImtnIiwiV2RoIiwiMTUiLCIxMiJdXX0"
+}
