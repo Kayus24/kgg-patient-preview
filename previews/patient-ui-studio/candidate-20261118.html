@@ -80,6 +80,10 @@ function isolatedStorage(syntheticPlan){
   const makeStorage=map=>new Proxy({get length(){return map.size},key(i){return Array.from(map.keys())[i]??null},getItem(k){return map.has(String(k))?map.get(String(k)):null},setItem(k,v){map.set(String(k),String(v))},removeItem(k){map.delete(String(k))},clear(){map.clear()}},{get(target,k){return k in target?Reflect.get(target,k):map.get(String(k))},set(_target,k,value){map.set(String(k),String(value));return true},deleteProperty(_target,k){return map.delete(String(k))},has(target,k){return k in target||map.has(String(k))},ownKeys(target){return [...Reflect.ownKeys(target),...map.keys()]},getOwnPropertyDescriptor(target,k){return Reflect.getOwnPropertyDescriptor(target,k)||(map.has(String(k))?{configurable:true,enumerable:true,writable:true,value:map.get(String(k))}:undefined)}});
   Object.defineProperty(window,'localStorage',{configurable:true,value:makeStorage(store)});
   Object.defineProperty(window,'sessionStorage',{configurable:true,value:makeStorage(session)});
+  // Opaque-origin iframes cannot use the real ServiceWorker getter. This isolated
+  // fake prevents native SecurityError, while leaving original KGG script bytes untouched.
+  const inertWorker={register(){return Promise.resolve(null)},getRegistration(){return Promise.resolve(null)},getRegistrations(){return Promise.resolve([])},controller:null,addEventListener(){},removeEventListener(){}};
+  Object.defineProperty(Navigator.prototype,'serviceWorker',{configurable:true,get(){return inertWorker}});
   window.open=()=>null; // No unsandboxed popups or new browser pages from demo.
 }
 // Runs INSIDE the iframe AFTER the original app scripts; delegates to actual KGG DOM/actions.
@@ -132,13 +136,15 @@ function sandboxBridge(side){
         const qr=doc().querySelector('#plan button[onclick*="showQr(false)"]');if(!qr)throw Error('KGG-QR-Knopf fehlt');qr.click();await tick();
       }
       if(side==='variant')setCss(cfg);
+      // Yield for media/layout completion so both frames use the SAME media/plan state.
+      await new Promise(resolve=>setTimeout(resolve,160));
       // Both frames must be compared at the SAME scroll offset and without a one-sided
       // keyboard-focus ring. The original controls/DOM remain unchanged.
       await tick();
       if(doc().activeElement?.blur)doc().activeElement.blur();
       const main=doc().querySelector('main');
       if(main){const offsets={overview:0,expanded:210,numpad:250,pain:250,completed:210};
-        const target=stage==='qr'?main.scrollHeight-main.clientHeight:(offsets[stage]||0);
+        const target=stage==='qr'?Math.max(0,doc().getElementById('end')?.offsetTop||0):(offsets[stage]||0);
         main.scrollTo({top:target,behavior:'instant'});
       }
       send('applied',{stage,hasNumpad:!doc().getElementById('pad')?.classList.contains('hide'),hasQr:!doc().getElementById('end')?.classList.contains('hide')});
@@ -150,7 +156,7 @@ function sandboxBridge(side){
     if(e.data.command==='stage'&&['overview','expanded','numpad','pain','completed','qr'].includes(e.data.stage))setStage(e.data.stage,e.data.config||{});
   });
   let tries=0;function ready(){
-    if(doc().querySelector('#plan:not(.hide) #list .ex') && window.__kggPadDraftApi){send('ready',{version:doc().querySelector('body')?.innerText.match(/v\d{2,3}\b/)?.[0]||'KGG'});return}
+    if(doc().querySelector('#plan:not(.hide) #list .ex') && window.__kggPadDraftApi && /Startwerte übernommen\./.test(doc().getElementById('status')?.textContent||'') && [...doc().querySelectorAll('#list .ex input.num')].every(i=>i.value!=='')){send('ready',{version:doc().querySelector('body')?.innerText.match(/v\d{2,3}\b/)?.[0]||'KGG'});return}
     if(++tries>120){send('error',{message:'Original-App lädt den synthetischen Trainingsplan nicht'});return}
     setTimeout(ready,100);
   }
@@ -161,12 +167,7 @@ function safeSource(html,side){
   const script=(text)=>'<scr'+'ipt>'+text+'</scr'+'ipt>';
   const shim=script('('+isolatedStorage.toString()+')('+JSON.stringify(fixture)+');');
   const bridge=script('('+sandboxBridge.toString()+')('+JSON.stringify(side)+');');
-  // Exact one-line platform-only adjustment: sandboxed opaque origins may not access
-  // navigator.serviceWorker. Leave ALL KGG HTML/CSS/UI code untouched.
-  const serviceWorkerRegistration="if('serviceWorker'in navigator)navigator.serviceWorker.register('./service-worker.js').catch(()=>{});";
-  if(!html.includes(serviceWorkerRegistration))throw Error('KGG-Service-Worker-Einstieg wurde geändert; Sandbox muss geprüft werden');
-  return html.replace(serviceWorkerRegistration,'/* ServiceWorker registration skipped in isolated UI studio */')
-    .replace(/<head\b[^>]*>/i,tag=>tag+'<base href="'+BASE_URL+'">'+shim).replace(/<\/body>/i,bridge+'</body>');
+  return html.replace(/<head\b[^>]*>/i,tag=>tag+'<base href="'+BASE_URL+'">'+shim).replace(/<\/body>/i,bridge+'</body>');
 }
 function config(){return {font:model.font,radius:model.radius,space:model.space,touch:model.touch,undo:model.undo}}
 function send(side,command,payload={}){const frame=$(side);frame.contentWindow?.postMessage({channel:'kgg-studio-command-v2',command,...payload},'*')}
