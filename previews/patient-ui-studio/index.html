@@ -1,92 +1,236 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-<meta name="color-scheme" content="light"/>
-<title>KGG Patienten-App · UI-Studio v1</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<meta name="robots" content="noindex,nofollow">
+<title>KGG Patienten-App – Original-UI-Studio</title>
 <style>
-:root{font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:#14253b;background:#edf2fa;font-size:14px;font-synthesis:none}
-*{box-sizing:border-box}button,input,select,textarea{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #5689e8;outline-offset:2px}button:disabled{cursor:not-allowed;opacity:.42}
-body{margin:0;min-width:320px;background:radial-gradient(ellipse at top,#fcfdff,#f3f6fd 48%,#edf2fa);min-height:100vh}
-header{max-width:1420px;margin:auto;padding:24px 28px 12px}.eyebrow{font-size:11px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:#5179b8}.headerline{display:flex;gap:12px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}h1{font-size:clamp(25px,3.2vw,35px);line-height:1.12;letter-spacing:-.045em;margin:7px 0 10px}.subhead{line-height:1.5;color:#62758e;max-width:760px;margin:0 0 15px;font-size:13px}.headeractions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.headerbtn,.minorbtn{border:1px solid #c9d6e9;background:#fff;color:#244364;padding:10px 13px;border-radius:12px;font-weight:750}.headerbtn:hover,.minorbtn:hover{background:#eaf3ff}.headerbtn.primary{color:#fff;background:#215ed9;border-color:#215ed9}.muted-note{font-size:11px;color:#6c7d91}
-.layout{max-width:1420px;padding:5px 28px 36px;margin:auto;display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:18px;align-items:start}.maincol{min-width:0}.stagebar{background:#fff;border:1px solid #dce5f2;border-radius:18px;padding:13px 14px;box-shadow:0 9px 28px rgba(39,71,115,.045);margin-bottom:14px}.barheading{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px;flex-wrap:wrap}.barheading b{font-size:12px}.barheading span{font-size:11px;color:#6b819b}.stage-list{display:flex;gap:8px;flex-wrap:wrap}.stage{padding:9px 12px;border-radius:11px;border:1px solid #d7e1ee;background:#f8fafd;font-weight:750;color:#49647f;font-size:12px}.stage[aria-pressed=true]{background:#235dd8;color:white;border-color:#235dd8;box-shadow:0 4px 12px #215ed927}.stage:hover:not([aria-pressed=true]){background:#e9f2ff}.stage small{display:inline-grid;place-items:center;width:17px;height:17px;border-radius:5px;background:#fff7;margin-right:5px;font-size:10px}
-.frames{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start}.framewrap{border:1px solid #d9e3ef;background:#fff;border-radius:19px;box-shadow:0 12px 34px rgba(22,54,90,.07);padding:13px;min-width:0}.frametop{display:flex;align-items:center;justify-content:space-between;gap:6px;min-height:35px}.frametop .frame-title{font-weight:800;font-size:13px}.framelegend{font-size:10px;color:#7285a0;padding-top:4px;line-height:1.3}.framepills{display:flex;gap:5px}.fchip{background:#edf3fa;color:#49637c;border-radius:8px;padding:5px 7px;font-size:10px;font-weight:800}.fchip.blue{background:#e4edff;color:#2661d3}.phone-outer{margin:12px auto 0;max-width:396px;background:#e9eef6;border:6px solid #263347;border-radius:31px;padding:5px;box-shadow:0 13px 28px #152d4d23;overflow:hidden}.phone-screen{position:relative;isolation:isolate;background:#f1f4f9;border-radius:21px;height:min(68vh,715px);min-height:475px;overflow:hidden}.phone-screen .scrollarea{height:100%;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#adb9ca transparent}.phone-screen .scrollarea::-webkit-scrollbar{width:5px}.phone-screen .scrollarea::-webkit-scrollbar-thumb{background:#b8c4d5;border-radius:9px}.appcontent{padding:9px 9px 64px;--view-radius:17px;--view-scale:1;--view-gap:7px;--view-accent:#2863d9;font-size:calc(12px * var(--view-scale));line-height:1.35;color:#192e47}.appcontent.is-variant{--view-accent:#2863d9}
-.topbox,.planbox,.exercise,.toast,.numpad,.painpanel,.qrpanel{background:#fff;border-radius:var(--view-radius);border:1px solid #e0e8f4;box-shadow:0 2px 8px #203f6610}.topbox{padding:11px 11px 9px;margin-bottom:7px}.apphead{display:flex;align-items:center;justify-content:space-between;gap:9px}.apphead h2{font-size:calc(14px * var(--view-scale));margin:0 0 6px;letter-spacing:-.02em;line-height:1.2}.switchline{display:flex;align-items:center;gap:6px;font-size:9px;font-weight:800;color:#6c7b94}.toggle{width:29px;height:16px;background:#d3dff0;border-radius:20px;position:relative;border:none;padding:0}.toggle:before{content:"";position:absolute;width:12px;height:12px;top:2px;left:2px;background:white;border-radius:50%;box-shadow:0 1px 3px #17305a3b}.toggle.on{background:#2e65db}.toggle.on:before{transform:translateX(13px)}.topbox p{font-size:calc(10px * var(--view-scale));color:#6c849e;line-height:1.35;margin:2px 0 8px}.success{background:#ecfcf4;color:#197549;border:1px solid #d5f3e5;border-radius:10px;padding:8px;font-weight:720;font-size:calc(10px * var(--view-scale));margin-bottom:8px}.topbuttons{display:flex;gap:7px;justify-content:space-between}.softpill{background:#fff;border:1px solid #e4ebf4;border-radius:20px;font-size:calc(10px * var(--view-scale));font-weight:800;padding:7px 10px;color:#1e3046}.softpill span{font-size:11px}.planbox{padding:11px 10px 12px}.planbox .plantitle{font-size:calc(14px * var(--view-scale));font-weight:850;margin-bottom:4px;letter-spacing:-.025em}.planmeta{font-size:calc(10px * var(--view-scale));color:#8a9bb1;margin-bottom:10px}.historybtn{width:100%;background:#fff;border:1px solid #dbe6f3;border-radius:20px;padding:8px;font-size:calc(10px * var(--view-scale));font-weight:780;color:#3d5878}.daybar{display:flex;align-items:center;justify-content:space-between;background:#f9fbfe;border:1px solid #eaf0f7;border-radius:10px;padding:8px 9px;margin:8px 0;font-size:calc(11px * var(--view-scale));font-weight:800}.openbadge{background:#edf3fb;color:#526886;border:1px solid #dce5ef;border-radius:20px;padding:2px 7px;font-size:calc(9px * var(--view-scale))}.exercise{overflow:hidden;margin-top:var(--view-gap);border-radius:calc(var(--view-radius) - 3px);box-shadow:none;border-color:#dbe5f0}.exhead{min-height:56px;display:flex;align-items:flex-start;justify-content:space-between;gap:8px;padding:10px;text-align:left}.exhead .extitle{font-weight:850;font-size:calc(12px * var(--view-scale));letter-spacing:-.015em}.exdescr{color:#8192a6;font-size:calc(9px * var(--view-scale));line-height:1.4;max-width:200px;padding-top:3px}.edited{color:#15945e;background:#effbf4;border-radius:6px;padding:1px 5px;font-size:9px;display:inline-block;margin-top:3px;font-weight:780}.exbtn{background:#fff;border:1px solid #dfebf7;border-radius:10px;width:30px;height:28px;flex:0 0 30px;color:#244767;font-size:18px}.openhint{color:#607b98;font-size:9px;font-weight:800;padding:3px 9px 10px;text-align:right}.exopen .openhint{display:none}.exbody{padding:0 9px 10px}.subline{color:#6b809a;font-size:10px;margin-bottom:5px}.illustration{height:132px;background:#dbf1fc;border:1px solid #e5f3ff;border-radius:10px;display:flex;align-items:center;justify-content:center;overflow:hidden;margin:7px 0;position:relative}.illustration svg{width:95%;height:95%}.illustration-label{font-size:8px;color:#52758d;margin:-2px 4px 7px}.sets{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}.setbox{border:1px solid #dce6f1;border-radius:11px;padding:5px;background:#fff;display:flex;flex-direction:column;gap:4px}.setbox .setlabel{font-weight:820;font-size:9px}.fieldrow{display:grid;grid-template-columns:1fr 1fr;gap:4px}.field{border:1px solid #dfe8f3;background:#f9fbfe;border-radius:8px;min-height:35px;padding:5px 2px;text-align:center;display:flex;justify-content:center;align-items:center;gap:2px;color:#1b2d41;font-weight:850;font-size:calc(12px * var(--view-scale))}.field small{font-size:8px;color:#7188a0;font-weight:780}.field:focus-visible{outline:2px solid var(--view-accent)}.field.active{outline:2px solid var(--view-accent);background:#eff5ff}.field.completed{background:#eafaf0;color:#237849;border-color:#bcebd2}.painlink,.finishset{border:1px solid #d8e4f2;border-radius:11px;padding:9px 11px;background:#fff;color:#234364;font-size:calc(11px * var(--view-scale));font-weight:800}.excontrols{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}.painlink{flex:1}.finishset{background:var(--view-accent);color:#fff;border-color:var(--view-accent);flex:1}.actionbar{display:flex;flex-direction:column;gap:6px;margin-top:12px}.outlineaction{border:1px solid #d7e3f0;background:#fff;border-radius:11px;padding:10px;color:#3c6283;font-size:11px;font-weight:850}.primaryaction{border:1px solid #2363de;background:#2363de;color:#fff;border-radius:11px;padding:11px;font-size:11px;font-weight:850}.footerline{color:#8698af;text-align:right;font-size:10px;margin:12px 2px 2px}
-.phone-nav{position:absolute;bottom:0;left:0;right:0;pointer-events:none;height:44px;background:linear-gradient(transparent,#f0f3f9 85%);z-index:5;display:flex;justify-content:flex-end;align-items:end;padding:0 14px 7px}.phone-nav .version{font-size:10px;color:#8594a6;font-weight:800}
-.numpad-overlay{position:absolute;bottom:0;left:0;right:0;z-index:6;background:#fff;box-shadow:0 -12px 35px #1737562d;border-top:1px solid #d3dfef;border-radius:18px 18px 0 0;padding:12px 13px 14px;animation:slideUp .16s ease-out}@keyframes slideUp{from{transform:translateY(24px);opacity:.55}to{transform:translateY(0);opacity:1}}.pad-head{display:flex;justify-content:space-between;align-items:center;gap:10px}.pad-head strong{font-size:12px}.pad-close{border:1px solid #d5e2f0;border-radius:11px;background:#fff;color:#516d8c;padding:6px 10px;font-weight:850}.pad-val{display:flex;align-items:baseline;justify-content:center;gap:7px;margin:9px 0 10px}.pad-val b{font-size:28px;letter-spacing:-.02em}.pad-val span{color:#58708a;font-size:13px}.pad-tabs{display:flex;gap:6px;justify-content:center;margin-bottom:7px}.pad-tab{border:1px solid #dce5f3;border-radius:9px;padding:7px 12px;background:#fff;font-weight:800;color:#45607c}.pad-tab.selected{background:#eaf2ff;color:#1858c6;border-color:#92b7ff}.pad-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.digit{border:1px solid #dae5f4;border-radius:10px;background:#f7faff;min-height:46px;font-weight:850;font-size:18px;color:#273d58}.digit:active{background:#e1efff}.pad-done{width:100%;background:#235fde;color:#fff;font-weight:850;border:0;border-radius:11px;padding:12px;margin-top:9px}.painpanel,.qrpanel{padding:16px;margin-top:8px}.painpanel h3,.qrpanel h3{margin:0 0 9px;font-size:15px}.painpanel p,.qrpanel p{font-size:11px;color:#668099;line-height:1.5}.painrange{width:100%;accent-color:var(--view-accent);margin:17px 0}.painvalue{font-size:26px;font-weight:850;text-align:center}.qrgrid{display:grid;grid-template-columns:repeat(17,1fr);gap:1px;width:200px;height:200px;margin:15px auto;background:white;padding:8px;border:1px solid #d6e3f2}.qrbit{background:white}.qrbit.dark{background:#1e304b}.qrwarning{text-align:center;font-weight:800;color:#a56621;font-size:10px!important}.undobanner{background:#e8f7f0;border:1px solid #c2e9d5;border-radius:11px;margin:10px 0;padding:10px}.undobanner b{font-size:11px;color:#167448}.undobanner p{margin:5px 0 8px;color:#547f6b;font-size:10px}.undoaction{border-radius:9px;border:1px solid #61b88c;color:#14653f;background:#fff;padding:9px 11px;width:100%;font-weight:850}
-.sidebar{display:flex;flex-direction:column;gap:13px;position:sticky;top:12px}.sidecard{background:#fff;border:1px solid #dbe4f2;border-radius:18px;padding:15px;box-shadow:0 4px 20px #183b5b09}.sidecard h2{font-size:14px;margin:0 0 5px;letter-spacing:-.02em}.sidecard .explain{font-size:11px;color:#71849c;line-height:1.45;margin:0 0 14px}.setting{margin:13px 0}.setting .settop{display:flex;align-items:center;justify-content:space-between;gap:4px;margin-bottom:7px}.settop label{font-size:12px;font-weight:750}.settop output{font-size:11px;font-weight:850;color:#2859a4;background:#e9f1ff;padding:3px 6px;border-radius:6px}.setting input[type=range]{width:100%;accent-color:#2965d9}.checkrow{display:flex;align-items:flex-start;gap:9px;font-size:11px;color:#365371;margin:11px 0;line-height:1.5;cursor:pointer}.checkrow input{accent-color:#2864d8;margin-top:2px}.sidecard textarea{width:100%;height:100px;border:1px solid #d5e2f1;border-radius:12px;padding:10px;resize:vertical;font-size:12px;line-height:1.45}.widebutton{width:100%;border-radius:11px;background:#225fdc;border:1px solid #225fdc;color:#fff;padding:11px;font-weight:850;margin-top:8px}.widebutton.light{background:#fff;color:#2c5ca1;border-color:#c9d9ee}.sidelink{font-size:11px;color:#275bb5;text-underline-offset:2px}.infobox{display:flex;gap:9px;background:#f3f7fc;border-radius:11px;padding:10px 11px;font-size:11px;color:#526d88;line-height:1.5}.infobox span{font-size:16px}.refmodal{position:fixed;inset:0;background:#182b46a8;z-index:100;display:grid;place-items:center;padding:20px}.refmodal[hidden]{display:none}.refcontent{background:#fff;border-radius:20px;width:min(500px,100%);padding:22px;box-shadow:0 20px 60px #0005}.refcontent h2{margin:0 0 9px;font-size:21px}.refcontent p{color:#506882;line-height:1.55;font-size:13px}.refcontent .notice{background:#fff4e7;border:1px solid #f1d5af;padding:11px;border-radius:11px;color:#79531d;font-size:12px}.refcontent .btnline{display:flex;gap:8px;flex-wrap:wrap}.refcontent a{display:inline-block;background:#285fcf;color:white;text-decoration:none;font-weight:800;padding:12px 14px;border-radius:11px}.refcontent button{border:1px solid #c8d7ea;background:#fff;border-radius:11px;padding:12px 14px;font-weight:750}.toaststatus{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:#20344c;color:#fff;padding:11px 16px;border-radius:12px;box-shadow:0 8px 22px #0004;font-weight:750;z-index:111;font-size:12px;max-width:90%;text-align:center}.toaststatus[hidden]{display:none}.mobileview{display:none}.designkey{font-size:10px;line-height:1.5;color:#7d8ca3;text-align:center;margin:10px 0 0}
-@media(max-width:1120px){.layout{grid-template-columns:minmax(0,1fr) 235px;padding-left:14px;padding-right:14px}.frames{gap:8px}.framewrap{padding:8px}.phone-outer{border-width:4px}.sidebar{top:5px}}@media(max-width:850px){header{padding:18px 15px 10px}.layout{grid-template-columns:1fr;gap:13px}.sidebar{position:static;display:grid;grid-template-columns:1fr 1fr}.frames{gap:10px}.phone-screen{height:640px}}@media(max-width:640px){header{padding:15px 12px 10px}h1{font-size:25px}.layout{padding:0 10px 28px}.stagebar{padding:10px}.stage-list{gap:5px}.stage{font-size:10px;padding:8px 9px}.frames{grid-template-columns:1fr}.framewrap{padding:9px}.framewrap[hidden]{display:none}.phone-screen{height: min(78dvh,715px);min-height:450px}.phone-outer{max-width:398px}.sidebar{grid-template-columns:1fr}.mobileview{display:flex;gap:7px;align-items:center;margin-bottom:10px}.mobileview button{border:1px solid #d0deee;background:#fff;color:#416281;padding:9px 13px;border-radius:10px;font-weight:850}.mobileview button[aria-pressed=true]{color:#fff;background:#245fda;border-color:#245fda}.headeractions{width:100%}.headerbtn{flex:1}.subhead{font-size:12px}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+:root{font:14px/1.45 system-ui,-apple-system,'Segoe UI',Arial,sans-serif;color:#15243a;background:#eef3f9;font-synthesis:none}
+*{box-sizing:border-box}body{margin:0;min-width:320px;background:#f0f4f9}
+button,input,textarea{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #5d8cff;outline-offset:3px}
+header{background:#fff;border-bottom:1px solid #dbe3ef;padding:17px max(16px,calc((100vw - 1370px)/2));}
+.toprow{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.eyebrow{display:inline-block;color:#315bb0;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+h1{margin:4px 0 4px;font-size:clamp(21px,3vw,28px);line-height:1.15;letter-spacing:-.03em}
+.lead{margin:0;color:#607188;font-size:12px;max-width:740px}
+.headeractions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.btn{background:#fff;border:1px solid #cbd8e8;border-radius:11px;color:#223a5c;padding:10px 13px;font-size:12px;font-weight:750;min-height:41px}
+.btn.primary{background:#1e57ce;border-color:#1e57ce;color:white}.btn:hover{filter:brightness(.96)}
+main{max-width:1370px;margin:0 auto;padding:15px 16px 32px;display:grid;grid-template-columns:minmax(0,1fr) 256px;gap:16px;align-items:start}
+.content{min-width:0}.toolbar,.sidecard,.framecard{background:white;border:1px solid #d8e2ef;border-radius:17px;box-shadow:0 5px 18px #13284d0a}
+.toolbar{padding:12px 13px 13px;margin-bottom:12px}.toolbarhead{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
+.toolbarhead strong{font-size:13px}.toolbarhead small{font-size:11px;color:#72819a}
+.stages{display:flex;gap:6px;flex-wrap:wrap}.stage{border:1px solid #d8e2ef;background:#f7faff;border-radius:10px;padding:9px 11px;min-height:42px;font-weight:750;color:#3b5576;font-size:12px}.stage[aria-pressed="true"]{background:#1d57cd;color:#fff;border-color:#1d57cd}.stage span{font-size:10px;opacity:.72;margin-right:5px}
+.mobiletabs{display:none;align-items:center;gap:8px;margin-bottom:10px}.mobiletabs button[aria-pressed="true"]{background:#1d57cd;color:#fff;border-color:#1d57cd}
+.frames{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;align-items:start}.framecard{padding:12px;min-width:0}.framehead{display:flex;justify-content:space-between;gap:6px;align-items:center;flex-wrap:wrap}.framehead strong{font-size:13px}.tag{border-radius:8px;background:#eef3fc;font-size:10px;font-weight:800;color:#3e6094;padding:5px 7px}.tag.original{color:#146349;background:#e8f9f2}
+.framenote{color:#7b8ba0;font-size:11px;margin:5px 0 8px;min-height:17px}.screenframe{position:relative;margin:auto;max-width:390px;background:#f4f7fb;border:1px solid #cfdae9;border-radius:10px;overflow:hidden;height:844px}
+.screenframe iframe{display:block;width:100%;height:100%;border:0;background:#f4f7fb}.loading{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:9px;background:#f4f7fb;color:#60748e;text-align:center;padding:22px;font-size:12px;pointer-events:none}.loading[hidden]{display:none}
+.sidebar{position:sticky;top:12px;display:flex;flex-direction:column;gap:12px}.sidecard{padding:14px}.sidecard h2{font-size:14px;margin:0 0 6px}.sidecard p{font-size:11px;color:#697e96;margin:0 0 12px}
+.control{margin-bottom:13px}.control:last-child{margin-bottom:0}.control label{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:12px;font-weight:700;margin-bottom:5px}.control output{font-variant-numeric:tabular-nums;color:#2a61b9}.control input[type="range"]{width:100%;accent-color:#1f58c6;cursor:pointer}.check{display:flex;align-items:flex-start;gap:8px;margin:10px 0;font-size:12px;font-weight:620;line-height:1.35;cursor:pointer}.check input{accent-color:#1f58c6;margin-top:2px}
+textarea{width:100%;min-height:100px;resize:vertical;border:1px solid #cbd8e8;border-radius:11px;padding:10px;font-size:12px}.wide{width:100%;margin-top:8px}.note{background:#f1f6ff;color:#3f5d84;border-radius:10px;padding:9px;font-size:11px;line-height:1.45}.statusline{font-size:11px;color:#63758f;display:flex;gap:9px;align-items:center;flex-wrap:wrap}.statusline b{color:#255c50}.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#17294a;color:#fff;padding:10px 14px;border-radius:11px;box-shadow:0 8px 28px #1119;z-index:50;font-size:12px}.toast[hidden]{display:none}
+@media(max-width:1100px){main{grid-template-columns:1fr}.sidebar{position:static;display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){header{padding:13px 14px}main{padding:11px 10px 28px}.mobiletabs{display:flex}.frames{grid-template-columns:1fr}.framecard{padding:10px}.framecard[hidden]{display:none}.screenframe{height:min(844px,74vh);min-height:525px}.sidebar{display:flex}.toolbar{padding:10px}.stage{padding:7px 10px;font-size:11px;min-height:40px}.framenote{font-size:10px}h1{font-size:23px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
 </style>
 </head>
 <body>
 <header>
- <div class="headerline">
-  <div><div class="eyebrow">KGG / Patienten-App · Design-Sandbox v1 · 18.11.2026</div><h1>Patienten-App – UI-Studio</h1><p class="subhead">Vergleiche den aktuellen, anhand echter KGG-v96-Ansichten nachgebildeten Aufbau mit einer veränderbaren Variante. Klicke durch Übung, Numpad, Schmerz und Satzabschluss – ohne Änderungen an der echten App.</p></div>
-  <div class="headeractions"><button class="headerbtn" id="refBtn">Original-App vergleichen</button><button class="headerbtn primary" id="copyTop">Feedback kopieren</button></div>
- </div>
+  <div class="toprow"><div><div class="eyebrow">KGG · Original-Oberfläche · Nur Testdaten</div><h1>Patienten-App – UI-Studio</h1><p class="lead">Beide Ansichten verwenden den echten aktuellen KGG-Patienten-Code. Links unverändert, rechts mit wählbaren Designänderungen. Kein Zugriff auf reale Pläne.</p></div><div class="headeractions"><button type="button" class="btn" id="reload">Original neu laden</button><button type="button" class="btn primary" id="copyTop">Feedback kopieren</button></div></div>
 </header>
-<main class="layout">
- <section class="maincol" aria-label="Interaktive Vorschau">
-  <div class="stagebar"><div class="barheading"><b>Oberflächen-Zustand auswählen</b><span>Testdaten: Beinpresse · Rudern · Kniebeuge</span></div><div class="stage-list" id="stageList"></div></div>
-  <div class="mobileview"><span style="font-weight:750;font-size:12px">Ansicht:</span><button id="mobileBaseline" aria-pressed="true">Referenz</button><button id="mobileVariant" aria-pressed="false">Variante</button></div>
-  <div class="frames">
-   <article class="framewrap" id="wrapBaseline"><div class="frametop"><span class="frame-title">Referenz · bisheriger Aufbau</span><div class="framepills"><span class="fchip">v96-orientiert</span><span class="fchip">390 px</span></div></div><div class="framelegend">Visueller HTML-Nachbau nach echten Live-Screenshots; nicht die produktive App.</div><div class="phone-outer"><div class="phone-screen" id="previewBaseline"></div></div><div class="designkey">Referenz bleibt ohne Design-Experimente.</div></article>
-   <article class="framewrap" id="wrapVariant"><div class="frametop"><span class="frame-title">Variante · deine Anpassungen</span><div class="framepills"><span class="fchip blue">editierbar</span><span class="fchip">390 px</span></div></div><div class="framelegend">Abstände, Schrift, Flächen und Rückmeldung live ändern.</div><div class="phone-outer"><div class="phone-screen" id="previewVariant"></div></div><div class="designkey">Änderungen wirken nur hier im Studio.</div></article>
-  </div>
- </section>
- <aside class="sidebar" aria-label="Design-Einstellungen und Rückmeldung">
-  <div class="sidecard"><h2>Variante anpassen</h2><p class="explain">Diese Regler verändern ausschließlich die rechte Vorschau.</p>
-   <div class="setting"><div class="settop"><label for="scale">Schriftgröße</label><output id="scaleValue">100 %</output></div><input id="scale" type="range" min="90" max="130" value="100" step="5"/></div>
-   <div class="setting"><div class="settop"><label for="radius">Eckenradius</label><output id="radiusValue">17 px</output></div><input id="radius" type="range" min="5" max="27" value="17" step="2"/></div>
-   <div class="setting"><div class="settop"><label for="spacing">Kartenabstand</label><output id="spacingValue">7 px</output></div><input id="spacing" type="range" min="4" max="18" value="7" step="1"/></div>
-   <label class="checkrow"><input id="showUndo" type="checkbox" checked/><span>Nach Satzabschluss dauerhaft eine sichtbare <b>Rückgängig</b>-Aktion zeigen</span></label>
-   <label class="checkrow"><input id="largerTouch" type="checkbox"/><span>Größere Eingabeflächen für ältere Patient:innen</span></label>
-   <label class="checkrow"><input id="clearFeedback" type="checkbox" checked/><span>Deutliche Bestätigung nach Eingaben</span></label>
-   <button id="resetDesign" class="widebutton light">Variante zurücksetzen</button>
-  </div>
-  <div class="sidecard"><h2>Dein Feedback</h2><p class="explain">Schreibe, was verändert werden soll. Die Notiz kann direkt in unseren Chat kopiert werden.</p><textarea id="feedback" placeholder="z. B. Rückgängig-Button größer; Satzwerte deutlicher markieren; zu viel Abstand bei Beinpresse …"></textarea><button class="widebutton" id="copyFeedback">Zustand + Feedback kopieren</button><button class="widebutton light" id="downloadDesign">Design-Einstellungen sichern</button></div>
-  <div class="sidecard"><h2>Was hier echt ist</h2><div class="infobox"><span>ⓘ</span><div><b>Aus der realen App beobachtet:</b> v96, Abfolge der Karten, Übungstitel, Satzfelder, Numpad-Prinzip und Grundgestaltung. <b>Nachgebaut:</b> HTML/CSS, Übungsillustration und QR-Demografik. Keine Patientendaten, keine Verbindung zum KGG-Datenspeicher.</div></div><p style="font-size:11px;line-height:1.5;color:#5f7590">Die echte App bleibt separat. Für Pixelgenauigkeit vergleichen wir bei späteren Revisionen die zwei Ansichten erneut mit der Live-App.</p></div>
- </aside>
+<main>
+  <section class="content" aria-label="Vergleich der KGG-Oberflächen">
+    <nav class="toolbar" aria-label="Original-Zustände"><div class="toolbarhead"><strong>Zustand im Original</strong><small>Beinpresse · Rudern · Kniebeuge · komplett synthetisch</small></div><div class="stages" id="stageNav"></div></nav>
+    <div class="mobiletabs"><strong style="font-size:12px">Ansicht:</strong><button class="btn" id="tabOriginal" aria-pressed="true">Original</button><button class="btn" id="tabVariant" aria-pressed="false">Variante</button></div>
+    <div class="frames">
+      <article class="framecard" id="frameOriginal"><div class="framehead"><strong>Original · echte KGG-App</strong><span class="tag original">Unverändert</span></div><p class="framenote">Originale HTML-, CSS- und JavaScript-Oberfläche – keine Nachzeichnung.</p><div class="screenframe"><iframe id="original" title="KGG Original mit synthetischen Testdaten" sandbox="allow-scripts" referrerpolicy="no-referrer"></iframe><div class="loading" id="loadingOriginal">Original-App wird geladen …</div></div></article>
+      <article class="framecard" id="frameVariant"><div class="framehead"><strong>Variante · echte KGG-App</strong><span class="tag">Anpassbar</span></div><p class="framenote">Ohne Regleränderungen identischer Quellcode und dieselben Testdaten.</p><div class="screenframe"><iframe id="variant" title="KGG Designvariante mit synthetischen Testdaten" sandbox="allow-scripts" referrerpolicy="no-referrer"></iframe><div class="loading" id="loadingVariant">Variante wird geladen …</div></div></article>
+    </div>
+    <p class="statusline" style="margin:12px 2px 0"><span id="sourceStatus">Originalquelle wird geprüft …</span><span id="versionStatus"></span></p>
+  </section>
+  <aside class="sidebar" aria-label="Designregler und Rückmeldung">
+    <section class="sidecard"><h2>Variante ändern</h2><p>Die Original-Ansicht links bleibt immer unverändert. Zurücksetzen stellt die exakte Ausgangsoptik wieder her.</p>
+      <div class="control"><label for="font">Schriftgröße <output id="fontVal">100 %</output></label><input type="range" id="font" min="90" max="135" value="100" step="5"></div>
+      <div class="control"><label for="radius">Eckenradius <output id="radiusVal">100 %</output></label><input type="range" id="radius" min="50" max="160" value="100" step="10"></div>
+      <div class="control"><label for="space">Kartenabstand <output id="spaceVal">100 %</output></label><input type="range" id="space" min="60" max="180" value="100" step="10"></div>
+      <label class="check"><input id="touch" type="checkbox"><span>Größere Touchflächen</span></label>
+      <label class="check"><input id="undo" type="checkbox"><span>Nach Satzwert eine Rückgängig-Leiste vorschlagen (nur Vorschau)</span></label>
+      <button class="btn wide" id="reset">Design zurücksetzen</button>
+    </section>
+    <section class="sidecard"><h2>Dein Feedback</h2><p>Welche der beiden Ansichten gefällt dir besser? Kopiere die Angaben hierher, damit wir gezielt weiterbauen können.</p><textarea id="feedback" placeholder="z. B. Die Numpad-Tasten sollen mehr Abstand haben. Beim Satzabschluss muss Rückgängig sichtbar bleiben."></textarea><button class="btn primary wide" id="copyFeedback">Feedback kopieren</button></section>
+    <section class="sidecard"><h2>Datenschutz & Quelle</h2><div class="note">Die originale Patienten-App läuft in einem gesonderten <b>Sandbox-Iframe ohne gemeinsamen Browser-Speicher</b>. Trainiert wird nur mit drei erfundenen Übungen und Startwerten. Die produktive KGG-App wird nicht geändert.</div><p style="margin-top:8px;margin-bottom:0">Die Darstellung lädt öffentliche Programmdateien von <code>kayus24.github.io/kgg/</code>. Sie ist daher bewusst online und nicht offline verfügbar.</p></section>
+  </aside>
 </main>
-<div class="refmodal" id="refModal" hidden><div class="refcontent" role="dialog" aria-modal="true" aria-labelledby="refTitle"><h2 id="refTitle">Mit der echten App vergleichen</h2><p>Die originale KGG-Patienten-App ist unter der offiziellen Adresse erreichbar. Das Studio öffnet standardmäßig <b>keinen</b> synthetischen Plan in deiner echten App.</p><div class="notice"><b>Datenschutz-Hinweis:</b> Die echte App speichert Trainingspläne lokal unter ihrer Website-Adresse. Einen Testplan-Link daher nur in einem getrennten Testbrowser/Inkognito-Fenster verwenden, damit vorhandene Daten nicht versehentlich ersetzt werden.</div><div class="btnline" style="margin-top:15px"><a href="https://kayus24.github.io/kgg/" target="_blank" rel="noopener noreferrer">Echte Patienten-App öffnen</a><button id="closeRef">Zurück zum Studio</button></div></div></div>
-<div class="toaststatus" id="toastStatus" role="status" hidden></div>
+<div class="toast" id="toast" hidden role="status"></div>
 <script>
 'use strict';
-const stages=[['overview','Übersicht'],['expanded','Übung geöffnet'],['numpad','Numpad'],['pain','Schmerz'],['completed','Satz abgeschlossen'],['qr','QR-Vorschau']];
-const config={scale:100,radius:17,spacing:7,showUndo:true,largerTouch:false,clearFeedback:true};
-const state={stage:'overview',mobile:'baseline',field:'kg',value:'40',pain:3,firstCompleted:false,selectedExercise:0,oldValue:'40'};
-const exercises=[{name:'Beinpresse',sets:3,kg:40,reps:10},{name:'Rudern',sets:2,kg:25,reps:12},{name:'Kniebeuge',sets:3,kg:50,reps:8}];
+const SOURCE_URL='https://kayus24.github.io/kgg/index.html';
+const BASE_URL='https://kayus24.github.io/kgg/';
+const STAGES=[['overview','Übersicht'],['expanded','Übung geöffnet'],['numpad','Numpad'],['pain','Schmerz'],['completed','Wert bestätigt'],['qr','QR-Vorschau']];
+const fixture={v:1,i:'ui-studio-only-synthetic-20261118',t:'UI-Studio Testplan',d:6,stepDays:1,extendDays:true,p:{name:'Synthetischer Test'},e:[['Beinpresse',3,'BI','kg','Wdh','40','10'],['Rudern',2,'BI','kg','Wdh','25','12'],['Kniebeuge',3,'BI','kg','Wdh','50','8']]};
 const $=id=>document.getElementById(id);
-function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-function legPressSVG(){return `<svg viewBox="0 0 240 130" role="img" aria-label="Schematische Übungsillustration: Beinpresse, nicht Originalfoto"><ellipse cx="122" cy="112" rx="102" ry="10" fill="#91b9cb" opacity=".35"/><g stroke="#658294" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M38 110 L173 21 L210 101 L80 112Z"/><path d="M135 23 L170 109 M156 23 L191 100"/><path d="M31 91 L95 55 L120 85 L66 119"/><path d="M32 110 L100 70"/></g><rect x="148" y="18" width="38" height="25" rx="4" fill="#718b9c" transform="rotate(-26 148 18)"/><g stroke="#243f53" stroke-width="9" stroke-linecap="round"><path d="M108 59 L140 38 L159 40"/><path d="M92 70 L114 93 L136 83"/></g><path d="M72 70 Q94 50 107 66 L100 83 L78 86Z" fill="#24a3d8" stroke="#377d9b" stroke-width="2"/><circle cx="62" cy="67" r="11" fill="#bc7957"/><path d="M52 63 Q54 49 65 53 Q75 55 72 67" fill="#3b3540"/><g stroke="#bd7859" stroke-width="8" stroke-linecap="round"><path d="M100 65 L126 54 L148 38"/><path d="M90 84 L117 98 L133 87"/></g><circle cx="182" cy="66" r="25" stroke="#506878" stroke-width="9" fill="#97b5c3"/><circle cx="182" cy="66" r="9" fill="#7d9ba9"/><path d="M181 38 L181 93" stroke="#526d7b" stroke-width="4"/></svg>`;}
-function makeQR(){let html=''; for(let y=0;y<17;y++){for(let x=0;x<17;x++){const finder=(ox,oy)=>x>=ox&&x<ox+5&&y>=oy&&y<oy+5;const onFinder=(ox,oy)=>{const xx=x-ox,yy=y-oy;return xx===0||yy===0||xx===4||yy===4||(xx>=2&&xx<=2&&yy>=2&&yy<=2)};let on=false;if(finder(0,0))on=onFinder(0,0);else if(finder(12,0))on=onFinder(12,0);else if(finder(0,12))on=onFinder(0,12);else on=((x*37+y*17+x*y*7)%13)<6;html+=`<i class="qrbit ${on?'dark':''}"></i>`;}}return html;}
-function viewState(){return state.stage==='overview'?'overview':state.stage==='qr'?'qr':state.stage;}
-function renderExercise(ex,i,variant,stage){const open=i===state.selectedExercise && stage!=='overview'&&stage!=='qr';const compact=!open;let rows='';if(open){rows=`<div class="exbody"><div class="subline">T1-Vorschlag: ${ex.kg} kg · ${ex.reps} Wdh</div><div class="illustration">${legPressSVG()}</div><div class="illustration-label">Beispielillustration · reales Übungsbild ist nur in der KGG-App vorhanden</div><div class="sets">${Array.from({length:ex.sets},(_,n)=>{let kg=(i===0&&n===0&&state.firstCompleted)?state.oldValue:ex.kg;const completed=(i===0&&n===0&&state.firstCompleted);return `<div class="setbox"><span class="setlabel">Satz ${n+1}</span><div class="fieldrow"><button class="field ${(stage==='numpad'&&i===0&&n===0&&state.field==='kg')?'active':''} ${completed?'completed':''}" data-act="field" data-field="kg" data-ex="${i}" data-set="${n}" aria-label="Satz ${n+1} Kilogramm">${kg}<small>kg</small></button><button class="field ${(stage==='numpad'&&i===0&&n===0&&state.field==='wdh')?'active':''}" data-act="field" data-field="wdh" data-ex="${i}" data-set="${n}" aria-label="Satz ${n+1} Wiederholungen">${ex.reps}<small>Wdh</small></button></div></div>`}).join('')}</div><div class="excontrols"><button class="painlink" data-act="pain">Schmerz ⚡ · 0–10</button><button class="finishset" data-act="finish">Satz 1 abschließen</button></div>${stage==='completed'&&i===0&&(!variant||config.showUndo)?`<div class="undobanner"><b>✓ Satz 1 abgeschlossen</b><p>Die Eingabe wurde gespeichert (nur in dieser Vorschau).</p>${variant&&config.showUndo?'<button class="undoaction" data-act="undo">↶ Rückgängig</button>':''}</div>`:''}${stage==='pain'&&i===0?`<div class="painpanel"><h3>Schmerz beim Satz</h3><p>Wähle die Schmerzstärke von 0 bis 10.</p><div class="painvalue">${state.pain} / 10</div><input class="painrange" aria-label="Schmerzstärke" type="range" min="0" max="10" value="${state.pain}" data-act="painrange"/><button class="primaryaction" style="width:100%" data-act="painDone">Übernehmen</button></div>`:''}</div>`;}
-return `<div class="exercise ${open?'exopen':''}" id="exercise-${variant?'b':'a'}-${i}"><div class="exhead" data-act="expand" data-ex="${i}" role="button" tabindex="0" aria-label="${escapeHtml(ex.name)} ${open?'schließen':'öffnen'}"><div><div class="extitle">${escapeHtml(ex.name)}</div>${compact?'<span class="edited">✓ Bearbeitet</span>':''}<div class="exdescr">${ex.sets} Sätze · beidseitig · kg · Wdh<br/>T1-Vorschlag: ${ex.kg} kg · ${ex.reps} Wdh</div></div><button class="exbtn" aria-label="Übungsoptionen" data-act="expand" data-ex="${i}">${open?'⋯':'⋯'}</button></div>${compact?'<div class="openhint">Antippen zum Öffnen</div>':rows}</div>`;}
-function renderPhone(variant){const stage=viewState(); const id=variant?'previewVariant':'previewBaseline'; const host=$(id);const sc=host.querySelector('.scrollarea');const oldTop=sc?sc.scrollTop:0;const style=variant?`--view-scale:${config.scale/100};--view-radius:${config.radius}px;--view-gap:${config.spacing}px;${config.largerTouch?'--view-touch:1;':''}`:'--view-scale:1;--view-radius:17px;--view-gap:7px;';let content=`<div class="appcontent ${variant?'is-variant':''}" style="${style}"><section class="topbox"><div class="apphead"><h2>UI-Studio Testplan</h2><div class="switchline">Neu <button class="toggle on" data-act="compact" aria-label="Kompakte Ansicht"></button></div></div><p>Werte direkt am Handy eintragen. Schmerz 0–10 angeben. Daten bleiben lokal auf diesem Gerät.</p>${variant&&!config.clearFeedback?'':`<div class="success">${stage==='completed'?'✓ Satz 1 abgeschlossen.':'Startwerte übernommen.'}</div>`}<div class="topbuttons"><button class="softpill" data-act="noop">DE ▸ EN</button><button class="softpill" data-act="noop"><span>📚</span> Übungsdatenbank</button></div></section><section class="planbox"><div class="plantitle">UI-Studio Testplan</div><div class="planmeta">3 Übungen · fortlaufender Trainingsplan</div><button class="historybtn" data-act="noop">Frühere Trainings anzeigen</button><div class="daybar"><span>Tag 1</span><span class="openbadge">offen</span></div>${exercises.map((ex,i)=>renderExercise(ex,i,variant,stage)).join('')}<div class="actionbar"><button class="outlineaction" data-act="qr">Aktuelle Werte als QR zeigen</button><button class="primaryaction" data-act="qr">Training beenden &amp; QR anzeigen</button></div>${stage==='qr'?`<div class="qrpanel"><h3>QR-Vorschau</h3><p>Hier würde die reale App den Trainings-QR anzeigen.</p><div class="qrgrid" aria-label="Dekorative QR-Platzhaltergrafik">${makeQR()}</div><p class="qrwarning">DEMO: Dieser QR-Code enthält keine Trainingsdaten.</p><button class="outlineaction" style="width:100%" data-act="overview">Zurück zum Plan</button></div>`:''}</section><div class="footerline">v96 · UI-Studio-Demo</div></div>`;
-let overlay='';if(stage==='numpad'){overlay=`<section class="numpad-overlay" aria-label="Eingabenummernfeld"><div class="pad-head"><strong>Beinpresse · Satz 1</strong><button class="pad-close" data-act="padclose">Schließen ✕</button></div><div class="pad-val"><b>${escapeHtml(state.value)}</b><span>${state.field==='kg'?'kg':'Wdh'}</span></div><div class="pad-tabs"><button class="pad-tab ${state.field==='kg'?'selected':''}" data-act="padfield" data-field="kg">kg</button><button class="pad-tab ${state.field==='wdh'?'selected':''}" data-act="padfield" data-field="wdh">Wdh</button></div><div class="pad-grid">${['1','2','3','4','5','6','7','8','9',',','0','⌫'].map(d=>`<button class="digit" data-act="digit" data-digit="${escapeHtml(d)}">${d}</button>`).join('')}</div><button class="pad-done" data-act="padclose">Übernehmen ✓</button></section>`;}
-host.innerHTML=`<div class="scrollarea">${content}</div><div class="phone-nav"><span class="version">KGG · v96</span></div>${overlay}`;const newSc=host.querySelector('.scrollarea');if(newSc)newSc.scrollTop=stage==='overview'?0:Math.max(oldTop,stage==='qr'?100:80);if(variant&&config.largerTouch)host.querySelectorAll('.field,.exbtn,.painlink,.finishset').forEach(el=>el.style.minHeight='46px');}
-function render(){document.querySelectorAll('.stage').forEach(el=>el.setAttribute('aria-pressed',el.dataset.stage===state.stage?'true':'false'));renderPhone(false);renderPhone(true);}
-function setStage(stage){state.stage=stage;if(stage==='overview'){state.firstCompleted=false;state.selectedExercise=0;}if(stage==='completed')state.firstCompleted=true;if(stage==='numpad'){state.selectedExercise=0;state.field='kg';state.value=String(exercises[0].kg);}render();}
-function toast(msg){const el=$('toastStatus');el.textContent=msg;el.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(()=>el.hidden=true,2300);}
-function handleClick(e){const b=e.target.closest('[data-act]');if(!b)return;const act=b.dataset.act;switch(act){case 'expand':state.selectedExercise=Number(b.dataset.ex);state.stage=state.stage==='overview'?'expanded':(state.stage==='expanded'?'overview':'expanded');render();break;case 'field':state.stage='numpad';state.field=b.dataset.field;state.selectedExercise=Number(b.dataset.ex);state.value=String(state.field==='kg'?exercises[state.selectedExercise].kg:exercises[state.selectedExercise].reps);render();break;case 'padfield':state.field=b.dataset.field;state.value=String(state.field==='kg'?exercises[0].kg:exercises[0].reps);render();break;case 'digit':if(b.dataset.digit==='⌫')state.value=state.value.slice(0,-1)||'0';else if(b.dataset.digit===','){if(!state.value.includes(','))state.value+=',';}else state.value=state.value==='0'?b.dataset.digit:state.value+b.dataset.digit;render();break;case 'padclose':state.stage='expanded';state.oldValue=state.value;render();toast('Wert im UI-Studio übernommen');break;case 'pain':state.stage='pain';render();break;case 'painDone':state.stage='expanded';render();toast('Schmerzangabe übernommen');break;case 'finish':state.firstCompleted=true;state.stage='completed';render();break;case 'undo':state.firstCompleted=false;state.stage='expanded';render();toast('Satzabschluss rückgängig gemacht');break;case 'qr':state.stage='qr';render();break;case 'overview':setStage('overview');break;case 'compact':toast('Kompaktansicht: nur zur Vorschau');break;case 'noop':toast('Dieses Bedienelement ist im UI-Studio noch nicht simuliert');break;}}
-$('stageList').innerHTML=stages.map(([key,label],i)=>`<button class="stage" data-stage="${key}" aria-pressed="${key==='overview'}"><small>${i+1}</small>${label}</button>`).join('');
-$('stageList').addEventListener('click',e=>{const el=e.target.closest('[data-stage]');if(el)setStage(el.dataset.stage);});
-['previewBaseline','previewVariant'].forEach(id=>{$(id).addEventListener('click',handleClick);$(id).addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('[data-act="expand"]')){e.preventDefault();handleClick({target:e.target});}});$(id).addEventListener('input',e=>{if(e.target.dataset.act==='painrange'){state.pain=Number(e.target.value);render();}});});
-for(const [id,prop,formatter] of [['scale','scale',n=>n+' %'],['radius','radius',n=>n+' px'],['spacing','spacing',n=>n+' px']]){$(id).addEventListener('input',()=>{config[prop]=Number($(id).value);$(id+'Value').textContent=formatter(config[prop]);renderPhone(true);});}
-for(const id of ['showUndo','largerTouch','clearFeedback']){$(id).addEventListener('change',()=>{config[id]=$(id).checked;renderPhone(true);});}
-$('resetDesign').addEventListener('click',()=>{Object.assign(config,{scale:100,radius:17,spacing:7,showUndo:true,largerTouch:false,clearFeedback:true});for(const id of ['scale','radius','spacing']){$(id).value=config[id];$(id+'Value').textContent=config[id]+(id==='scale'?' %':' px');}for(const id of ['showUndo','largerTouch','clearFeedback'])$(id).checked=config[id];renderPhone(true);toast('Variante zurückgesetzt');});
-function feedbackText(){const stageLabel=stages.find(s=>s[0]===state.stage)?.[1]||state.stage;return `KGG Patienten-App · UI-Studio v1\nZustand: ${stageLabel}\nVariante: Schrift ${config.scale} %, Eckenradius ${config.radius} px, Kartenabstand ${config.spacing} px, Rückgängig ${config.showUndo?'an':'aus'}, große Touchflächen ${config.largerTouch?'an':'aus'}, Bestätigung ${config.clearFeedback?'an':'aus'}\nMeine Anmerkungen: ${$('feedback').value.trim()||'(noch keine)'}`;}
-function fallbackCopy(str){const ta=document.createElement('textarea');ta.value=str;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');toast('Feedback kopiert');}catch{toast('Text markieren und kopieren');}ta.remove();}
-async function copyFeedback(){const s=feedbackText();try{await navigator.clipboard.writeText(s);toast('Feedback kopiert – im Chat einfügen');}catch{fallbackCopy(s);}}
+const model={stage:'overview',mobile:'original',font:100,radius:100,space:100,touch:false,undo:false,source:'',generations:{original:0,variant:0},ready:{original:false,variant:false},applied:{original:false,variant:false}};
+let statusTimeout;
+function toast(message){$('toast').textContent=message;$('toast').hidden=false;clearTimeout(statusTimeout);statusTimeout=setTimeout(()=>$('toast').hidden=true,2400)}
+// Runs INSIDE each opaque-origin iframe, before ANY original app scripts.
+function isolatedStorage(syntheticPlan){
+  const store=new Map([['kggCurrentPlanV1',JSON.stringify({plan:syntheticPlan})]]);
+  const session=new Map();
+  const makeStorage=map=>new Proxy({get length(){return map.size},key(i){return Array.from(map.keys())[i]??null},getItem(k){return map.has(String(k))?map.get(String(k)):null},setItem(k,v){map.set(String(k),String(v))},removeItem(k){map.delete(String(k))},clear(){map.clear()}},{get(target,k){return k in target?Reflect.get(target,k):map.get(String(k))},set(_target,k,value){map.set(String(k),String(value));return true},deleteProperty(_target,k){return map.delete(String(k))},has(target,k){return k in target||map.has(String(k))},ownKeys(target){return [...Reflect.ownKeys(target),...map.keys()]},getOwnPropertyDescriptor(target,k){return Reflect.getOwnPropertyDescriptor(target,k)||(map.has(String(k))?{configurable:true,enumerable:true,writable:true,value:map.get(String(k))}:undefined)}});
+  Object.defineProperty(window,'localStorage',{configurable:true,value:makeStorage(store)});
+  Object.defineProperty(window,'sessionStorage',{configurable:true,value:makeStorage(session)});
+  // Opaque-origin iframes cannot use the real ServiceWorker getter. This isolated
+  // fake prevents native SecurityError, while leaving original KGG script bytes untouched.
+  const inertWorker={register(){return Promise.resolve(null)},getRegistration(){return Promise.resolve(null)},getRegistrations(){return Promise.resolve([])},controller:null,addEventListener(){},removeEventListener(){}};
+  Object.defineProperty(Navigator.prototype,'serviceWorker',{configurable:true,get(){return inertWorker}});
+  window.open=()=>null; // No unsandboxed popups or new browser pages from demo.
+}
+// Runs INSIDE the iframe AFTER the original app scripts; delegates to actual KGG DOM/actions.
+function sandboxBridge(side){
+  const send=(event,data={})=>parent.postMessage({channel:'kgg-synthetic-studio-v2',side,event,...data},'*');
+  const tick=()=>new Promise(done=>requestAnimationFrame(()=>requestAnimationFrame(done)));
+  const doc=()=>document;
+  let activeStage='overview',lastConfig={},lastUndoValue=null;
+  function setCss(cfg){
+    lastConfig=cfg;
+    const rules=[];
+    if(cfg.font!==100){const s=cfg.font/100;rules.push(`.card h1{font-size:${(24*s).toFixed(2)}px!important}.card h2{font-size:${(18*s).toFixed(2)}px!important}.ex h3{font-size:${(17*s).toFixed(2)}px!important}.muted,.padTitle{font-size:${(13*s).toFixed(2)}px!important}.num{font-size:${(17*s).toFixed(2)}px!important}`)}
+    if(cfg.radius!==100){const s=cfg.radius/100;rules.push(`.card{border-radius:${(18*s).toFixed(2)}px!important}.ex{border-radius:${(16*s).toFixed(2)}px!important}.num{border-radius:${(12*s).toFixed(2)}px!important}`)}
+    if(cfg.space!==100){const s=cfg.space/100;rules.push(`.card{margin-bottom:${(12*s).toFixed(2)}px!important}.ex{margin-top:${(10*s).toFixed(2)}px!important}`)}
+    if(cfg.touch){rules.push(`.num{min-height:54px!important}.btn,.btn2,.btnSmall{min-height:58px!important}.padGrid button{min-height:68px!important}`)}
+    let style=doc().getElementById('kggStudioDiffOnly');
+    if(!style){style=doc().createElement('style');style.id='kggStudioDiffOnly';doc().head.appendChild(style)}
+    style.textContent=rules.join('\n'); // Default settings => EMPTY CSS: pixel-identical by construction.
+    updateUndo(cfg);
+  }
+  function updateUndo(cfg){
+    doc().getElementById('kggStudioUndoBanner')?.remove();
+    if(side!=='variant'||activeStage!=='completed'||!cfg.undo)return;
+    const banner=doc().createElement('div');banner.id='kggStudioUndoBanner';banner.setAttribute('role','status');
+    banner.style.cssText='position:fixed;z-index:9997;left:12px;right:12px;bottom:14px;padding:12px 14px;border-radius:14px;background:#11233f;color:white;display:flex;align-items:center;justify-content:space-between;gap:10px;box-shadow:0 12px 28px #0b1b3a55;font:700 14px system-ui';
+    const label=doc().createElement('span');label.textContent='Wert übernommen';
+    const button=doc().createElement('button');button.textContent='↶ Rückgängig';button.type='button';button.style.cssText='border:0;border-radius:11px;background:white;color:#132441;padding:10px;font-weight:800';
+    button.addEventListener('click',()=>{if(lastUndoValue!==null){const input=doc().querySelector('#list .ex input.num');if(input){input.value=lastUndoValue;input.dispatchEvent(new Event('change',{bubbles:true}))}}banner.remove();send('undo-demo')});
+    banner.append(label,button);doc().body.appendChild(banner);
+  }
+  async function setStage(stage,cfg={}){
+    activeStage=stage;
+    try{
+      const exercise=doc().querySelector('#list .ex');if(!exercise)throw Error('KGG-Übungskarte nicht gefunden');
+      if(stage!=='overview'&&stage!=='qr'){
+        exercise.click();await tick();
+      }
+      if(stage==='numpad'||stage==='completed'){
+        const input=doc().querySelector('#list .ex input.num');if(!input)throw Error('KGG-Satzfeld nicht gefunden');
+        lastUndoValue=input.value;
+        input.click();await tick();
+        if(stage==='completed'){
+          const save=doc().querySelector('#pad .padOk');if(!save)throw Error('KGG-Speichern-Knopf fehlt');
+          save.click();await tick();
+        }
+      } else if(stage==='pain'){
+        const pain=doc().querySelector('#list .ex .kggPainVerticalToggle');
+        if(!pain)throw Error('KGG-Schmerzeingabe fehlt');pain.click();await tick();
+      } else if(stage==='qr'){
+        const qr=doc().querySelector('#plan button[onclick*="showQr(false)"]');if(!qr)throw Error('KGG-QR-Knopf fehlt');qr.click();await tick();
+      }
+      if(side==='variant')setCss(cfg);
+      // Yield for media/layout completion so both frames use the SAME media/plan state.
+      await new Promise(resolve=>setTimeout(resolve,160));
+      // Both frames must be compared at the SAME scroll offset and without a one-sided
+      // keyboard-focus ring. The original controls/DOM remain unchanged.
+      await tick();
+      if(doc().activeElement?.blur)doc().activeElement.blur();
+      const main=doc().querySelector('main');
+      if(main){const offsets={overview:0,expanded:210,numpad:250,pain:250,completed:210};
+        const target=stage==='qr'?Math.max(0,doc().getElementById('end')?.offsetTop||0):(offsets[stage]||0);
+        main.scrollTo({top:target,behavior:'instant'});
+      }
+      send('applied',{stage,hasNumpad:!doc().getElementById('pad')?.classList.contains('hide'),hasQr:!doc().getElementById('end')?.classList.contains('hide')});
+    }catch(error){send('error',{message:String(error?.message||error),stage})}
+  }
+  window.addEventListener('message',e=>{
+    if(e.source!==parent||e.data?.channel!=='kgg-studio-command-v2')return;
+    if(e.data.command==='style'&&side==='variant')setCss(e.data.config||{});
+    if(e.data.command==='stage'&&['overview','expanded','numpad','pain','completed','qr'].includes(e.data.stage))setStage(e.data.stage,e.data.config||{});
+  });
+  let tries=0;function ready(){
+    if(doc().querySelector('#plan:not(.hide) #list .ex') && window.__kggPadDraftApi && /Startwerte übernommen\./.test(doc().getElementById('status')?.textContent||'') && [...doc().querySelectorAll('#list .ex input.num')].every(i=>i.value!=='')){send('ready',{version:doc().querySelector('body')?.innerText.match(/v\d{2,3}\b/)?.[0]||'KGG'});return}
+    if(++tries>120){send('error',{message:'Original-App lädt den synthetischen Trainingsplan nicht'});return}
+    setTimeout(ready,100);
+  }
+  ready();
+}
+function safeSource(html,side){
+  if(!/KGG Handyplan/.test(html)||!html.includes('id="plan"')||!html.includes('id="pad"'))throw Error('Die KGG-Originaldatei hat ein unerwartetes Format');
+  const script=(text)=>'<scr'+'ipt>'+text+'</scr'+'ipt>';
+  const shim=script('('+isolatedStorage.toString()+')('+JSON.stringify(fixture)+');');
+  const bridge=script('('+sandboxBridge.toString()+')('+JSON.stringify(side)+');');
+  return html.replace(/<head\b[^>]*>/i,tag=>tag+'<base href="'+BASE_URL+'">'+shim).replace(/<\/body>/i,bridge+'</body>');
+}
+function config(){return {font:model.font,radius:model.radius,space:model.space,touch:model.touch,undo:model.undo}}
+function send(side,command,payload={}){const frame=$(side);frame.contentWindow?.postMessage({channel:'kgg-studio-command-v2',command,...payload},'*')}
+function mobile(){const single=matchMedia('(max-width:700px)').matches;$('frameOriginal').hidden=single&&model.mobile!=='original';$('frameVariant').hidden=single&&model.mobile!=='variant';$('tabOriginal').setAttribute('aria-pressed',String(model.mobile==='original'));$('tabVariant').setAttribute('aria-pressed',String(model.mobile==='variant'))}
+function stages(){const nav=$('stageNav');nav.innerHTML=STAGES.map(([id,name],i)=>'<button type="button" class="stage" data-stage="'+id+'" aria-pressed="'+String(id===model.stage)+'"><span>'+(i+1)+'</span>'+name+'</button>').join('');nav.addEventListener('click',e=>{const b=e.target.closest('[data-stage]');if(!b)return;model.stage=b.dataset.stage;stagesPressed();startPair()})}
+function stagesPressed(){for(const button of document.querySelectorAll('[data-stage]'))button.setAttribute('aria-pressed',String(button.dataset.stage===model.stage))}
+async function startPair(){
+  if(!model.source)return;
+  for(const side of ['original','variant']){
+    model.ready[side]=false;model.applied[side]=false;
+    $('loading'+(side==='original'?'Original':'Variant')).hidden=false;
+    // New srcdoc resets all state in synthetic memory, guaranteeing deterministic stage comparisons.
+    $(side).srcdoc=safeSource(model.source,side);
+  }
+}
+function sendConfig(){send('variant','style',{config:config()})}
+async function load(){
+  $('sourceStatus').textContent='Original wird von KGG geladen …';
+  try{
+    const rsp=await fetch(SOURCE_URL,{cache:'no-store',credentials:'omit',redirect:'error'});
+    if(!rsp.ok)throw Error('HTTP '+rsp.status);
+    const html=await rsp.text();
+    if(html.length>250000)throw Error('Ungewöhnlich große Originaldatei');
+    if(!html.includes('<title>KGG Handyplan</title>'))throw Error('Unerwarteter App-Titel');
+    model.source=html;
+    const digest=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(html));
+    const hash=Array.from(new Uint8Array(digest)).slice(0,5).map(b=>b.toString(16).padStart(2,'0')).join('');
+    $('sourceStatus').innerHTML='<b>Originalquelle geladen</b> · Prüfsumme '+hash+' · getrennte Demo-Speicher';
+    await startPair();
+  }catch(error){$('sourceStatus').textContent='Original nicht ladbar: '+error.message+' (GitHub Pages online öffnen)';for(const el of document.querySelectorAll('.loading'))el.textContent='Original aktuell nicht verfügbar';}
+}
+window.addEventListener('message',e=>{
+  if(e.data?.channel!=='kgg-synthetic-studio-v2')return;
+  const side=e.data.side;
+  if(!['original','variant'].includes(side)||e.source!==$(side).contentWindow)return;
+  if(e.data.event==='ready'){
+    model.ready[side]=true;
+    $('versionStatus').textContent='Live-App '+(e.data.version||'KGG');
+    send(side,'stage',{stage:model.stage,config:side==='variant'?config():{}});
+  }
+  if(e.data.event==='applied'){
+    model.applied[side]=true;
+    $('loading'+(side==='original'?'Original':'Variant')).hidden=true;
+  }
+  if(e.data.event==='error'){
+    const loading=$('loading'+(side==='original'?'Original':'Variant'));
+    loading.textContent='KGG-Vorschau: '+e.data.message;
+    loading.hidden=false;
+    $('sourceStatus').textContent='Original geladen, aber Zustand fehlgeschlagen: '+e.data.message;
+  }
+  if(e.data.event==='undo-demo')toast('Rückgängig-Vorschau ausgeführt');
+});
+for(const [id,prop,valueId] of [['font','font','fontVal'],['radius','radius','radiusVal'],['space','space','spaceVal']]){
+  $(id).addEventListener('input',()=>{model[prop]=Number($(id).value);$(valueId).textContent=model[prop]+' %';sendConfig()});
+}
+for(const id of ['touch','undo']){$(id).addEventListener('change',()=>{model[id]=$(id).checked;sendConfig()})}
+$('reset').addEventListener('click',()=>{Object.assign(model,{font:100,radius:100,space:100,touch:false,undo:false});for(const id of ['font','radius','space']){$(id).value=100;$(id+'Val').textContent='100 %'}$('touch').checked=false;$('undo').checked=false;sendConfig();toast('Variante zurückgesetzt')});
+$('reload').addEventListener('click',load);
+function feedback(){return 'KGG Patienten-App · Original-UI-Studio\nOriginalquelle: '+SOURCE_URL+'\nZustand: '+STAGES.find(s=>s[0]===model.stage)?.[1]+'\nSchrift: '+model.font+' %, Ecken: '+model.radius+' %, Abstand: '+model.space+' %, große Touchflächen: '+model.touch+', Rückgängig-Vorschau: '+model.undo+'\nÄnderungswünsche:\n'+$('feedback').value}
+async function copyFeedback(){const txt=feedback();try{await navigator.clipboard.writeText(txt);toast('Feedback kopiert')}catch{const el=document.createElement('textarea');el.value=txt;document.body.append(el);el.select();document.execCommand('copy');el.remove();toast('Feedback kopiert')}}
 $('copyFeedback').addEventListener('click',copyFeedback);$('copyTop').addEventListener('click',copyFeedback);
-$('downloadDesign').addEventListener('click',()=>{const data={studio:'KGG Patienten-App UI Studio v1',stage:state.stage,config,feedback:$('feedback').value,generatedAt:new Date().toISOString()};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const href=URL.createObjectURL(blob);const link=document.createElement('a');link.href=href;link.download='kgg_patienten_ui_feedback.json';link.click();setTimeout(()=>URL.revokeObjectURL(href),1200);});
-$('refBtn').addEventListener('click',()=>{$('refModal').hidden=false;$('closeRef').focus();});$('closeRef').addEventListener('click',()=>{$('refModal').hidden=true;$('refBtn').focus();});$('refModal').addEventListener('click',e=>{if(e.target.id==='refModal')$('refModal').hidden=true;});window.addEventListener('keydown',e=>{if(e.key==='Escape')$('refModal').hidden=true;});
-function setMobile(view){state.mobile=view;$('mobileBaseline').setAttribute('aria-pressed',String(view==='baseline'));$('mobileVariant').setAttribute('aria-pressed',String(view==='variant'));$('wrapBaseline').hidden=window.matchMedia('(max-width:640px)').matches&&view!=='baseline';$('wrapVariant').hidden=window.matchMedia('(max-width:640px)').matches&&view!=='variant';}
-$('mobileBaseline').addEventListener('click',()=>setMobile('baseline'));$('mobileVariant').addEventListener('click',()=>setMobile('variant'));window.addEventListener('resize',()=>setMobile(state.mobile));
-render();setMobile('baseline');
+$('tabOriginal').addEventListener('click',()=>{model.mobile='original';mobile()});$('tabVariant').addEventListener('click',()=>{model.mobile='variant';mobile()});window.addEventListener('resize',mobile);
+stages();mobile();load();
 </script>
 </body>
 </html>
