@@ -80,6 +80,9 @@ function isolatedStorage(syntheticPlan){
   const makeStorage=map=>new Proxy({get length(){return map.size},key(i){return Array.from(map.keys())[i]??null},getItem(k){return map.has(String(k))?map.get(String(k)):null},setItem(k,v){map.set(String(k),String(v))},removeItem(k){map.delete(String(k))},clear(){map.clear()}},{get(target,k){return k in target?Reflect.get(target,k):map.get(String(k))},set(_target,k,value){map.set(String(k),String(value));return true},deleteProperty(_target,k){return map.delete(String(k))},has(target,k){return k in target||map.has(String(k))},ownKeys(target){return [...Reflect.ownKeys(target),...map.keys()]},getOwnPropertyDescriptor(target,k){return Reflect.getOwnPropertyDescriptor(target,k)||(map.has(String(k))?{configurable:true,enumerable:true,writable:true,value:map.get(String(k))}:undefined)}});
   Object.defineProperty(window,'localStorage',{configurable:true,value:makeStorage(store)});
   Object.defineProperty(window,'sessionStorage',{configurable:true,value:makeStorage(session)});
+  // In an opaque-origin sandbox the native ServiceWorker.register throws synchronously.
+  // A harmless inert shim keeps the ORIGINAL KGG bootstrap running without registering a worker.
+  Object.defineProperty(navigator,'serviceWorker',{configurable:true,value:{register(){return Promise.resolve({})},getRegistration(){return Promise.resolve(null)},getRegistrations(){return Promise.resolve([])},controller:null,addEventListener(){},removeEventListener(){}}});
   window.open=()=>null; // No unsandboxed popups or new browser pages from demo.
 }
 // Runs INSIDE the iframe AFTER the original app scripts; delegates to actual KGG DOM/actions.
@@ -141,7 +144,6 @@ function sandboxBridge(side){
     if(e.data.command==='stage'&&['overview','expanded','numpad','pain','completed','qr'].includes(e.data.stage))setStage(e.data.stage,e.data.config||{});
   });
   let tries=0;function ready(){
-    if(tries===4&&!doc().querySelector('#plan:not(.hide)')&&typeof window.load==='function'){try{window.load()}catch(error){send('error',{message:'Original-Initialisierung: '+error.message})}}
     if(doc().querySelector('#plan:not(.hide) #list .ex')){send('ready',{version:doc().querySelector('body')?.innerText.match(/v\d{2,3}\b/)?.[0]||'KGG'});return}
     if(++tries>120){send('error',{message:'Original-App lädt den synthetischen Trainingsplan nicht'});return}
     setTimeout(ready,100);
