@@ -77,9 +77,9 @@ function toast(message){$('toast').textContent=message;$('toast').hidden=false;c
 function isolatedStorage(syntheticPlan){
   const store=new Map([['kggCurrentPlanV1',JSON.stringify({plan:syntheticPlan})]]);
   const session=new Map();
-  const makeStorage=map=>({get length(){return map.size},key(i){return Array.from(map.keys())[i]??null},getItem(k){return map.has(String(k))?map.get(String(k)):null},setItem(k,v){map.set(String(k),String(v))},removeItem(k){map.delete(String(k))},clear(){map.clear()}});
-  Object.defineProperty(window,'localStorage',{configurable:true,get(){return makeStorage(store)}});
-  Object.defineProperty(window,'sessionStorage',{configurable:true,get(){return makeStorage(session)}});
+  const makeStorage=map=>new Proxy({get length(){return map.size},key(i){return Array.from(map.keys())[i]??null},getItem(k){return map.has(String(k))?map.get(String(k)):null},setItem(k,v){map.set(String(k),String(v))},removeItem(k){map.delete(String(k))},clear(){map.clear()}},{get(target,k){return k in target?Reflect.get(target,k):map.get(String(k))},set(_target,k,value){map.set(String(k),String(value));return true},deleteProperty(_target,k){return map.delete(String(k))},has(target,k){return k in target||map.has(String(k))},ownKeys(target){return [...Reflect.ownKeys(target),...map.keys()]},getOwnPropertyDescriptor(target,k){return Reflect.getOwnPropertyDescriptor(target,k)||(map.has(String(k))?{configurable:true,enumerable:true,writable:true,value:map.get(String(k))}:undefined)}});
+  Object.defineProperty(window,'localStorage',{configurable:true,value:makeStorage(store)});
+  Object.defineProperty(window,'sessionStorage',{configurable:true,value:makeStorage(session)});
   window.open=()=>null; // No unsandboxed popups or new browser pages from demo.
 }
 // Runs INSIDE the iframe AFTER the original app scripts; delegates to actual KGG DOM/actions.
@@ -129,9 +129,9 @@ function sandboxBridge(side){
         const pain=doc().querySelector('#list .ex .kggPainVerticalToggle');
         if(!pain)throw Error('KGG-Schmerzeingabe fehlt');pain.click();await tick();
       } else if(stage==='qr'){
-        const qr=doc().querySelector('#plan .btn2');if(!qr)throw Error('KGG-QR-Knopf fehlt');qr.click();await tick();
+        const qr=doc().querySelector('#plan button[onclick*="showQr(false)"]');if(!qr)throw Error('KGG-QR-Knopf fehlt');qr.click();await tick();
       }
-      setCss(cfg);
+      if(side==='variant')setCss(cfg);
       send('applied',{stage,hasNumpad:!doc().getElementById('pad')?.classList.contains('hide'),hasQr:!doc().getElementById('end')?.classList.contains('hide')});
     }catch(error){send('error',{message:String(error?.message||error),stage})}
   }
@@ -141,6 +141,7 @@ function sandboxBridge(side){
     if(e.data.command==='stage'&&['overview','expanded','numpad','pain','completed','qr'].includes(e.data.stage))setStage(e.data.stage,e.data.config||{});
   });
   let tries=0;function ready(){
+    if(tries===4&&!doc().querySelector('#plan:not(.hide)')&&typeof window.load==='function'){try{window.load()}catch(error){send('error',{message:'Original-Initialisierung: '+error.message})}}
     if(doc().querySelector('#plan:not(.hide) #list .ex')){send('ready',{version:doc().querySelector('body')?.innerText.match(/v\d{2,3}\b/)?.[0]||'KGG'});return}
     if(++tries>120){send('error',{message:'Original-App lädt den synthetischen Trainingsplan nicht'});return}
     setTimeout(ready,100);
