@@ -89,6 +89,23 @@ html:fullscreen .modehint{display:none}
  html:fullscreen .board-screen{height:calc(100dvh - 210px);min-height:430px}
 }
 
+
+.pad-design-controls{background:#fff;border:1px solid #d8e2ef;border-radius:17px;padding:12px 13px;margin-bottom:12px;box-shadow:0 5px 18px #13284d0a}
+.pad-design-top{display:flex;justify-content:space-between;align-items:start;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.pad-design-top strong{font-size:14px}
+.pad-design-top p{margin:3px 0 0;color:#64748b;font-size:11px;line-height:1.4}
+.pad-choice-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;padding:0;border:0;margin:0 0 10px}
+.pad-choice-row legend{font-size:12px;font-weight:750;margin-bottom:7px;color:#334155}
+.pad-choice{position:relative;display:block;cursor:pointer;min-width:0}
+.pad-choice input{position:absolute;top:8px;right:8px;accent-color:#1e57ce}
+.pad-choice span{height:100%;min-height:65px;display:flex;flex-direction:column;gap:3px;padding:10px 25px 9px 9px;background:#f8faff;border:1px solid #d6e2f1;border-radius:11px;color:#334155}
+.pad-choice span b{font-size:11px;line-height:1.2}.pad-choice span small{font-size:10px;line-height:1.3;color:#64748b}
+.pad-choice:has(input:checked) span{background:#eaf1ff;border-color:#1d57ce;box-shadow:inset 0 0 0 1px #1d57ce}
+.pad-extra-controls{display:flex;gap:10px;flex-wrap:wrap}
+.pad-extra-controls label{display:flex;flex-direction:column;gap:4px;flex:1 1 185px;color:#334155;font-size:12px;font-weight:650}
+.pad-extra-controls select{max-width:100%;border:1px solid #cbd8e8;border-radius:10px;background:#fff;min-height:42px;padding:8px;color:#1e293b}
+@media(max-width:780px){.pad-choice-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:420px){.pad-design-top{display:block}.pad-design-top .btn{margin-top:8px}}
 @media(max-width:1100px){main{grid-template-columns:1fr}.sidebar{position:static;display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:700px){header{padding:13px 14px}main{padding:11px 10px 28px}.mobiletabs{display:flex}.frames{grid-template-columns:1fr}.framecard{padding:10px}.framecard[hidden]{display:none}.screenframe{height:min(844px,74vh);min-height:525px}.sidebar{display:flex}.toolbar{padding:10px}.stage{padding:7px 10px;font-size:11px;min-height:40px}.framenote{font-size:10px}h1{font-size:23px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important}}
@@ -102,6 +119,20 @@ html:fullscreen .modehint{display:none}
   <section class="content" aria-label="Vergleich der KGG-Oberflächen">
     <div class="modebar" role="group" aria-label="Studio-Modus"><div class="modebuttons"><button type="button" class="btn" id="modeCompare" aria-pressed="true">⇄ Vergleich</button><button type="button" class="btn" id="modeBoard" aria-pressed="false">▦ Design-Board</button></div><span class="modehint">Vergleich: zwei Versionen nebeneinander. Board: alle sechs UI-Zustände als einzelne Design-Karten.</span></div>
     <nav class="toolbar" id="compareToolbar" aria-label="Original-Zustände"><div class="toolbarhead"><strong>Zustand im Original</strong><small>Beinpresse · Rudern · Kniebeuge · komplett synthetisch</small></div><div class="stages" id="stageNav"></div></nav>
+    
+    <section class="pad-design-controls" id="padDesignControls" aria-label="Numpad-Varianten direkt vergleichen">
+      <div class="pad-design-top"><div><strong>Numpad-Designs ausprobieren</strong><p>Links Original, rechts die anpassbare Variante. Wähle einen Stil und tippe direkt ins Numpad.</p></div><button type="button" class="btn" id="openPadPreview">Numpad anzeigen</button></div>
+      <fieldset class="pad-choice-row" id="clearChoices"><legend>Alles löschen · vier Varianten</legend>
+        <label class="pad-choice"><input type="radio" name="clearDesign" value="A" checked><span><b>A · Im Wertefeld</b><small>× direkt an der Zahl</small></span></label>
+        <label class="pad-choice"><input type="radio" name="clearDesign" value="B"><span><b>B · C-Taste</b><small>Eigene Taste im Zahlenblock</small></span></label>
+        <label class="pad-choice"><input type="radio" name="clearDesign" value="C"><span><b>C · Breite Taste</b><small>„Ganzen Wert löschen“</small></span></label>
+        <label class="pad-choice"><input type="radio" name="clearDesign" value="D"><span><b>D · Langdruck</b><small>⌫ halten = alles</small></span></label>
+      </fieldset>
+      <div class="pad-extra-controls">
+        <label>Textcursor <select id="cursorDesign"><option value="A">A · Blinkender Strich</option><option value="B">B · Strich + blauer Fokus</option><option value="C">C · Erst nach Antippen</option></select></label>
+        <label>Rückgängig anzeigen <select id="undoSeconds"><option value="3">3 Sekunden</option><option value="4" selected>4 Sekunden</option><option value="5">5 Sekunden</option><option value="6">6 Sekunden</option></select></label>
+      </div>
+    </section>
     <div class="mobiletabs" id="compareTabs"><strong style="font-size:12px">Ansicht:</strong><button class="btn" id="tabOriginal" aria-pressed="true">Original</button><button class="btn" id="tabVariant" aria-pressed="false">Variante</button></div>
     <div class="frames" id="compareFrames">
       <article class="framecard" id="frameOriginal"><div class="framehead"><strong>Original · echte KGG-App</strong><span class="tag original">Unverändert</span></div><p class="framenote">Originale HTML-, CSS- und JavaScript-Oberfläche – keine Nachzeichnung.</p><div class="screenframe"><iframe id="original" title="KGG Original mit synthetischen Testdaten" sandbox="allow-scripts" referrerpolicy="no-referrer"></iframe><div class="loading" id="loadingOriginal">Original-App wird geladen …</div></div></article>
@@ -137,7 +168,7 @@ const BASE_URL='https://kayus24.github.io/kgg/';
 const STAGES=[['overview','Übersicht'],['expanded','Übung geöffnet'],['numpad','Numpad'],['pain','Schmerz'],['completed','Wert bestätigt'],['qr','QR-Vorschau']];
 const fixture={v:1,i:'ui-studio-only-synthetic-20261118',t:'UI-Studio Testplan',d:6,stepDays:1,extendDays:true,p:{name:'Synthetischer Test'},e:[['Beinpresse',3,'BI','kg','Wdh','40','10'],['Rudern',2,'BI','kg','Wdh','25','12'],['Kniebeuge',3,'BI','kg','Wdh','50','8']]};
 const $=id=>document.getElementById(id);
-const model={stage:'overview',mobile:'original',font:100,radius:100,space:100,touch:false,undo:false,source:'',generations:{original:0,variant:0},ready:{original:false,variant:false},applied:{original:false,variant:false}};
+const model={stage:'overview',mobile:'original',font:100,radius:100,space:100,touch:false,undo:false,clearDesign:'A',cursorDesign:'A',undoSeconds:4,source:'',generations:{original:0,variant:0},ready:{original:false,variant:false},applied:{original:false,variant:false}};
 let statusTimeout;
 const boardState={mode:'compare',side:'variant',entries:new Map(),observer:null,queue:[],active:0,epoch:0};
 let focusEntry=null;
@@ -162,10 +193,154 @@ function sandboxBridge(side,slot=side){
   const tick=()=>new Promise(done=>requestAnimationFrame(()=>requestAnimationFrame(done)));
   const doc=()=>document;
   let activeStage='overview',lastConfig={},lastUndoValue=null,pendingUndo=null,committedUndo=null;
-  const UNDO_VISIBLE_MS=6000; // brief, accessible review window; preview only
+  const UNDO_VISIBLE_MS=4000; // default preview duration, adjustable in controls
   let undoTimer=null;
+  // Synthetic preview only: real caret/selection with KGG's original keypad and draft API.
+  // The original iframe and production application are never modified.
+  let padUi=null, padHooksInstalled=false, longPressTimer=null, didLongPress=false, ignoreNextBack=false;
+  function padApi(){return window.__kggPadDraftApi}
+  function ensurePadUi(){
+    if(padUi&&padUi.editor.isConnected)return padUi;
+    const display=doc().getElementById('padVal'),grid=doc().querySelector('#pad .padGrid');
+    if(!display||!grid)return null;
+    const row=doc().createElement('div');row.id='kggStudioPadEditRow';
+    row.style.cssText='position:relative;margin:0 0 9px;min-height:76px';
+    display.parentNode.insertBefore(row,display);row.appendChild(display);
+    display.style.visibility='hidden';
+    const editor=doc().createElement('input');
+    editor.id='kggStudioPadEditor';
+    editor.type='text';editor.inputMode='none';editor.autocomplete='off';editor.spellcheck=false;
+    editor.setAttribute('aria-label','Zahl eingeben, antippen um Cursor zu versetzen');
+    editor.style.cssText='position:absolute;inset:0;width:100%;height:100%;box-sizing:border-box;min-height:76px;border-radius:15px;border:1px solid #cbd5e1;background:#fff;color:#111827;font:800 36px/1.2 system-ui;text-align:center;caret-color:#2563eb;outline:none;padding:8px 43px';
+    row.appendChild(editor);
+    const clearInline=doc().createElement('button');clearInline.type='button';
+    clearInline.id='kggStudioClearInline';clearInline.textContent='×';
+    clearInline.setAttribute('aria-label','Ganzen Wert löschen');
+    clearInline.style.cssText='position:absolute;right:5px;top:50%;transform:translateY(-50%);border:0;border-radius:100%;width:38px;height:38px;background:#e2e8f0;color:#475569;font-size:23px;font-weight:600;z-index:2;cursor:pointer';
+    row.appendChild(clearInline);
+    const wide=doc().createElement('button');wide.id='kggStudioClearWide';wide.type='button';
+    wide.textContent='✕  Ganzen Wert löschen';
+    wide.style.cssText='width:100%;min-height:48px;border:1px solid #cbd5e1;border-radius:12px;background:#f8fafc;color:#334155;font:700 15px system-ui;margin:0 0 10px;cursor:pointer';
+    row.insertAdjacentElement('afterend',wide);
+    const gridClear=doc().createElement('button');gridClear.id='kggStudioClearGrid';gridClear.type='button';
+    gridClear.textContent='C';gridClear.setAttribute('aria-label','Ganzen Wert löschen');
+    gridClear.style.cssText='background:#dbeafe;color:#1d4ed8;font:800 23px system-ui;min-height:58px;border:0;border-radius:15px;cursor:pointer';
+    grid.appendChild(gridClear);
+    const back=Array.from(grid.querySelectorAll('button')).find(b=>b.getAttribute('onclick')==='padBack()');
+    const clear=()=>{
+      editor.value='';
+      editor.focus({preventScroll:true});editor.setSelectionRange(0,0);
+      padApi()?.setValue('0'); // original KGG draft convention; blank display is a preview edit state
+      window.__kggNumpadEditingApi?.markDirty?.();
+      editor.value='';editor.setSelectionRange(0,0);
+    };
+    clearInline.addEventListener('click',clear);wide.addEventListener('click',clear);gridClear.addEventListener('click',clear);
+    editor.addEventListener('input',()=>{
+      const start=editor.selectionStart||0;
+      const clean=editor.value.replace(/[^0-9,]/g,'').replace(/,(?=.*?,)/g,'').slice(0,8);
+      if(clean!==editor.value){editor.value=clean;editor.setSelectionRange(Math.min(start,clean.length),Math.min(start,clean.length))}
+      padApi()?.setValue(editor.value||'0');
+      window.__kggNumpadEditingApi?.markDirty?.();
+    });
+    editor.addEventListener('focus',()=>{editor.style.caretColor='#2563eb'});
+    editor.addEventListener('blur',()=>{if((padUi?.cfg?.cursorDesign||'A')==='C')editor.style.caretColor='transparent'});
+    if(back){
+      back.addEventListener('pointerdown',()=>{
+        if((padUi?.cfg?.clearDesign||'A')!=='D')return;
+        didLongPress=false;
+        clearTimeout(longPressTimer);
+        longPressTimer=setTimeout(()=>{didLongPress=true;ignoreNextBack=true;clear();},550);
+      });
+      for(const kind of ['pointerup','pointercancel','pointerleave'])back.addEventListener(kind,()=>clearTimeout(longPressTimer));
+    }
+    padUi={row,editor,clearInline,wide,gridClear,back,grid,cfg:{clearDesign:'A',cursorDesign:'A'}};
+    if(!doc().getElementById('pad')?.classList.contains('hide')){
+      const draft=padApi()?.getValue?.()||'0';
+      editor.value=draft;
+      editor.setSelectionRange(draft.length,draft.length);
+    }
+    return padUi;
+  }
+  function syncEditorOnOpen(){
+    const ui=ensurePadUi();if(!ui)return;
+    const value=padApi()?.getValue?.()||'0';
+    ui.editor.value=value;
+    const at=value.length;
+    if((ui.cfg.cursorDesign||'A')==='C'){ui.editor.blur();ui.editor.style.caretColor='transparent';}
+    else {ui.editor.focus({preventScroll:true});ui.editor.setSelectionRange(at,at);}
+  }
+  function applyPadDesign(cfg){
+    const ui=ensurePadUi();if(!ui)return;
+    ui.cfg={clearDesign:cfg.clearDesign||'A',cursorDesign:cfg.cursorDesign||'A'};
+    ui.clearInline.hidden=ui.cfg.clearDesign!=='A';
+    ui.clearInline.style.display=ui.cfg.clearDesign==='A'?'block':'none';
+    ui.wide.style.display=ui.cfg.clearDesign==='C'?'block':'none';
+    ui.gridClear.style.display=ui.cfg.clearDesign==='B'?'block':'none';
+    ui.gridClear.style.gridColumn=ui.cfg.clearDesign==='B'?'span 3':'auto';
+    ui.editor.style.boxShadow=ui.cfg.cursorDesign==='B'?'inset 0 0 0 2px #bfdbfe,0 0 0 3px #dbeafe':'none';
+    ui.editor.style.borderColor=ui.cfg.cursorDesign==='B'?'#2563eb':'#cbd5e1';
+    ui.editor.style.paddingRight=ui.cfg.clearDesign==='A'?'48px':'18px';
+    if(ui.cfg.cursorDesign==='C'){ui.editor.blur();ui.editor.style.caretColor='transparent';}
+    else {ui.editor.style.caretColor='#2563eb';if(!doc().getElementById('pad')?.classList.contains('hide')&&doc().activeElement!==ui.editor)ui.editor.focus({preventScroll:true});}
+  }
+  function editAtCursor(kind,arg){
+    const ui=ensurePadUi(),e=ui?.editor;
+    if(!e||doc().getElementById('pad')?.classList.contains('hide'))return false;
+    let str=e.value,start=e.selectionStart??str.length,end=e.selectionEnd??start,caret=start;
+    if(kind==='digit'){
+      if(str==='0'&&start===end&&start===1){str='';start=end=0;}
+      if(arg===','&&str.includes(',')&&!str.slice(start,end).includes(','))return true;
+      if(str.length-(end-start)>=8)return true;
+      str=str.slice(0,start)+arg+str.slice(end);caret=start+arg.length;
+    }else if(kind==='back'){
+      if(start===end&&start>0)start--;
+      str=str.slice(0,start)+str.slice(end);caret=start;
+    }else if(kind==='last'){
+      str=String(arg||'0');caret=str.length;
+    }
+    padApi()?.setValue(str||'0');
+    window.__kggNumpadEditingApi?.markDirty?.();
+    e.value=str;
+    e.focus({preventScroll:true});
+    e.setSelectionRange(caret,caret);
+    return true;
+  }
+  function installPadHooks(){
+    if(padHooksInstalled||side!=='variant')return;
+    padHooksInstalled=true;
+    const open=window.openPad;
+    if(typeof open==='function')window.openPad=function(){
+      const x=open.apply(this,arguments);syncEditorOnOpen();return x;
+    };
+    const press=window.padPress;
+    if(typeof press==='function')window.padPress=function(digit){if(editAtCursor('digit',String(digit)))return;return press.apply(this,arguments)};
+    const back=window.padBack;
+    if(typeof back==='function')window.padBack=function(){
+      if(ignoreNextBack){ignoreNextBack=false;return;}
+      if(editAtCursor('back'))return;
+      return back.apply(this,arguments);
+    };
+    const last=window.padUseLast;
+    if(typeof last==='function')window.padUseLast=function(){
+      const v=padApi()?.getLast?.();
+      if(v!=null&&v!==''&&editAtCursor('last',v))return;
+      return last.apply(this,arguments);
+    };
+    const close=window.closePad;
+    if(typeof close==='function')window.closePad=function(){
+      const out=close.apply(this,arguments);
+      padUi?.editor.blur();
+      return out;
+    };
+  }
+  function configurePad(cfg){
+    if(side!=='variant')return;
+    installPadHooks();
+    applyPadDesign(cfg);
+  }
   function setCss(cfg){
     lastConfig=cfg;
+    if(side==='variant')configurePad(cfg);
     const rules=[];
     if(cfg.font!==100){const s=cfg.font/100;rules.push(`.card h1{font-size:${(24*s).toFixed(2)}px!important}.card h2{font-size:${(18*s).toFixed(2)}px!important}.ex h3{font-size:${(17*s).toFixed(2)}px!important}.muted,.padTitle{font-size:${(13*s).toFixed(2)}px!important}.num{font-size:${(17*s).toFixed(2)}px!important}`)}
     if(cfg.radius!==100){const s=cfg.radius/100;rules.push(`.card{border-radius:${(18*s).toFixed(2)}px!important}.ex{border-radius:${(16*s).toFixed(2)}px!important}.num{border-radius:${(12*s).toFixed(2)}px!important}`)}
@@ -259,7 +434,7 @@ function sandboxBridge(side,slot=side){
       committedUndo=null;
       pendingUndo=null;
       clearUndo();
-    },UNDO_VISIBLE_MS);
+    },Math.max(3000,Math.min(6000,Number(lastConfig.undoSeconds||4)*1000)));
   }
   // Integrate with the actual KGG input lifecycle rather than a synthetic
   // visual state. Wrappers exist ONLY in this opaque-origin demo iframe.
@@ -344,7 +519,7 @@ function safeSource(html,side,slot=side){
   const bridge=script('('+sandboxBridge.toString()+')('+JSON.stringify(side)+','+JSON.stringify(slot)+');');
   return html.replace(/<head\b[^>]*>/i,tag=>tag+'<base href="'+BASE_URL+'">'+shim).replace(/<\/body>/i,bridge+'</body>');
 }
-function config(){return {font:model.font,radius:model.radius,space:model.space,touch:model.touch,undo:model.undo}}
+function config(){return {font:model.font,radius:model.radius,space:model.space,touch:model.touch,undo:model.undo,clearDesign:model.clearDesign,cursorDesign:model.cursorDesign,undoSeconds:model.undoSeconds}}
 function send(side,command,payload={}){const frame=$(side);frame.contentWindow?.postMessage({channel:'kgg-studio-command-v2',command,...payload},'*')}
 function mobile(){const single=matchMedia('(max-width:700px)').matches;$('frameOriginal').hidden=single&&model.mobile!=='original';$('frameVariant').hidden=single&&model.mobile!=='variant';$('tabOriginal').setAttribute('aria-pressed',String(model.mobile==='original'));$('tabVariant').setAttribute('aria-pressed',String(model.mobile==='variant'))}
 function stages(){const nav=$('stageNav');nav.innerHTML=STAGES.map(([id,name],i)=>'<button type="button" class="stage" data-stage="'+id+'" aria-pressed="'+String(id===model.stage)+'"><span>'+(i+1)+'</span>'+name+'</button>').join('');nav.addEventListener('click',e=>{const b=e.target.closest('[data-stage]');if(!b)return;model.stage=b.dataset.stage;stagesPressed();startPair()})}
@@ -581,7 +756,8 @@ for(const [id,prop,valueId] of [['font','font','fontVal'],['radius','radius','ra
   $(id).addEventListener('input',()=>{model[prop]=Number($(id).value);$(valueId).textContent=model[prop]+' %';sendConfig()});
 }
 for(const id of ['touch','undo']){$(id).addEventListener('change',()=>{model[id]=$(id).checked;sendConfig()})}
-$('reset').addEventListener('click',()=>{Object.assign(model,{font:100,radius:100,space:100,touch:false,undo:false});for(const id of ['font','radius','space']){$(id).value=100;$(id+'Val').textContent='100 %'}$('touch').checked=false;$('undo').checked=false;sendConfig();toast('Variante zurückgesetzt')});
+$('reset').addEventListener('click',()=>{Object.assign(model,{font:100,radius:100,space:100,touch:false,undo:false,clearDesign:'A',cursorDesign:'A',undoSeconds:4});
+  document.querySelector('input[name="clearDesign"][value="A"]').checked=true;$('cursorDesign').value='A';$('undoSeconds').value='4';for(const id of ['font','radius','space']){$(id).value=100;$(id+'Val').textContent='100 %'}$('touch').checked=false;$('undo').checked=false;sendConfig();toast('Variante zurückgesetzt')});
 $('reload').addEventListener('click',load);
 function feedback(){return 'KGG Patienten-App · Original-UI-Studio\nOriginalquelle: '+SOURCE_URL+'\nModus: '+boardState.mode+' / '+boardState.side+'\nZustand: '+STAGES.find(s=>s[0]===model.stage)?.[1]+'\nSchrift: '+model.font+' %, Ecken: '+model.radius+' %, Abstand: '+model.space+' %, große Touchflächen: '+model.touch+', Rückgängig-Vorschau: '+model.undo+'\nÄnderungswünsche:\n'+$('feedback').value}
 async function copyFeedback(){const txt=feedback();try{await navigator.clipboard.writeText(txt);toast('Feedback kopiert')}catch{const el=document.createElement('textarea');el.value=txt;document.body.append(el);el.select();document.execCommand('copy');el.remove();toast('Feedback kopiert')}}
@@ -597,6 +773,18 @@ $('focusDialog').addEventListener('close',()=>{focusEntry=null;$('focusFrame').r
 $('fullscreenToggle').addEventListener('click',toggleFullscreen);
 document.addEventListener('fullscreenchange',updateFullscreenUi);
 document.addEventListener('fullscreenerror',()=>{$('fullscreenHelp').hidden=false;$('fullscreenHelp').textContent='Dieser Browser konnte den Vollbildmodus nicht öffnen.'});
+
+for(const radio of document.querySelectorAll('input[name="clearDesign"]')){
+  radio.addEventListener('change',()=>{
+    if(!radio.checked)return;
+    model.clearDesign=radio.value;sendConfig();
+    if(boardState.mode==='compare'&&model.stage!=='numpad'){model.stage='numpad';stagesPressed();startPair();}
+    if(matchMedia('(max-width:700px)').matches){model.mobile='variant';mobile();}
+  });
+}
+$('cursorDesign').addEventListener('change',()=>{model.cursorDesign=$('cursorDesign').value;sendConfig();if(boardState.mode==='compare'&&model.stage!=='numpad'){model.stage='numpad';stagesPressed();startPair();}});
+$('undoSeconds').addEventListener('change',()=>{model.undoSeconds=Number($('undoSeconds').value);sendConfig();});
+$('openPadPreview').addEventListener('click',()=>{model.stage='numpad';stagesPressed();startPair();if(matchMedia('(max-width:700px)').matches){model.mobile='variant';mobile();}});
 stages();mobile();setMode('compare');updateFullscreenUi();load();
 </script>
 </body>
