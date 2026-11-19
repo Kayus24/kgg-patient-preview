@@ -186,7 +186,14 @@ function sandboxBridge(side,slot=side){
     doc().addEventListener('click',event=>{
       const target=event.target;
       if(!target||typeof target.closest!=='function')return;
-      const input=target.closest('#list .ex input.num');
+      // The real KGG compact layout routes finger taps through a transparent proxy.
+      // Capture the paired input BEFORE the original proxy click handler opens the pad.
+      const proxy=target.closest('#list .ex .kggCompactTapProxy');
+      const pair=proxy?.parentElement;
+      const candidate=proxy?[...pair.querySelectorAll('input.num')].find(el=>{
+        const m=fieldMeta(el);return m&&m.key===proxy.dataset.kggKey;
+      }):null;
+      const input=candidate||target.closest('#list .ex input.num');
       if(input){
         pendingUndo={input,previous:input.value,meta:fieldMeta(input)};
         committedUndo=null;clearUndo();
