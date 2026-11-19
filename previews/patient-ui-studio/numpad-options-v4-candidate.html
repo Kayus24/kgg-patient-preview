@@ -231,6 +231,7 @@ function sandboxBridge(side,slot=side){
       editor.value='';
       editor.focus({preventScroll:true});editor.setSelectionRange(0,0);
       padApi()?.setValue('0'); // original KGG draft convention; blank display is a preview edit state
+      window.__kggNumpadEditingApi?.markDirty?.();
       editor.value='';editor.setSelectionRange(0,0);
     };
     clearInline.addEventListener('click',clear);wide.addEventListener('click',clear);gridClear.addEventListener('click',clear);
@@ -239,6 +240,7 @@ function sandboxBridge(side,slot=side){
       const clean=editor.value.replace(/[^0-9,]/g,'').replace(/,(?=.*?,)/g,'').slice(0,8);
       if(clean!==editor.value){editor.value=clean;editor.setSelectionRange(Math.min(start,clean.length),Math.min(start,clean.length))}
       padApi()?.setValue(editor.value||'0');
+      window.__kggNumpadEditingApi?.markDirty?.();
     });
     editor.addEventListener('focus',()=>{editor.style.caretColor='#2563eb'});
     editor.addEventListener('blur',()=>{if((padUi?.cfg?.cursorDesign||'A')==='C')editor.style.caretColor='transparent'});
@@ -252,6 +254,11 @@ function sandboxBridge(side,slot=side){
       for(const kind of ['pointerup','pointercancel','pointerleave'])back.addEventListener(kind,()=>clearTimeout(longPressTimer));
     }
     padUi={row,editor,clearInline,wide,gridClear,back,grid,cfg:{clearDesign:'A',cursorDesign:'A'}};
+    if(!doc().getElementById('pad')?.classList.contains('hide')){
+      const draft=padApi()?.getValue?.()||'0';
+      editor.value=draft;
+      editor.setSelectionRange(draft.length,draft.length);
+    }
     return padUi;
   }
   function syncEditorOnOpen(){
@@ -292,6 +299,7 @@ function sandboxBridge(side,slot=side){
       str=String(arg||'0');caret=str.length;
     }
     padApi()?.setValue(str||'0');
+    window.__kggNumpadEditingApi?.markDirty?.();
     e.value=str;
     e.focus({preventScroll:true});
     e.setSelectionRange(caret,caret);
