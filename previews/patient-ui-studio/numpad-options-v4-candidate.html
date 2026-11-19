@@ -195,6 +195,141 @@ function sandboxBridge(side,slot=side){
   let activeStage='overview',lastConfig={},lastUndoValue=null,pendingUndo=null,committedUndo=null;
   const UNDO_VISIBLE_MS=4000; // default preview duration, adjustable in controls
   let undoTimer=null;
+  // Synthetic preview only: real caret/selection with KGG's original keypad and draft API.
+  // The original iframe and production application are never modified.
+  let padUi=null, padHooksInstalled=false, longPressTimer=null, didLongPress=false, ignoreNextBack=false;
+  function padApi(){return window.__kggPadDraftApi}
+  function ensurePadUi(){
+    if(padUi&&padUi.editor.isConnected)return padUi;
+    const display=doc().getElementById('padVal'),grid=doc().querySelector('#pad .padGrid');
+    if(!display||!grid)return null;
+    const row=doc().createElement('div');row.id='kggStudioPadEditRow';
+    row.style.cssText='position:relative;margin:0 0 9px;min-height:76px';
+    display.parentNode.insertBefore(row,display);row.appendChild(display);
+    display.style.visibility='hidden';
+    const editor=doc().createElement('input');
+    editor.id='kggStudioPadEditor';
+    editor.type='text';editor.inputMode='none';editor.autocomplete='off';editor.spellcheck=false;
+    editor.setAttribute('aria-label','Zahl eingeben, antippen um Cursor zu versetzen');
+    editor.style.cssText='position:absolute;inset:0;width:100%;height:100%;box-sizing:border-box;min-height:76px;border-radius:15px;border:1px solid #cbd5e1;background:#fff;color:#111827;font:800 36px/1.2 system-ui;text-align:center;caret-color:#2563eb;outline:none;padding:8px 43px';
+    row.appendChild(editor);
+    const clearInline=doc().createElement('button');clearInline.type='button';
+    clearInline.id='kggStudioClearInline';clearInline.textContent='×';
+    clearInline.setAttribute('aria-label','Ganzen Wert löschen');
+    clearInline.style.cssText='position:absolute;right:5px;top:50%;transform:translateY(-50%);border:0;border-radius:100%;width:38px;height:38px;background:#e2e8f0;color:#475569;font-size:23px;font-weight:600;z-index:2;cursor:pointer';
+    row.appendChild(clearInline);
+    const wide=doc().createElement('button');wide.id='kggStudioClearWide';wide.type='button';
+    wide.textContent='✕  Ganzen Wert löschen';
+    wide.style.cssText='width:100%;min-height:48px;border:1px solid #cbd5e1;border-radius:12px;background:#f8fafc;color:#334155;font:700 15px system-ui;margin:0 0 10px;cursor:pointer';
+    row.insertAdjacentElement('afterend',wide);
+    const gridClear=doc().createElement('button');gridClear.id='kggStudioClearGrid';gridClear.type='button';
+    gridClear.textContent='C';gridClear.setAttribute('aria-label','Ganzen Wert löschen');
+    gridClear.style.cssText='background:#dbeafe;color:#1d4ed8;font:800 23px system-ui;min-height:58px;border:0;border-radius:15px;cursor:pointer';
+    grid.appendChild(gridClear);
+    const back=Array.from(grid.querySelectorAll('button')).find(b=>b.getAttribute('onclick')==='padBack()');
+    const clear=()=>{
+      editor.value='';
+      editor.focus({preventScroll:true});editor.setSelectionRange(0,0);
+      padApi()?.setValue('0'); // original KGG draft convention; blank display is a preview edit state
+      editor.value='';editor.setSelectionRange(0,0);
+    };
+    clearInline.addEventListener('click',clear);wide.addEventListener('click',clear);gridClear.addEventListener('click',clear);
+    editor.addEventListener('input',()=>{
+      const start=editor.selectionStart||0;
+      const clean=editor.value.replace(/[^0-9,]/g,'').replace(/,(?=.*?,)/g,'').slice(0,8);
+      if(clean!==editor.value){editor.value=clean;editor.setSelectionRange(Math.min(start,clean.length),Math.min(start,clean.length))}
+      padApi()?.setValue(editor.value||'0');
+    });
+    editor.addEventListener('focus',()=>{editor.style.caretColor='#2563eb'});
+    editor.addEventListener('blur',()=>{if((padUi?.cfg?.cursorDesign||'A')==='C')editor.style.caretColor='transparent'});
+    if(back){
+      back.addEventListener('pointerdown',()=>{
+        if((padUi?.cfg?.clearDesign||'A')!=='D')return;
+        didLongPress=false;
+        clearTimeout(longPressTimer);
+        longPressTimer=setTimeout(()=>{didLongPress=true;ignoreNextBack=true;clear();},550);
+      });
+      for(const kind of ['pointerup','pointercancel','pointerleave'])back.addEventListener(kind,()=>clearTimeout(longPressTimer));
+    }
+    padUi={row,editor,clearInline,wide,gridClear,back,grid,cfg:{clearDesign:'A',cursorDesign:'A'}};
+    return padUi;
+  }
+  function syncEditorOnOpen(){
+    const ui=ensurePadUi();if(!ui)return;
+    const value=padApi()?.getValue?.()||'0';
+    ui.editor.value=value;
+    const at=value.length;
+    if((ui.cfg.cursorDesign||'A')==='C'){ui.editor.blur();ui.editor.style.caretColor='transparent';}
+    else {ui.editor.focus({preventScroll:true});ui.editor.setSelectionRange(at,at);}
+  }
+  function applyPadDesign(cfg){
+    const ui=ensurePadUi();if(!ui)return;
+    ui.cfg={clearDesign:cfg.clearDesign||'A',cursorDesign:cfg.cursorDesign||'A'};
+    ui.clearInline.hidden=ui.cfg.clearDesign!=='A';
+    ui.clearInline.style.display=ui.cfg.clearDesign==='A'?'block':'none';
+    ui.wide.style.display=ui.cfg.clearDesign==='C'?'block':'none';
+    ui.gridClear.style.display=ui.cfg.clearDesign==='B'?'block':'none';
+    ui.gridClear.style.gridColumn=ui.cfg.clearDesign==='B'?'span 3':'auto';
+    ui.editor.style.boxShadow=ui.cfg.cursorDesign==='B'?'inset 0 0 0 2px #bfdbfe,0 0 0 3px #dbeafe':'none';
+    ui.editor.style.borderColor=ui.cfg.cursorDesign==='B'?'#2563eb':'#cbd5e1';
+    ui.editor.style.paddingRight=ui.cfg.clearDesign==='A'?'48px':'18px';
+    if(ui.cfg.cursorDesign==='C'){ui.editor.blur();ui.editor.style.caretColor='transparent';}
+    else {ui.editor.style.caretColor='#2563eb';if(!doc().getElementById('pad')?.classList.contains('hide')&&doc().activeElement!==ui.editor)ui.editor.focus({preventScroll:true});}
+  }
+  function editAtCursor(kind,arg){
+    const ui=ensurePadUi(),e=ui?.editor;
+    if(!e||doc().getElementById('pad')?.classList.contains('hide'))return false;
+    let str=e.value,start=e.selectionStart??str.length,end=e.selectionEnd??start,caret=start;
+    if(kind==='digit'){
+      if(str==='0'&&start===end&&start===1){str='';start=end=0;}
+      if(arg===','&&str.includes(',')&&!str.slice(start,end).includes(','))return true;
+      if(str.length-(end-start)>=8)return true;
+      str=str.slice(0,start)+arg+str.slice(end);caret=start+arg.length;
+    }else if(kind==='back'){
+      if(start===end&&start>0)start--;
+      str=str.slice(0,start)+str.slice(end);caret=start;
+    }else if(kind==='last'){
+      str=String(arg||'0');caret=str.length;
+    }
+    padApi()?.setValue(str||'0');
+    e.value=str;
+    e.focus({preventScroll:true});
+    e.setSelectionRange(caret,caret);
+    return true;
+  }
+  function installPadHooks(){
+    if(padHooksInstalled||side!=='variant')return;
+    padHooksInstalled=true;
+    const open=window.openPad;
+    if(typeof open==='function')window.openPad=function(){
+      const x=open.apply(this,arguments);syncEditorOnOpen();return x;
+    };
+    const press=window.padPress;
+    if(typeof press==='function')window.padPress=function(digit){if(editAtCursor('digit',String(digit)))return;return press.apply(this,arguments)};
+    const back=window.padBack;
+    if(typeof back==='function')window.padBack=function(){
+      if(ignoreNextBack){ignoreNextBack=false;return;}
+      if(editAtCursor('back'))return;
+      return back.apply(this,arguments);
+    };
+    const last=window.padUseLast;
+    if(typeof last==='function')window.padUseLast=function(){
+      const v=padApi()?.getLast?.();
+      if(v!=null&&v!==''&&editAtCursor('last',v))return;
+      return last.apply(this,arguments);
+    };
+    const close=window.closePad;
+    if(typeof close==='function')window.closePad=function(){
+      const out=close.apply(this,arguments);
+      padUi?.editor.blur();
+      return out;
+    };
+  }
+  function configurePad(cfg){
+    if(side!=='variant')return;
+    installPadHooks();
+    applyPadDesign(cfg);
+  }
   function setCss(cfg){
     lastConfig=cfg;
     if(side==='variant')configurePad(cfg);
