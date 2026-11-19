@@ -212,6 +212,9 @@ function sandboxBridge(side,slot=side){
           const pad=doc().getElementById('pad');
           if(pad&&!pad.classList.contains('hide'))return;
           if(record.input.value===record.previous)return;
+          // The original KGG closePad hook may already have committed this entry.
+          // Do not replace its undo record: the dismissal timer is tied to it.
+          if(committedUndo)return;
           committedUndo={...record,after:record.input.value};
           updateUndo(lastConfig);
         },85);
