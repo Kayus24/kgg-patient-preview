@@ -162,6 +162,8 @@ function sandboxBridge(side,slot=side){
   const tick=()=>new Promise(done=>requestAnimationFrame(()=>requestAnimationFrame(done)));
   const doc=()=>document;
   let activeStage='overview',lastConfig={},lastUndoValue=null,pendingUndo=null,committedUndo=null;
+  const UNDO_VISIBLE_MS=6000; // brief, accessible review window; preview only
+  let undoTimer=null;
   function setCss(cfg){
     lastConfig=cfg;
     const rules=[];
@@ -181,7 +183,10 @@ function sandboxBridge(side,slot=side){
     const match=code.match(/ei:(\d+),s:(\d+),side:'([BLR]+)',key:'([ab])'/);
     return match?{ei:Number(match[1]),s:Number(match[2]),side:match[3],key:match[4]}:null;
   }
-  function clearUndo(){doc().getElementById('kggStudioUndoBanner')?.remove();}
+  function clearUndo(){
+    if(undoTimer!==null){clearTimeout(undoTimer);undoTimer=null;}
+    doc().getElementById('kggStudioUndoBanner')?.remove();
+  }
   if(side==='variant'){
     doc().addEventListener('click',event=>{
       const target=event.target;
@@ -207,6 +212,9 @@ function sandboxBridge(side,slot=side){
           const pad=doc().getElementById('pad');
           if(pad&&!pad.classList.contains('hide'))return;
           if(record.input.value===record.previous)return;
+          // The original KGG closePad hook may already have committed this entry.
+          // Do not replace its undo record: the dismissal timer is tied to it.
+          if(committedUndo)return;
           committedUndo={...record,after:record.input.value};
           updateUndo(lastConfig);
         },85);
@@ -215,27 +223,43 @@ function sandboxBridge(side,slot=side){
   }
   function updateUndo(cfg){
     const banner=doc().getElementById('kggStudioUndoBanner');
-    if(side!=='variant'||!cfg.undo||!committedUndo){banner?.remove();return;}
-    if(banner)return;
+    if(side!=='variant'||!cfg.undo||!committedUndo){
+      clearUndo();
+      if(!cfg.undo)committedUndo=null;
+      return;
+    }
+    if(banner)return; // changing a design slider must not restart the timer
+    const record=committedUndo;
     const node=doc().createElement('div');
     node.id='kggStudioUndoBanner';
     node.setAttribute('role','status');
-    node.style.cssText='position:fixed;z-index:9997;left:12px;right:12px;bottom:14px;padding:12px 14px;border-radius:14px;background:#11233f;color:white;display:flex;align-items:center;justify-content:space-between;gap:10px;box-shadow:0 12px 28px #0b1b3a55;font:700 14px system-ui';
-    const label=doc().createElement('span');label.textContent='Wert '+committedUndo.after+' übernommen';
+    node.style.cssText='position:fixed;z-index:9997;left:50%;transform:translateX(-50%);bottom:max(10px,env(safe-area-inset-bottom));width:max-content;max-width:calc(100% - 20px);padding:5px 5px 5px 12px;border:1px solid #cbd5e1;border-radius:999px;background:#f8fafcf2;color:#334155;display:flex;align-items:center;gap:8px;box-shadow:0 3px 12px #0f172a20;font:600 12px/1.3 system-ui';
+    const label=doc().createElement('span');
+    label.textContent='✓ Gespeichert';
+    label.style.whiteSpace='nowrap';
     const button=doc().createElement('button');
-    button.type='button';button.textContent='↶ Rückgängig';
-    button.style.cssText='border:0;border-radius:11px;background:white;color:#132441;padding:10px 12px;min-height:44px;font-weight:800';
+    button.type='button';
+    button.textContent='↶ Rückgängig';
+    button.style.cssText='border:0;border-radius:999px;background:#eaf1ff;color:#1d4ed8;padding:8px 12px;min-height:44px;font:700 12px/1.3 system-ui;white-space:nowrap;cursor:pointer';
     button.addEventListener('click',()=>{
       const item=committedUndo;
-      if(!item||!item.meta||typeof window.put!=='function')return;
+      if(!item||item!==record||!item.meta||typeof window.put!=='function')return;
       try{
         window.put(item.meta.ei,item.meta.s,item.meta.side,item.meta.key,item.previous);
         if(item.input.isConnected)item.input.value=item.previous;
-        committedUndo=null;pendingUndo=null;node.remove();
+        committedUndo=null;pendingUndo=null;
+        clearUndo();
         send('undo-demo',{restored:item.previous});
       }catch(e){send('error',{message:'Rückgängig nicht möglich: '+e.message})}
     });
-    node.append(label,button);doc().body.appendChild(node);
+    node.append(label,button);
+    doc().body.appendChild(node);
+    undoTimer=setTimeout(()=>{
+      if(committedUndo!==record)return;
+      committedUndo=null;
+      pendingUndo=null;
+      clearUndo();
+    },UNDO_VISIBLE_MS);
   }
   // Integrate with the actual KGG input lifecycle rather than a synthetic
   // visual state. Wrappers exist ONLY in this opaque-origin demo iframe.
