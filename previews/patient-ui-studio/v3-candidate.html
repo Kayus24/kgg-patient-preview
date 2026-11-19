@@ -237,6 +237,33 @@ function sandboxBridge(side,slot=side){
     });
     node.append(label,button);doc().body.appendChild(node);
   }
+  // Integrate with the actual KGG input lifecycle rather than a synthetic
+  // visual state. Wrappers exist ONLY in this opaque-origin demo iframe.
+  if(side==='variant'){
+    const originalOpenPad=window.openPad;
+    if(typeof originalOpenPad==='function'){
+      window.openPad=function(input,meta){
+        if(input&&meta&&typeof input.value!=='undefined'){
+          pendingUndo={input,previous:input.value,meta};
+          committedUndo=null;
+          clearUndo();
+        }
+        return originalOpenPad.apply(this,arguments);
+      };
+    }
+    const originalClosePad=window.closePad;
+    if(typeof originalClosePad==='function'){
+      window.closePad=function(accepted){
+        const record=pendingUndo;
+        const result=originalClosePad.apply(this,arguments);
+        if(accepted&&record&&record.meta&&record.input.value!==record.previous){
+          committedUndo={...record,after:record.input.value};
+          updateUndo(lastConfig);
+        }
+        return result;
+      };
+    }
+  }
   async function setStage(stage,cfg={}){
     activeStage=stage;
     try{
