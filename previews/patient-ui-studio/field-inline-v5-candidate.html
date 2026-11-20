@@ -255,6 +255,11 @@ function sandboxBridge(side,slot=side){
     if(padUi&&padUi.editor.isConnected)return padUi;
     const display=doc().getElementById('padVal'),grid=doc().querySelector('#pad .padGrid');
     if(!display||!grid)return null;
+    if(!doc().getElementById('kggStudioInlineFieldCss')){
+      const style=doc().createElement('style');style.id='kggStudioInlineFieldCss';
+      style.textContent='#pad #kggStudioPadEditRow{display:none!important}#pad #padVal{display:none!important}#pad #kggPadPair .kggPairField{position:relative!important}#pad #kggPadPair .kggStudioPadEditor{position:absolute!important;z-index:5;left:9px;top:20px;height:34px;min-height:0;width:calc(100% - 51px);box-sizing:border-box;font:900 22px/1.1 system-ui;color:#111827;caret-color:#2563eb;border:0;border-radius:5px;background:transparent;outline:none;text-align:left;padding:0}#pad.kggPadLargeUi #kggPadPair .kggStudioPadEditor{top:33px;height:47px;font-size:40px!important}#pad #kggPadPair .kggStudioClearExtra{position:absolute;right:4px;top:50%;transform:translateY(-40%);z-index:7;width:38px;height:40px;border:0;border-radius:11px;background:#e8eef7;color:#38516d;display:grid;place-items:center;cursor:pointer}#pad.kggPadLargeUi #kggPadPair .kggStudioClearExtra{width:42px;height:44px}#pad #kggPadPair .kggStudioPadEditor:focus{caret-color:#2563eb}';
+      doc().head.appendChild(style);
+    }
     const row=doc().createElement('div');row.id='kggStudioPadEditRow';
     row.style.cssText='position:relative;margin:0 0 9px;min-height:76px';
     display.parentNode.insertBefore(row,display);row.appendChild(display);
@@ -305,7 +310,7 @@ function sandboxBridge(side,slot=side){
       });
       for(const kind of ['pointerup','pointercancel','pointerleave'])back.addEventListener(kind,()=>clearTimeout(longPressTimer));
     }
-    padUi={row,editor,clearInline,wide,gridClear,back,grid,cfg:{clearDesign:'A',cursorDesign:'A'}};
+    padUi={row,editor,clearInline,wide,gridClear,back,grid,clear,cfg:{clearDesign:'K1',cursorDesign:'A'},activeKey:null};
     if(!doc().getElementById('pad')?.classList.contains('hide')){
       const draft=padApi()?.getValue?.()||'0';
       editor.value=draft;
@@ -313,27 +318,94 @@ function sandboxBridge(side,slot=side){
     }
     return padUi;
   }
+  const trashIcon='<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M5 6l1 15h12l1-15M10 10v7M14 10v7"/></svg>';
+  function mountPadEditor(){
+    const ui=ensurePadUi();if(!ui)return false;
+    const active=doc().querySelector('#kggPadPair .kggPairField.kggPairActive');
+    if(!active)return false;
+    const key=active.dataset.kggKey;
+    if(ui.editor.parentElement!==active){
+      doc().querySelectorAll('#kggPadPair .kggPairField').forEach(f=>{
+        const span=f.querySelector('.kggPairValue');if(span)span.style.visibility='';
+      });
+      active.appendChild(ui.editor);
+      active.appendChild(ui.clearInline);
+      ui.activeKey=key;
+    }
+    const value=active.querySelector('.kggPairValue');
+    if(value)value.style.visibility='hidden';
+    ui.clearInline.style.cssText='position:absolute;right:4px;top:50%;transform:translateY(-40%);z-index:7;width:38px;height:40px;border:0;border-radius:11px;background:#e8eef7;color:#38516d;font:800 23px system-ui;display:grid;place-items:center;cursor:pointer';
+    ui.editor.className='kggStudioPadEditor';
+    ui.editor.style.cssText='position:absolute;z-index:5;left:9px;top:20px;height:34px;min-height:0;width:calc(100% - 51px);box-sizing:border-box;font:900 22px/1.1 system-ui;color:#111827;caret-color:#2563eb;border:0;border-radius:5px;background:transparent;outline:none;text-align:left;padding:0';
+    return true;
+  }
+  function extraFieldClear(field){
+    let button=field.querySelector('.kggStudioClearExtra');
+    if(button)return button;
+    button=doc().createElement('button');button.className='kggStudioClearExtra';
+    button.type='button';button.setAttribute('aria-label','Gesamten Wert dieses Feldes löschen');
+    button.addEventListener('click',event=>{
+      event.preventDefault();event.stopPropagation();event.stopImmediatePropagation();
+      const ui=ensurePadUi();if(!ui)return;
+      const key=field.dataset.kggKey;
+      if(ui.activeKey!==key){
+        const input=field.__kggPairInput;
+        const meta=fieldMeta(input);
+        if(input&&meta)window.openPad(input,meta);
+      }
+      ui.clear();
+      ui.editor.focus({preventScroll:true});
+    });
+    field.appendChild(button);return button;
+  }
   function syncEditorOnOpen(){
     const ui=ensurePadUi();if(!ui)return;
+    if(!mountPadEditor())return;
     const value=padApi()?.getValue?.()||'0';
     ui.editor.value=value;
     const at=value.length;
     if((ui.cfg.cursorDesign||'A')==='C'){ui.editor.blur();ui.editor.style.caretColor='transparent';}
     else {ui.editor.focus({preventScroll:true});ui.editor.setSelectionRange(at,at);}
+    applyPadDesign(lastConfig);
   }
   function applyPadDesign(cfg){
     const ui=ensurePadUi();if(!ui)return;
-    ui.cfg={clearDesign:cfg.clearDesign||'A',cursorDesign:cfg.cursorDesign||'A'};
-    ui.clearInline.hidden=ui.cfg.clearDesign!=='A';
-    ui.clearInline.style.display=ui.cfg.clearDesign==='A'?'block':'none';
-    ui.wide.style.display=ui.cfg.clearDesign==='C'?'block':'none';
-    ui.gridClear.style.display=ui.cfg.clearDesign==='B'?'block':'none';
-    ui.gridClear.style.gridColumn=ui.cfg.clearDesign==='B'?'span 3':'auto';
-    ui.editor.style.boxShadow=ui.cfg.cursorDesign==='B'?'inset 0 0 0 2px #bfdbfe,0 0 0 3px #dbeafe':'none';
-    ui.editor.style.borderColor=ui.cfg.cursorDesign==='B'?'#2563eb':'#cbd5e1';
-    ui.editor.style.paddingRight=ui.cfg.clearDesign==='A'?'48px':'18px';
-    if(ui.cfg.cursorDesign==='C'){ui.editor.blur();ui.editor.style.caretColor='transparent';}
-    else {ui.editor.style.caretColor='#2563eb';if(!doc().getElementById('pad')?.classList.contains('hide')&&doc().activeElement!==ui.editor)ui.editor.focus({preventScroll:true});}
+    const clearDesign=cfg.clearDesign||'K1',cursorDesign=cfg.cursorDesign||'A';
+    ui.cfg={clearDesign,cursorDesign};
+    ui.gridClear.style.display=clearDesign==='B'?'block':'none';
+    ui.gridClear.style.gridColumn=clearDesign==='B'?'span 3':'auto';
+    if(clearDesign==='K5'){
+      ui.wide.textContent='×  Wert löschen';
+      ui.wide.style.cssText='display:block;align-self:flex-start;order:0;min-height:40px;min-width:140px;padding:7px 12px;margin:0 0 8px;border:1px solid #cbd5e1;border-radius:999px;background:#f8fafc;color:#38516d;font:700 12px system-ui;cursor:pointer';
+      doc().getElementById('kggPadPair')?.insertAdjacentElement('afterend',ui.wide);
+    }else{
+      ui.grid.insertAdjacentElement('afterend',ui.wide);
+      ui.wide.textContent='✕  Ganzen Wert löschen';
+      ui.wide.style.cssText='display:'+(clearDesign==='C'?'block':'none')+';width:100%;min-height:48px;border:1px solid #cbd5e1;border-radius:12px;background:#f8fafc;color:#334155;font:700 15px system-ui;margin:0 0 10px;cursor:pointer';
+    }
+    const padOpen=!doc().getElementById('pad')?.classList.contains('hide');
+    if(padOpen&&ui.editor.parentElement?.id==='kggStudioPadEditRow')mountPadEditor();
+    const isInline=['A','K1','K3','K4'].includes(clearDesign);
+    ui.clearInline.style.display=isInline?'grid':'none';
+    ui.clearInline.innerHTML=clearDesign==='K3'?trashIcon:'×';
+    ui.clearInline.setAttribute('aria-label','Gesamten Wert des aktiven Feldes löschen');
+    ui.clearInline.style.color=clearDesign==='K4'?'#1d4ed8':'#38516d';
+    ui.clearInline.style.background=clearDesign==='K4'?'#eaf1ff':'#e8eef7';
+    const both=clearDesign==='K2'||clearDesign==='K6';
+    for(const field of doc().querySelectorAll('#kggPadPair .kggPairField')){
+      const button=extraFieldClear(field);
+      button.style.display=both?'grid':'none';
+      button.innerHTML=clearDesign==='K6'?trashIcon:'×';
+      button.setAttribute('aria-label','Gesamten '+(field.dataset.kggKey==='a'?'kg':'Wdh')+'-Wert löschen');
+    }
+    ui.editor.style.width=(isInline||both)?'calc(100% - 51px)':'calc(100% - 18px)';
+    ui.editor.style.boxShadow=cursorDesign==='B'?'0 2px 0 #60a5fa':'none';
+    if(cursorDesign==='C'){
+      ui.editor.blur();ui.editor.style.caretColor='transparent';
+    }else {
+      ui.editor.style.caretColor='#2563eb';
+      if(padOpen&&ui.editor.isConnected&&doc().activeElement!==ui.editor)ui.editor.focus({preventScroll:true});
+    }
   }
   function editAtCursor(kind,arg){
     const ui=ensurePadUi(),e=ui?.editor;
