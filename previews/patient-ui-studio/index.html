@@ -106,6 +106,20 @@ html:fullscreen .modehint{display:none}
 .pad-extra-controls select{max-width:100%;border:1px solid #cbd8e8;border-radius:10px;background:#fff;min-height:42px;padding:8px;color:#1e293b}
 @media(max-width:780px){.pad-choice-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:420px){.pad-design-top{display:block}.pad-design-top .btn{margin-top:8px}}
+
+.pad-design-more{margin:0 0 10px;border:1px solid #d8e2ef;border-radius:11px;background:#f8faff;padding:9px}
+.pad-design-more>summary{font-size:12px;font-weight:800;color:#1d4ed8;cursor:pointer;min-height:27px}
+.pad-design-more[open] .pad-choice-row{margin-top:10px}
+.pad-choice-row-legacy{margin-top:8px;border-top:1px solid #dbe3ef;padding-top:10px}
+.quick-design-heading{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.quick-design-panel p{margin:6px 0 11px;font-size:11px}
+.quick-design-label{display:flex;flex-direction:column;gap:4px;margin-bottom:9px;font-size:11px;font-weight:750;color:#38506f}
+.quick-design-label select{width:100%;min-height:42px;padding:8px 9px;border:1px solid #cbd8e8;border-radius:10px;background:#f8fbff;color:#162b4a;font:700 12px system-ui}
+@media(min-width:1101px){
+ .sidebar{top:10px;max-height:calc(100dvh - 20px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin}
+ .quick-design-panel{position:sticky;top:0;z-index:8;box-shadow:0 6px 16px #14294a16}
+}
+@media(max-width:1100px){.quick-design-panel{grid-column:1/-1}}
 @media(max-width:1100px){main{grid-template-columns:1fr}.sidebar{position:static;display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:700px){header{padding:13px 14px}main{padding:11px 10px 28px}.mobiletabs{display:flex}.frames{grid-template-columns:1fr}.framecard{padding:10px}.framecard[hidden]{display:none}.screenframe{height:min(844px,74vh);min-height:525px}.sidebar{display:flex}.toolbar{padding:10px}.stage{padding:7px 10px;font-size:11px;min-height:40px}.framenote{font-size:10px}h1{font-size:23px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important}}
@@ -122,12 +136,21 @@ html:fullscreen .modehint{display:none}
     
     <section class="pad-design-controls" id="padDesignControls" aria-label="Numpad-Varianten direkt vergleichen">
       <div class="pad-design-top"><div><strong>Numpad-Designs ausprobieren</strong><p>Links Original, rechts die anpassbare Variante. Wähle einen Stil und tippe direkt ins Numpad.</p></div><button type="button" class="btn" id="openPadPreview">Numpad anzeigen</button></div>
-      <fieldset class="pad-choice-row" id="clearChoices"><legend>Alles löschen · vier Varianten</legend>
-        <label class="pad-choice"><input type="radio" name="clearDesign" value="A" checked><span><b>A · Im Wertefeld</b><small>× direkt an der Zahl</small></span></label>
-        <label class="pad-choice"><input type="radio" name="clearDesign" value="B"><span><b>B · C-Taste</b><small>Eigene Taste im Zahlenblock</small></span></label>
-        <label class="pad-choice"><input type="radio" name="clearDesign" value="C"><span><b>C · Breite Taste</b><small>„Ganzen Wert löschen“</small></span></label>
-        <label class="pad-choice"><input type="radio" name="clearDesign" value="D"><span><b>D · Langdruck</b><small>⌫ halten = alles</small></span></label>
+      <details class="pad-design-more" id="morePadOptions"><summary>Alle Löschdesigns ansehen · Schnellwahl auch rechts</summary>
+      <fieldset class="pad-choice-row" id="clearChoices"><legend>Löschen direkt im kg-/Wdh-Feld</legend>
+        <label class="pad-choice"><input type="radio" name="clearDesign" value="K1" checked><span><b>K1 · × aktiv</b><small>Nur im bearbeiteten Feld</small></span></label>
+        <label class="pad-choice"><input type="radio" name="clearDesign" value="K2"><span><b>K2 · × beide</b><small>Ein × je Feld</small></span></label>
+        <label class="pad-choice"><input type="radio" name="clearDesign" value="K3"><span><b>K3 · Papierkorb</b><small>Icon im aktiven Feld</small></span></label>
+        <label class="pad-choice"><input type="radio" name="clearDesign" value="K4"><span><b>K4 · × + ⌫</b><small>Feld- und Ziffernlöschen</small></span></label>
+        <label class="pad-choice"><input type="radio" name="clearDesign" value="K5"><span><b>K5 · Lösch-Chip</b><small>Kleiner Button unter Feldern</small></span></label>
+        <label class="pad-choice"><input type="radio" name="clearDesign" value="K6"><span><b>K6 · Papierkörbe</b><small>In beiden Feldern</small></span></label>
       </fieldset>
+      <fieldset class="pad-choice-row pad-choice-row-legacy"><legend>Weitere Numpad-Konzepte</legend>
+        <label class="pad-choice"><input type="radio" name="clearDesign" value="A"><span><b>A · Einfaches ×</b><small>Im aktiven Feld</small></span></label>
+        <label class="pad-choice"><input type="radio" name="clearDesign" value="B"><span><b>B · C-Taste</b><small>Am Zahlenblock</small></span></label>
+        <label class="pad-choice"><input type="radio" name="clearDesign" value="C"><span><b>C · Breite Taste</b><small>Ganzen Wert löschen</small></span></label>
+        <label class="pad-choice"><input type="radio" name="clearDesign" value="D"><span><b>D · Langdruck</b><small>⌫ halten</small></span></label>
+      </fieldset></details>
       <div class="pad-extra-controls">
         <label>Textcursor <select id="cursorDesign"><option value="A">A · Blinkender Strich</option><option value="B">B · Strich + blauer Fokus</option><option value="C">C · Erst nach Antippen</option></select></label>
         <label>Rückgängig anzeigen <select id="undoSeconds"><option value="3">3 Sekunden</option><option value="4" selected>4 Sekunden</option><option value="5">5 Sekunden</option><option value="6">6 Sekunden</option></select></label>
@@ -147,6 +170,35 @@ html:fullscreen .modehint{display:none}
     <p class="statusline" style="margin:12px 2px 0"><span id="sourceStatus">Originalquelle wird geprüft …</span><span id="versionStatus"></span></p>
   </section>
   <aside class="sidebar" aria-label="Designregler und Rückmeldung">
+    <section class="sidecard quick-design-panel" id="quickDesignPanel">
+      <div class="quick-design-heading"><h2>Direkt vergleichen</h2><span class="tag">Live</span></div>
+      <p>Die Löschvarianten rechts sofort umschalten.</p>
+      <label class="quick-design-label">Löschdesign
+        <select id="quickClearDesign">
+          <optgroup label="Im kg-/Wdh-Feld">
+            <option value="K1">K1 · × nur im aktiven Feld</option>
+            <option value="K2">K2 · × in beiden Feldern</option>
+            <option value="K3">K3 · Papierkorb aktiv</option>
+            <option value="K4">K4 · × und ⌫</option>
+            <option value="K5">K5 · Lösch-Chip</option>
+            <option value="K6">K6 · Papierkörbe in beiden Feldern</option>
+          </optgroup>
+          <optgroup label="Andere Numpad-Lösungen">
+            <option value="A">A · einfaches × im Feld</option>
+            <option value="B">B · C-Taste unten</option>
+            <option value="C">C · breite Löschtaste</option>
+            <option value="D">D · ⌫ lange drücken</option>
+          </optgroup>
+        </select>
+      </label>
+      <label class="quick-design-label">Cursor
+        <select id="quickCursorDesign"><option value="A">Blinkender Strich</option><option value="B">Strich + blauer Fokus</option><option value="C">Erst nach Antippen</option></select>
+      </label>
+      <label class="quick-design-label">Rückgängig-Dauer
+        <select id="quickUndoSeconds"><option value="3">3 Sekunden</option><option value="4" selected>4 Sekunden</option><option value="5">5 Sekunden</option><option value="6">6 Sekunden</option></select>
+      </label>
+      <button type="button" id="quickShowNumpad" class="btn primary wide">Numpad der Variante anzeigen</button>
+    </section>
     <section class="sidecard"><h2>Variante ändern</h2><p>Die Original-Ansicht links bleibt immer unverändert. Zurücksetzen stellt die exakte Ausgangsoptik wieder her.</p>
       <div class="control"><label for="font">Schriftgröße <output id="fontVal">100 %</output></label><input type="range" id="font" min="90" max="135" value="100" step="5"></div>
       <div class="control"><label for="radius">Eckenradius <output id="radiusVal">100 %</output></label><input type="range" id="radius" min="50" max="160" value="100" step="10"></div>
@@ -168,7 +220,7 @@ const BASE_URL='https://kayus24.github.io/kgg/';
 const STAGES=[['overview','Übersicht'],['expanded','Übung geöffnet'],['numpad','Numpad'],['pain','Schmerz'],['completed','Wert bestätigt'],['qr','QR-Vorschau']];
 const fixture={v:1,i:'ui-studio-only-synthetic-20261118',t:'UI-Studio Testplan',d:6,stepDays:1,extendDays:true,p:{name:'Synthetischer Test'},e:[['Beinpresse',3,'BI','kg','Wdh','40','10'],['Rudern',2,'BI','kg','Wdh','25','12'],['Kniebeuge',3,'BI','kg','Wdh','50','8']]};
 const $=id=>document.getElementById(id);
-const model={stage:'overview',mobile:'original',font:100,radius:100,space:100,touch:false,undo:false,clearDesign:'A',cursorDesign:'A',undoSeconds:4,source:'',generations:{original:0,variant:0},ready:{original:false,variant:false},applied:{original:false,variant:false}};
+const model={stage:'overview',mobile:'original',font:100,radius:100,space:100,touch:false,undo:false,clearDesign:'K1',cursorDesign:'A',undoSeconds:4,source:'',generations:{original:0,variant:0},ready:{original:false,variant:false},applied:{original:false,variant:false}};
 let statusTimeout;
 const boardState={mode:'compare',side:'variant',entries:new Map(),observer:null,queue:[],active:0,epoch:0};
 let focusEntry=null;
@@ -203,6 +255,11 @@ function sandboxBridge(side,slot=side){
     if(padUi&&padUi.editor.isConnected)return padUi;
     const display=doc().getElementById('padVal'),grid=doc().querySelector('#pad .padGrid');
     if(!display||!grid)return null;
+    if(!doc().getElementById('kggStudioInlineFieldCss')){
+      const style=doc().createElement('style');style.id='kggStudioInlineFieldCss';
+      style.textContent='#pad #kggStudioPadEditRow{display:none!important}#pad #padVal{display:none!important}#pad #kggPadPair .kggPairField{position:relative!important}#pad #kggPadPair .kggStudioPadEditor{position:absolute!important;z-index:5;left:9px;top:20px;height:34px;min-height:0;width:calc(100% - 51px);box-sizing:border-box;font:900 22px/1.1 system-ui;color:#111827;caret-color:#2563eb;border:0;border-radius:5px;background:transparent;outline:none;text-align:left;padding:0}#pad.kggPadLargeUi #kggPadPair .kggStudioPadEditor{top:33px;height:47px;font-size:40px!important}#pad #kggPadPair .kggStudioClearExtra{position:absolute;right:4px;top:50%;transform:translateY(-40%);z-index:7;width:38px;height:40px;border:0;border-radius:11px;background:#e8eef7;color:#38516d;display:grid;place-items:center;cursor:pointer}#pad.kggPadLargeUi #kggPadPair .kggStudioClearExtra{width:42px;height:44px}#pad #kggPadPair .kggStudioPadEditor:focus{caret-color:#2563eb}';
+      doc().head.appendChild(style);
+    }
     const row=doc().createElement('div');row.id='kggStudioPadEditRow';
     row.style.cssText='position:relative;margin:0 0 9px;min-height:76px';
     display.parentNode.insertBefore(row,display);row.appendChild(display);
@@ -253,7 +310,7 @@ function sandboxBridge(side,slot=side){
       });
       for(const kind of ['pointerup','pointercancel','pointerleave'])back.addEventListener(kind,()=>clearTimeout(longPressTimer));
     }
-    padUi={row,editor,clearInline,wide,gridClear,back,grid,cfg:{clearDesign:'A',cursorDesign:'A'}};
+    padUi={row,editor,clearInline,wide,gridClear,back,grid,clear,cfg:{clearDesign:'K1',cursorDesign:'A'},activeKey:null};
     if(!doc().getElementById('pad')?.classList.contains('hide')){
       const draft=padApi()?.getValue?.()||'0';
       editor.value=draft;
@@ -261,27 +318,94 @@ function sandboxBridge(side,slot=side){
     }
     return padUi;
   }
+  const trashIcon='<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M5 6l1 15h12l1-15M10 10v7M14 10v7"/></svg>';
+  function mountPadEditor(){
+    const ui=ensurePadUi();if(!ui)return false;
+    const active=doc().querySelector('#kggPadPair .kggPairField.kggPairActive');
+    if(!active)return false;
+    const key=active.dataset.kggKey;
+    if(ui.editor.parentElement!==active){
+      doc().querySelectorAll('#kggPadPair .kggPairField').forEach(f=>{
+        const span=f.querySelector('.kggPairValue');if(span)span.style.visibility='';
+      });
+      active.appendChild(ui.editor);
+      active.appendChild(ui.clearInline);
+      ui.activeKey=key;
+    }
+    const value=active.querySelector('.kggPairValue');
+    if(value)value.style.visibility='hidden';
+    ui.clearInline.style.cssText='position:absolute;right:4px;top:50%;transform:translateY(-40%);z-index:7;width:38px;height:40px;border:0;border-radius:11px;background:#e8eef7;color:#38516d;font:800 23px system-ui;display:grid;place-items:center;cursor:pointer';
+    ui.editor.className='kggStudioPadEditor';
+    ui.editor.style.cssText='position:absolute;z-index:5;left:9px;top:20px;height:34px;min-height:0;width:calc(100% - 51px);box-sizing:border-box;font:900 22px/1.1 system-ui;color:#111827;caret-color:#2563eb;border:0;border-radius:5px;background:transparent;outline:none;text-align:left;padding:0';
+    return true;
+  }
+  function extraFieldClear(field){
+    let button=field.querySelector('.kggStudioClearExtra');
+    if(button)return button;
+    button=doc().createElement('button');button.className='kggStudioClearExtra';
+    button.type='button';button.setAttribute('aria-label','Gesamten Wert dieses Feldes löschen');
+    button.addEventListener('click',event=>{
+      event.preventDefault();event.stopPropagation();event.stopImmediatePropagation();
+      const ui=ensurePadUi();if(!ui)return;
+      const key=field.dataset.kggKey;
+      if(ui.activeKey!==key){
+        const input=field.__kggPairInput;
+        const meta=fieldMeta(input);
+        if(input&&meta)window.openPad(input,meta);
+      }
+      ui.clear();
+      ui.editor.focus({preventScroll:true});
+    });
+    field.appendChild(button);return button;
+  }
   function syncEditorOnOpen(){
     const ui=ensurePadUi();if(!ui)return;
+    if(!mountPadEditor())return;
     const value=padApi()?.getValue?.()||'0';
     ui.editor.value=value;
     const at=value.length;
     if((ui.cfg.cursorDesign||'A')==='C'){ui.editor.blur();ui.editor.style.caretColor='transparent';}
     else {ui.editor.focus({preventScroll:true});ui.editor.setSelectionRange(at,at);}
+    applyPadDesign(lastConfig);
   }
   function applyPadDesign(cfg){
     const ui=ensurePadUi();if(!ui)return;
-    ui.cfg={clearDesign:cfg.clearDesign||'A',cursorDesign:cfg.cursorDesign||'A'};
-    ui.clearInline.hidden=ui.cfg.clearDesign!=='A';
-    ui.clearInline.style.display=ui.cfg.clearDesign==='A'?'block':'none';
-    ui.wide.style.display=ui.cfg.clearDesign==='C'?'block':'none';
-    ui.gridClear.style.display=ui.cfg.clearDesign==='B'?'block':'none';
-    ui.gridClear.style.gridColumn=ui.cfg.clearDesign==='B'?'span 3':'auto';
-    ui.editor.style.boxShadow=ui.cfg.cursorDesign==='B'?'inset 0 0 0 2px #bfdbfe,0 0 0 3px #dbeafe':'none';
-    ui.editor.style.borderColor=ui.cfg.cursorDesign==='B'?'#2563eb':'#cbd5e1';
-    ui.editor.style.paddingRight=ui.cfg.clearDesign==='A'?'48px':'18px';
-    if(ui.cfg.cursorDesign==='C'){ui.editor.blur();ui.editor.style.caretColor='transparent';}
-    else {ui.editor.style.caretColor='#2563eb';if(!doc().getElementById('pad')?.classList.contains('hide')&&doc().activeElement!==ui.editor)ui.editor.focus({preventScroll:true});}
+    const clearDesign=cfg.clearDesign||'K1',cursorDesign=cfg.cursorDesign||'A';
+    ui.cfg={clearDesign,cursorDesign};
+    ui.gridClear.style.display=clearDesign==='B'?'block':'none';
+    ui.gridClear.style.gridColumn=clearDesign==='B'?'span 3':'auto';
+    if(clearDesign==='K5'){
+      ui.wide.textContent='×  Wert löschen';
+      ui.wide.style.cssText='display:block;align-self:flex-start;order:0;min-height:40px;min-width:140px;padding:7px 12px;margin:0 0 8px;border:1px solid #cbd5e1;border-radius:999px;background:#f8fafc;color:#38516d;font:700 12px system-ui;cursor:pointer';
+      doc().getElementById('kggPadPair')?.insertAdjacentElement('afterend',ui.wide);
+    }else{
+      ui.grid.insertAdjacentElement('afterend',ui.wide);
+      ui.wide.textContent='✕  Ganzen Wert löschen';
+      ui.wide.style.cssText='display:'+(clearDesign==='C'?'block':'none')+';width:100%;min-height:48px;border:1px solid #cbd5e1;border-radius:12px;background:#f8fafc;color:#334155;font:700 15px system-ui;margin:0 0 10px;cursor:pointer';
+    }
+    const padOpen=!doc().getElementById('pad')?.classList.contains('hide');
+    if(padOpen&&ui.editor.parentElement?.id==='kggStudioPadEditRow')mountPadEditor();
+    const isInline=['A','K1','K3','K4'].includes(clearDesign);
+    ui.clearInline.style.display=isInline?'grid':'none';
+    ui.clearInline.innerHTML=clearDesign==='K3'?trashIcon:'×';
+    ui.clearInline.setAttribute('aria-label','Gesamten Wert des aktiven Feldes löschen');
+    ui.clearInline.style.color=clearDesign==='K4'?'#1d4ed8':'#38516d';
+    ui.clearInline.style.background=clearDesign==='K4'?'#eaf1ff':'#e8eef7';
+    const both=clearDesign==='K2'||clearDesign==='K6';
+    for(const field of doc().querySelectorAll('#kggPadPair .kggPairField')){
+      const button=extraFieldClear(field);
+      button.style.display=both?'grid':'none';
+      button.innerHTML=clearDesign==='K6'?trashIcon:'×';
+      button.setAttribute('aria-label','Gesamten '+(field.dataset.kggKey==='a'?'kg':'Wdh')+'-Wert löschen');
+    }
+    ui.editor.style.width=(isInline||both)?'calc(100% - 51px)':'calc(100% - 18px)';
+    ui.editor.style.boxShadow=cursorDesign==='B'?'0 2px 0 #60a5fa':'none';
+    if(cursorDesign==='C'){
+      ui.editor.blur();ui.editor.style.caretColor='transparent';
+    }else {
+      ui.editor.style.caretColor='#2563eb';
+      if(padOpen&&ui.editor.isConnected&&doc().activeElement!==ui.editor)ui.editor.focus({preventScroll:true});
+    }
   }
   function editAtCursor(kind,arg){
     const ui=ensurePadUi(),e=ui?.editor;
@@ -756,8 +880,8 @@ for(const [id,prop,valueId] of [['font','font','fontVal'],['radius','radius','ra
   $(id).addEventListener('input',()=>{model[prop]=Number($(id).value);$(valueId).textContent=model[prop]+' %';sendConfig()});
 }
 for(const id of ['touch','undo']){$(id).addEventListener('change',()=>{model[id]=$(id).checked;sendConfig()})}
-$('reset').addEventListener('click',()=>{Object.assign(model,{font:100,radius:100,space:100,touch:false,undo:false,clearDesign:'A',cursorDesign:'A',undoSeconds:4});
-  document.querySelector('input[name="clearDesign"][value="A"]').checked=true;$('cursorDesign').value='A';$('undoSeconds').value='4';for(const id of ['font','radius','space']){$(id).value=100;$(id+'Val').textContent='100 %'}$('touch').checked=false;$('undo').checked=false;sendConfig();toast('Variante zurückgesetzt')});
+$('reset').addEventListener('click',()=>{Object.assign(model,{font:100,radius:100,space:100,touch:false,undo:false,clearDesign:'K1',cursorDesign:'A',undoSeconds:4});
+  document.querySelector('input[name="clearDesign"][value="K1"]').checked=true;$('quickClearDesign').value='K1';$('quickCursorDesign').value='A';$('quickUndoSeconds').value='4';$('cursorDesign').value='A';$('undoSeconds').value='4';for(const id of ['font','radius','space']){$(id).value=100;$(id+'Val').textContent='100 %'}$('touch').checked=false;$('undo').checked=false;sendConfig();toast('Variante zurückgesetzt')});
 $('reload').addEventListener('click',load);
 function feedback(){return 'KGG Patienten-App · Original-UI-Studio\nOriginalquelle: '+SOURCE_URL+'\nModus: '+boardState.mode+' / '+boardState.side+'\nZustand: '+STAGES.find(s=>s[0]===model.stage)?.[1]+'\nSchrift: '+model.font+' %, Ecken: '+model.radius+' %, Abstand: '+model.space+' %, große Touchflächen: '+model.touch+', Rückgängig-Vorschau: '+model.undo+'\nÄnderungswünsche:\n'+$('feedback').value}
 async function copyFeedback(){const txt=feedback();try{await navigator.clipboard.writeText(txt);toast('Feedback kopiert')}catch{const el=document.createElement('textarea');el.value=txt;document.body.append(el);el.select();document.execCommand('copy');el.remove();toast('Feedback kopiert')}}
@@ -774,17 +898,43 @@ $('fullscreenToggle').addEventListener('click',toggleFullscreen);
 document.addEventListener('fullscreenchange',updateFullscreenUi);
 document.addEventListener('fullscreenerror',()=>{$('fullscreenHelp').hidden=false;$('fullscreenHelp').textContent='Dieser Browser konnte den Vollbildmodus nicht öffnen.'});
 
-for(const radio of document.querySelectorAll('input[name="clearDesign"]')){
-  radio.addEventListener('change',()=>{
-    if(!radio.checked)return;
-    model.clearDesign=radio.value;sendConfig();
-    if(boardState.mode==='compare'&&model.stage!=='numpad'){model.stage='numpad';stagesPressed();startPair();}
-    if(matchMedia('(max-width:700px)').matches){model.mobile='variant';mobile();}
-  });
+function showNumpadVariant(){
+  if(boardState.mode!=='compare')setMode('compare');
+  if(matchMedia('(max-width:700px)').matches){model.mobile='variant';mobile()}
+  if(model.stage!=='numpad'||!model.applied.variant){
+    model.stage='numpad';stagesPressed();startPair();
+  }
 }
-$('cursorDesign').addEventListener('change',()=>{model.cursorDesign=$('cursorDesign').value;sendConfig();if(boardState.mode==='compare'&&model.stage!=='numpad'){model.stage='numpad';stagesPressed();startPair();}});
-$('undoSeconds').addEventListener('change',()=>{model.undoSeconds=Number($('undoSeconds').value);sendConfig();});
-$('openPadPreview').addEventListener('click',()=>{model.stage='numpad';stagesPressed();startPair();if(matchMedia('(max-width:700px)').matches){model.mobile='variant';mobile();}});
+function changeClearDesign(value){
+  if(!['A','B','C','D','K1','K2','K3','K4','K5','K6'].includes(value))return;
+  model.clearDesign=value;
+  $('quickClearDesign').value=value;
+  const radio=document.querySelector('input[name="clearDesign"][value="'+value+'"]');
+  if(radio)radio.checked=true;
+  if(model.stage==='numpad'&&boardState.mode==='compare'&&model.applied.variant){sendConfig();return}
+  showNumpadVariant();
+}
+function changeCursorDesign(value){
+  if(!['A','B','C'].includes(value))return;
+  model.cursorDesign=value;
+  $('cursorDesign').value=value;$('quickCursorDesign').value=value;
+  if(model.stage==='numpad'&&boardState.mode==='compare'&&model.applied.variant){sendConfig();return}
+  showNumpadVariant();
+}
+function changeUndoSeconds(value){
+  const n=Number(value);if(![3,4,5,6].includes(n))return;
+  model.undoSeconds=n;$('undoSeconds').value=String(n);$('quickUndoSeconds').value=String(n);sendConfig();
+}
+for(const radio of document.querySelectorAll('input[name="clearDesign"]')){
+  radio.addEventListener('change',()=>{if(radio.checked)changeClearDesign(radio.value)});
+}
+$('quickClearDesign').addEventListener('change',()=>changeClearDesign($('quickClearDesign').value));
+$('cursorDesign').addEventListener('change',()=>changeCursorDesign($('cursorDesign').value));
+$('quickCursorDesign').addEventListener('change',()=>changeCursorDesign($('quickCursorDesign').value));
+$('undoSeconds').addEventListener('change',()=>changeUndoSeconds($('undoSeconds').value));
+$('quickUndoSeconds').addEventListener('change',()=>changeUndoSeconds($('quickUndoSeconds').value));
+$('openPadPreview').addEventListener('click',showNumpadVariant);
+$('quickShowNumpad').addEventListener('click',showNumpadVariant);
 stages();mobile();setMode('compare');updateFullscreenUi();load();
 </script>
 </body>
