@@ -156,7 +156,7 @@ html:fullscreen .modehint{display:none}
         <label class="pad-choice"><input type="radio" name="clearDesign" value="C"><span><b>C · Breite Taste</b><small>Ganzen Wert löschen</small></span></label>
         <label class="pad-choice"><input type="radio" name="clearDesign" value="D"><span><b>D · Langdruck</b><small>⌫ halten</small></span></label>
       </fieldset></details>
-      <div class="pad-extra-controls"><label class="x-inset-control" for="xInset"><span>X nach links <output id="xInsetValue">8 px</output></span><input id="xInset" type="range" min="0" max="24" step="1" value="8"><small>0 = K10 bisher · 24 = weiter innen</small></label><label>X-Schnellwahl <select id="topClearDesign"><option value="K2">K2 · bisher</option><option value="K7">K7 · Feines ×</option><option value="K8">K8 · Kleiner Kreis</option><option value="K9">K9 · Kontur-Kreis</option><option value="K10">K10 · Fokus-×</option></select></label><label>Rückkehr nach NumPad <select id="returnMotion"><option value="jump">Bisher · Sprung nach 120 ms</option><option value="180">R1 · 180 ms, zügig</option><option value="260" selected>R2 · 260 ms, weich</option><option value="360">R3 · 360 ms, ruhig</option></select></label>
+      <div class="pad-extra-controls"><label class="x-inset-control" for="xInset"><span>X nach links <output id="xInsetValue">8 px</output></span><input id="xInset" type="range" min="-12" max="100" step="1" value="8"><small>−12 = rechts · 0 = bisher · +100 = links</small></label><label class="x-inset-control" for="yInset"><span>X nach oben / unten <output id="yInsetValue">0 px</output></span><input id="yInset" type="range" min="-45" max="45" step="1" value="0"><small>−45 = oben · 0 = Mitte · +45 = unten</small></label><label>X-Schnellwahl <select id="topClearDesign"><option value="K2">K2 · bisher</option><option value="K7">K7 · Feines ×</option><option value="K8">K8 · Kleiner Kreis</option><option value="K9">K9 · Kontur-Kreis</option><option value="K10">K10 · Fokus-×</option></select></label><label>Rückkehr nach NumPad <select id="returnMotion"><option value="jump">Bisher · Sprung nach 120 ms</option><option value="180">R1 · 180 ms, zügig</option><option value="260" selected>R2 · 260 ms, weich</option><option value="360">R3 · 360 ms, ruhig</option></select></label>
         <label>Textcursor <select id="cursorDesign"><option value="A">A · Blinkender Strich</option><option value="B">B · Strich + blauer Fokus</option><option value="C">C · Erst nach Antippen</option></select></label>
         <label>Rückgängig anzeigen <select id="undoSeconds"><option value="3">3 Sekunden</option><option value="4" selected>4 Sekunden</option><option value="5">5 Sekunden</option><option value="6">6 Sekunden</option></select></label>
       </div>
@@ -196,7 +196,7 @@ html:fullscreen .modehint{display:none}
           </optgroup>
         </select>
       </label>
-      <label class="x-inset-control" for="quickXInset"><span>X nach links <output id="quickXInsetValue">8 px</output></span><input id="quickXInset" type="range" min="0" max="24" step="1" value="8"><small>0 = K10 bisher · 24 = weiter innen</small></label>
+      <label class="x-inset-control" for="quickXInset"><span>X nach links <output id="quickXInsetValue">8 px</output></span><input id="quickXInset" type="range" min="-12" max="100" step="1" value="8"><small>−12 = rechts · 0 = bisher · +100 = links</small></label><label class="x-inset-control" for="quickYInset"><span>X nach oben / unten <output id="quickYInsetValue">0 px</output></span><input id="quickYInset" type="range" min="-45" max="45" step="1" value="0"><small>−45 = oben · 0 = Mitte · +45 = unten</small></label>
       <label class="quick-design-label">Rückkehr nach NumPad<select id="quickReturnMotion"><option value="jump">Bisher · Sprung nach 120 ms</option><option value="180">R1 · 180 ms, zügig</option><option value="260" selected>R2 · 260 ms, weich</option><option value="360">R3 · 360 ms, ruhig</option></select></label>
       <label class="quick-design-label">Cursor
         <select id="quickCursorDesign"><option value="A">Blinkender Strich</option><option value="B">Strich + blauer Fokus</option><option value="C">Erst nach Antippen</option></select>
@@ -227,7 +227,7 @@ const BASE_URL='https://kayus24.github.io/kgg/';
 const STAGES=[['overview','Übersicht'],['expanded','Übung geöffnet'],['numpad','Numpad'],['pain','Schmerz'],['completed','Wert bestätigt'],['qr','QR-Vorschau']];
 const fixture={v:1,i:'ui-studio-only-synthetic-20261118',t:'UI-Studio Testplan',d:6,stepDays:1,extendDays:true,p:{name:'Synthetischer Test'},e:[['Beinpresse',3,'BI','kg','Wdh','40','10'],['Rudern',2,'BI','kg','Wdh','25','12'],['Kniebeuge',3,'BI','kg','Wdh','50','8']]};
 const $=id=>document.getElementById(id);
-const model={stage:'numpad',mobile:'variant',font:100,radius:100,space:100,touch:false,undo:false,clearDesign:'K10',cursorDesign:'A',undoSeconds:4,returnMotion:'260',xInset:8,source:'',generations:{original:0,variant:0},ready:{original:false,variant:false},applied:{original:false,variant:false}};
+const model={stage:'numpad',mobile:'variant',font:100,radius:100,space:100,touch:false,undo:false,clearDesign:'K10',cursorDesign:'A',undoSeconds:4,returnMotion:'260',xInset:8,yInset:0,source:'',generations:{original:0,variant:0},ready:{original:false,variant:false},applied:{original:false,variant:false}};
 let statusTimeout;
 const boardState={mode:'compare',side:'variant',entries:new Map(),observer:null,queue:[],active:0,epoch:0};
 let focusEntry=null;
@@ -403,7 +403,8 @@ function sandboxBridge(side,slot=side){
     ui.clearInline.style.color=clearDesign==='K4'?'#1d4ed8':'#38516d';
     ui.clearInline.style.background=clearDesign==='K4'?'#eaf1ff':'#e8eef7';
     const quiet=['K7','K8','K9','K10'].includes(clearDesign);
-    const xInset=quiet?Math.max(0,Math.min(24,Math.round(Number(cfg.xInset)||0))):0;
+    const xInset=quiet?Math.max(-12,Math.min(100,Math.round(Number(cfg.xInset)||0))):0;
+    const yInset=quiet?Math.max(-45,Math.min(45,Math.round(Number(cfg.yInset)||0))):0;
     const both=clearDesign==='K2'||clearDesign==='K6'||quiet;
     for(const field of doc().querySelectorAll('#kggPadPair .kggPairField')){
       const button=extraFieldClear(field);
@@ -417,11 +418,11 @@ function sandboxBridge(side,slot=side){
         const stroke=clearDesign==='K7'?1.75:2;
         const surround=circle?'<circle cx="12" cy="12" r="11" fill="'+(clearDesign==='K8'?'#e8edf3':'none')+'" stroke="'+(clearDesign==='K9'?'#bdc9d7':'none')+'" stroke-width="1"/>':'';
         button.innerHTML='<svg width="'+(circle?24:18)+'" height="'+(circle?24:18)+'" viewBox="0 0 24 24" fill="none" aria-hidden="true">'+surround+'<path d="M8 8l8 8M16 8l-8 8" stroke="'+color+'" stroke-width="'+stroke+'" stroke-linecap="round"/></svg>';
-        Object.assign(button.style,{right:(4+xInset)+'px',top:'50%',transform:'translateY(-50%)',width:'44px',height:'44px',padding:'0',background:'transparent',color,borderRadius:'11px',placeItems:'center'});
+        Object.assign(button.style,{right:(4+xInset)+'px',top:'calc(50% + '+yInset+'px)',transform:'translateY(-50%)',width:'44px',height:'44px',padding:'0',background:'transparent',color,borderRadius:'11px',placeItems:'center'});
       }
       button.setAttribute('aria-label','Gesamten '+(field.dataset.kggKey==='a'?'kg':'Wdh')+'-Wert löschen');
     }
-    ui.editor.style.width=(isInline||both)?'calc(100% - '+(51+xInset)+'px)':'calc(100% - 18px)';
+    ui.editor.style.width=(isInline||both)?'calc(100% - '+Math.max(51,51+xInset)+'px)':'calc(100% - 18px)';
     ui.editor.style.boxShadow=cursorDesign==='B'?'0 2px 0 #60a5fa':'none';
     if(cursorDesign==='C'){
       ui.editor.blur();ui.editor.style.caretColor='transparent';
@@ -669,7 +670,7 @@ function safeSource(html,side,slot=side){
   const bridge=script('('+sandboxBridge.toString()+')('+JSON.stringify(side)+','+JSON.stringify(slot)+');');
   return html.replace(/<head\b[^>]*>/i,tag=>tag+'<base href="'+BASE_URL+'">'+shim).replace(/<\/body>/i,bridge+'</body>');
 }
-function config(){return {font:model.font,radius:model.radius,space:model.space,touch:model.touch,undo:model.undo,clearDesign:model.clearDesign,cursorDesign:model.cursorDesign,undoSeconds:model.undoSeconds,returnMotion:model.returnMotion,xInset:model.xInset}}
+function config(){return {font:model.font,radius:model.radius,space:model.space,touch:model.touch,undo:model.undo,clearDesign:model.clearDesign,cursorDesign:model.cursorDesign,undoSeconds:model.undoSeconds,returnMotion:model.returnMotion,xInset:model.xInset,yInset:model.yInset}}
 function send(side,command,payload={}){const frame=$(side);frame.contentWindow?.postMessage({channel:'kgg-studio-command-v2',command,...payload},'*')}
 function mobile(){const single=matchMedia('(max-width:700px)').matches;$('frameOriginal').hidden=single&&model.mobile!=='original';$('frameVariant').hidden=single&&model.mobile!=='variant';$('tabOriginal').setAttribute('aria-pressed',String(model.mobile==='original'));$('tabVariant').setAttribute('aria-pressed',String(model.mobile==='variant'))}
 function stages(){const nav=$('stageNav');nav.innerHTML=STAGES.map(([id,name],i)=>'<button type="button" class="stage" data-stage="'+id+'" aria-pressed="'+String(id===model.stage)+'"><span>'+(i+1)+'</span>'+name+'</button>').join('');nav.addEventListener('click',e=>{const b=e.target.closest('[data-stage]');if(!b)return;model.stage=b.dataset.stage;stagesPressed();startPair()})}
@@ -906,10 +907,10 @@ for(const [id,prop,valueId] of [['font','font','fontVal'],['radius','radius','ra
   $(id).addEventListener('input',()=>{model[prop]=Number($(id).value);$(valueId).textContent=model[prop]+' %';sendConfig()});
 }
 for(const id of ['touch','undo']){$(id).addEventListener('change',()=>{model[id]=$(id).checked;sendConfig()})}
-$('reset').addEventListener('click',()=>{Object.assign(model,{font:100,radius:100,space:100,touch:false,undo:false,clearDesign:'K1',cursorDesign:'A',undoSeconds:4,returnMotion:'260',xInset:0});syncXInset();$('returnMotion').value='260';$('quickReturnMotion').value='260';$('topClearDesign').selectedIndex=-1;
+$('reset').addEventListener('click',()=>{Object.assign(model,{font:100,radius:100,space:100,touch:false,undo:false,clearDesign:'K1',cursorDesign:'A',undoSeconds:4,returnMotion:'260',xInset:0,yInset:0});syncXInset();$('returnMotion').value='260';$('quickReturnMotion').value='260';$('topClearDesign').selectedIndex=-1;
   document.querySelector('input[name="clearDesign"][value="K1"]').checked=true;$('quickClearDesign').value='K1';$('quickCursorDesign').value='A';$('quickUndoSeconds').value='4';$('cursorDesign').value='A';$('undoSeconds').value='4';for(const id of ['font','radius','space']){$(id).value=100;$(id+'Val').textContent='100 %'}$('touch').checked=false;$('undo').checked=false;sendConfig();toast('Variante zurückgesetzt')});
 $('reload').addEventListener('click',load);
-function feedback(){return 'KGG Patienten-App · Original-UI-Studio\nOriginalquelle: '+SOURCE_URL+'\nModus: '+boardState.mode+' / '+boardState.side+'\nZustand: '+STAGES.find(s=>s[0]===model.stage)?.[1]+'\nSchrift: '+model.font+' %, Ecken: '+model.radius+' %, Abstand: '+model.space+' %, große Touchflächen: '+model.touch+', Rückgängig-Vorschau: '+model.undo+'\nLöschdesign: '+model.clearDesign+'; X-Versatz nach links: '+model.xInset+' px; Rückkehr: '+model.returnMotion+'\nÄnderungswünsche:\n'+$('feedback').value}
+function feedback(){return 'KGG Patienten-App · Original-UI-Studio\nOriginalquelle: '+SOURCE_URL+'\nModus: '+boardState.mode+' / '+boardState.side+'\nZustand: '+STAGES.find(s=>s[0]===model.stage)?.[1]+'\nSchrift: '+model.font+' %, Ecken: '+model.radius+' %, Abstand: '+model.space+' %, große Touchflächen: '+model.touch+', Rückgängig-Vorschau: '+model.undo+'\nLöschdesign: '+model.clearDesign+'; X-Versatz nach links: '+model.xInset+' px; X vertikal: '+model.yInset+' px; Rückkehr: '+model.returnMotion+'\nÄnderungswünsche:\n'+$('feedback').value}
 async function copyFeedback(){const txt=feedback();try{await navigator.clipboard.writeText(txt);toast('Feedback kopiert')}catch{const el=document.createElement('textarea');el.value=txt;document.body.append(el);el.select();document.execCommand('copy');el.remove();toast('Feedback kopiert')}}
 $('copyFeedback').addEventListener('click',copyFeedback);$('copyTop').addEventListener('click',copyFeedback);
 $('tabOriginal').addEventListener('click',()=>{model.mobile='original';mobile()});$('tabVariant').addEventListener('click',()=>{model.mobile='variant';mobile()});window.addEventListener('resize',mobile);
@@ -958,9 +959,10 @@ for(const radio of document.querySelectorAll('input[name="clearDesign"]')){
 }
 $('quickClearDesign').addEventListener('change',()=>changeClearDesign($('quickClearDesign').value));
 $('topClearDesign').addEventListener('change',()=>changeClearDesign($('topClearDesign').value));
-function syncXInset(){const enabled=['K7','K8','K9','K10'].includes(model.clearDesign);for(const id of ['xInset','quickXInset']){$(id).value=String(model.xInset);$(id+'Value').textContent=model.xInset+' px';$(id).disabled=!enabled}}
-function changeXInset(value){model.xInset=Math.max(0,Math.min(24,Math.round(Number(value)||0)));syncXInset();sendConfig()}
-for(const id of ['xInset','quickXInset'])$(id).addEventListener('input',()=>changeXInset($(id).value));
+function syncXInset(){const enabled=['K7','K8','K9','K10'].includes(model.clearDesign);for(const [prop,ids] of [['xInset',['xInset','quickXInset']],['yInset',['yInset','quickYInset']]]){for(const id of ids){$(id).value=String(model[prop]);$(id+'Value').textContent=model[prop]+' px';$(id).disabled=!enabled}}}
+function changeXPosition(prop,value){const n=Math.round(Number(value)||0);model[prop]=prop==='xInset'?Math.max(-12,Math.min(100,n)):Math.max(-45,Math.min(45,n));syncXInset();sendConfig()}
+for(const id of ['xInset','quickXInset'])$(id).addEventListener('input',()=>changeXPosition('xInset',$(id).value));
+for(const id of ['yInset','quickYInset'])$(id).addEventListener('input',()=>changeXPosition('yInset',$(id).value));
 function changeReturnMotion(value){if(!['jump','180','260','360'].includes(value))return;model.returnMotion=value;$('returnMotion').value=value;$('quickReturnMotion').value=value;sendConfig()}
 $('returnMotion').addEventListener('change',()=>changeReturnMotion($('returnMotion').value));$('quickReturnMotion').addEventListener('change',()=>changeReturnMotion($('quickReturnMotion').value));
 $('cursorDesign').addEventListener('change',()=>changeCursorDesign($('cursorDesign').value));
